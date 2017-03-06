@@ -55,8 +55,9 @@
 	}
 
 	#section1{
+
 		/*background-image: url(img/p_p_007.png);*/
-		background: linear-gradient(to top, #4758a9 0%, #081227 50%, #14385f 85%, #012438 100%);
+		background: linear-gradient(to top, #585858 0%, #43536b 50%, #465565 85%, #000000 100%);
 		-webkit-background-size: cover;
 		background-size: cover;
 	}
@@ -475,9 +476,9 @@
 									<p class="a-text"><i class="fa fa-tags" aria-hidden="true"></i>選擇活動類型</p>
 									<ul>
 										<a href="#" class="a-all"><input type="hidden" name="all" value="all" placeholder="" id="a-all"><li>全部</li></a>
-										<a href="#" class="a-getDate"><input type="hidden" name="" value="1" placeholder=""><li>天文觀測</li></a>
-										<a href="#" class="a-getDate"><input type="hidden" name="" value="2" placeholder=""><li>親子觀星</li></a>
-										<a href="#" class="a-getDate"><input type="hidden" name="" value="3" placeholder=""><li>天文攝影</li></a>
+										<a href="#" class="a-getDate"><input type="hidden" name="" value="1" placeholder=""><li>天文攝影</li></a>
+										<a href="#" class="a-getDate"><input type="hidden" name="" value="2" placeholder=""><li>天文觀測</li></a>
+										<a href="#" class="a-getDate"><input type="hidden" name="" value="3" placeholder=""><li>親子觀星</li></a>
 										<a href="#" class="a-getDate"><input type="hidden" name="" value="4" placeholder=""><li>休閒聯誼</li></a>
 									</ul>
 								</div>
@@ -543,7 +544,7 @@
 					    while($actRow = $act->fetch()){
 
 					    	$str = '<div class="col-xs-12 col-sm-6 col-md-6 a-remove">
-									<div class="aa-box">
+									<div class="aa-box a-actLink">
 										<div class="box-img">
 											<img src="'.$actRow["act_img"].'" alt="" >
 										</div>
@@ -552,11 +553,12 @@
 											
 											<p class="aa-date">'.$actRow["act_startDate"].'~'.$actRow["act_endDate"].'</p>
 											<p class="aa-desc">
-												'.((mb_strlen($actRow["act_info"], "UTF8")>10) ? mb_substr($actRow["act_info"],0,20, "UTF8") : $actRow["act_info"]).' '.((mb_strlen($actRow["act_info"], "UTF8")>10) ? nl2br(' ...') : nl2br('')).'
+												'.((mb_strlen($actRow["act_info"], "UTF8")>10) ? mb_substr($actRow["act_info"],0,10, "UTF8") : $actRow["act_info"])
+														.' '.((mb_strlen($actRow["act_info"], "UTF8")>10) ? nl2br(' ...') : nl2br('')).'
 											</p>
 											<div class="aa-btn-area">
 												<div class="social-icon">
-													<i class="fa fa-star-o" aria-hidden="true"></i><span></span>20人收藏
+													<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>
 												</div>
 												<div class="aa-btn btn-blue btn-lg">
 													<a href="" class="ff_lightbox_link">熱烈報名中</a>
@@ -618,8 +620,8 @@
 <section id="a_1activity_wrapper" >
    <div id="close-btn">
 		<div id="closeIt">CLOSE</div>
-		 <svg class="closeIco" xmlns="img/close.svg" version="1.1"></svg>
-		<!-- <img class="closeIco" src="img/a_005.jpg" alt="close icon"> -->
+		 <!-- <svg class="closeIco" xmlns="img/close.svg" version="1.1"></svg> -->
+		<img class="closeIco" src="img/close.svg" alt="close icon">
 	</div>
 	<div class="container">
 	<div class="aa_content">
@@ -627,11 +629,11 @@
 			<div class="aa_info">
 				<h3 id="a-lb-act_name"></h3>
 				<p id="a-lb-act_info"></p>
-				<span class="Organiser"><i class="fa fa-user-o" aria-hidden="true"></i>主辦人：Leo S</span>
-				<span class="day"  id="a-lb-act_date"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-				<span class="type"><i class="fa fa-tags" aria-hidden="true"></i>類型：<span id="a-lb-actCla_name"></span></span>
-				<span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>地點：<span id="a-lb-act_place"></span></span>
-				<span class="cost"><i class="fa fa-money" aria-hidden="true"></i>費用：<span id="a-lb-act_price"></span>元</span>
+				<span class="Organiser"><i class="fa fa-user-o" aria-hidden="true"></i>主辦人：<div class="a-lb-content">Leo S</div></span>
+				<span><i class="fa fa-calendar-o" aria-hidden="true"></i><div class="a-lb-content"  id="a-lb-act_date"></div></span>
+				<span class="type"><i class="fa fa-tags" aria-hidden="true"></i>類型：<div id="a-lb-actCla_name" class="a-lb-content"></div></span>
+				<span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>地點：<div id="a-lb-act_place" class="a-lb-content"></div></span>
+				<span class="cost"><i class="fa fa-money" aria-hidden="true"></i>費用：<div id="a-lb-act_price" class="a-lb-content"></div>元</span>
 				<div class="btn-lg btn-blue"><a href="">我要報名</a></div>
 			</div>
 		</div>

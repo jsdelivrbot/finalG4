@@ -149,6 +149,8 @@ function all(){
             act=data;
             newMarker();
     $('div').remove('.a-remove');
+
+
     for(var i=0;i<act.length;i++){
         $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove">'+
                                         '<div class="aa-box">'+
@@ -158,10 +160,10 @@ function all(){
                                             '<div class="box-text">'+
                                                 '<h4>'+act[i].act_name+'</h4>'+
                                                 '<p class="aa-date">'+act[i].act_startDate+'</p>'+
-                                                '<p class="aa-desc">'+act[i].act_info+'</p>'+
+                                                '<p class="aa-info">'+act[i].act_info+'</p>'+
                                                 '<div class="aa-btn-area">'+
                                                     '<div class="social-icon">'+
-                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span></span>20人收藏'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>'+
                                                     '</div>'+
                                                     '<div class="aa-btn btn-blue btn-lg">'+
                                                         '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
@@ -176,7 +178,14 @@ function all(){
                                         '</div></div>');   
 
     }
-
+    var len = 60; // 超過50個字以"..."取代
+    $(".aa-info").each(function(i){
+        if($(this).text().length>len){
+            $(this).attr("title",$(this).text());
+            var text=$(this).text().substring(0,len-1)+"...";
+            $(this).text(text);
+        }
+    });
     lightBox();            
         },
 
