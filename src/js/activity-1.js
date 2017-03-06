@@ -119,6 +119,7 @@ $(".a-panel ul a").click(function(){
 })
 $(".a-all").click(function(){
     all();
+
 })
 /*=====================================
             jQuery撈全部Marker資料
@@ -147,6 +148,36 @@ function all(){
 
             act=data;
             newMarker();
+    $('div').remove('.a-remove');
+    for(var i=0;i<act.length;i++){
+        $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove">'+
+                                        '<div class="aa-box">'+
+                                            '<div class="box-img">'+
+                                                '<img src="'+act[i].act_img+'" alt="'+act[i].act_name+'" >'+
+                                            '</div>'+
+                                            '<div class="box-text">'+
+                                                '<h4>'+act[i].act_name+'</h4>'+
+                                                '<p class="aa-date">'+act[i].act_startDate+'</p>'+
+                                                '<p class="aa-desc">'+act[i].act_info+'</p>'+
+                                                '<div class="aa-btn-area">'+
+                                                    '<div class="social-icon">'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span></span>20人收藏'+
+                                                    '</div>'+
+                                                    '<div class="aa-btn btn-blue btn-lg">'+
+                                                        '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
+                                                        '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'+
+                                                    '</div>'+
+                                                    '<div class="clear"></div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="aa-tag">'+
+                                                '<span>'+act[i].actCla_name+'</span>'+
+                                            '</div>'+  
+                                        '</div></div>');   
+
+    }
+
+    lightBox();            
         },
 
         error: function(jqXHR, textStatus, errorThrown) {

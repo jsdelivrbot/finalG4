@@ -117,7 +117,7 @@
                   }
 
                   //每頁印幾筆
-                  $pageRecords = 5;
+                  $pageRecords = 10;
                 //$pageRecords
 
                   //共幾頁，ceil是無條件進位

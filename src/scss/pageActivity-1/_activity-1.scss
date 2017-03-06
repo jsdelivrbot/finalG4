@@ -430,12 +430,18 @@
 
 	.a-phone-control{
 		.a-phone-btn{
+			display: none;
 			font-size: 18px;
 			width: 150px;
 			letter-spacing: .05em;
 		}
 	}
-
+.a-activity-lightbox{
+		padding-top: 90px;	
+		position: fixed;
+		top:100vh;
+		z-index: 100001;	
+}
 	#a_1activity_wrapper{
 		
 		.aa_banner{
@@ -452,6 +458,7 @@
 		}
 
 		.aa_content{
+
 			width: 100%;
 			overflow: auto;
 			height: 100vh;

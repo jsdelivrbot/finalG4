@@ -17,7 +17,7 @@ try{
             選類型
     =======================================*/
   if(isset($_REQUEST["actCla_no"])){
-      $sql = "select * from act join actCla using(actCla_no) join mem using(mem_no) where actCla_no=:actCla_no";
+      $sql = "select * from act join actCla using(actCla_no) join mem using(mem_no) where actCla_no=:actCla_no and act_state=1";
       $act = $pdo->prepare( $sql );
       $act->bindValue(":actCla_no", $_REQUEST["actCla_no"]);
       $act->execute();//執行
@@ -40,7 +40,7 @@ try{
 
   if(isset($_REQUEST["act_startDate"]) || isset($_REQUEST["act_endDate"])){
 
-    $sql = "select * from act join actCla using(actCla_no) where act_endDate between '".$_REQUEST["act_startDate"]."' and '".$_REQUEST["act_endDate"]."'";
+    $sql = "select * from act join actCla using(actCla_no) where act_state=1 and (act_endDate between '".$_REQUEST["act_startDate"]."' and '".$_REQUEST["act_endDate"]."')";
     $act = $pdo->prepare( $sql );
     $act->execute();//執行
     if( $act->rowCount() == 0 ){ //找不到
@@ -63,7 +63,7 @@ try{
       $lat = $_REQUEST["act_lat"];
       $point = '23.876571';
       if( $lat>=$point){
-        $sql = "select * from act join actCla using(actCla_no) where act_lat>=$lat";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat<=$lat";
 
         $act = $pdo->prepare( $sql );
         $act->bindValue($lat,$_REQUEST["act_lat"]);
@@ -89,7 +89,7 @@ try{
     =======================================*/
   if(isset($_REQUEST["act_name"])){
       $str = '%'.$_REQUEST["act_name"].'%';
-        $sql = "select * from act join actCla using(actCla_no) where act_name like '".$str."'";
+        $sql = "select * from act join actCla using(actCla_no) where act_name like '".$str."' and act_state=1";
         $act = $pdo->prepare( $sql );
         $act->execute();//執行
         if( $act->rowCount() == 0 ){ //找不到
@@ -111,7 +111,7 @@ try{
       =======================================*/  
   if(isset($_REQUEST["all"])){
      
-        $sql = "select * from act join actCla using(actCla_no)";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1";
         $act = $pdo->prepare( $sql );
          $act->execute();//執行
         if( $act->rowCount() == 0 ){ //找不到
@@ -132,7 +132,7 @@ try{
     =======================================*/
   if(isset($_REQUEST["act_no"])){
        
-        $sql = "select * from act join actCla using(actCla_no) where act.act_no=:act_no";
+        $sql = "select * from act join actCla using(actCla_no) where act.act_no=:act_no and act_state=1";
         $act = $pdo->prepare( $sql );
         $act->bindValue(":act_no",$_REQUEST["act_no"]);
         $act->execute();//執行
@@ -150,7 +150,7 @@ try{
           
         }    
 
-        $sql2 = "select * from act join actCla using(actCla_no) join mem using(mem_no) join actMsg using(act_no) where act.act_no=:act_no";
+        $sql2 = "select * from act join actCla using(actCla_no) join mem using(mem_no) join actMsg using(act_no) where act.act_no=:act_no and act_state=1";
         $act2 = $pdo->prepare( $sql2 );
         $act2->bindValue(":act_no",$_REQUEST["act_no"]);
         $act2->execute();//執行

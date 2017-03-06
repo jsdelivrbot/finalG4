@@ -1,3 +1,29 @@
+
+function initMap() {
+    markerb = [];
+    markers =[];
+    markerArray = [];
+    var styles = [{
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [{
+            "color": "#444444"
+        }]
+    }]
+    var styledMap = new google.maps.StyledMapType(styles, { name: "Styled Map" });
+    twCenter = { lat: 23.876571, lng: 121.091443 };
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: twCenter,
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+    });
+
+
+    //Associate the styled map with the MapTypeId and set it to display.
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+
+
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
@@ -10,212 +36,336 @@ function toggleBounce() {
   }
 }
 
-function initAutocomplete() {
-  var styles= [
-                  {
-                      "featureType": "water",
-                      "elementType": "geometry.fill",
-                      "stylers": [
-                          {
-                              "color": "#444444"
-                          }
-                      ]
-                  }
-              ]
 
-  // Create a new StyledMapType object, passing it the array of styles,
-  // as well as the name to be displayed on the map type control.
-  var styledMap = new google.maps.StyledMapType(styles,
-    {name: "Styled Map"});
 
-  twCenter={lat: 23.876571, lng: 121.091443};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: twCenter,
-    zoom: 7,
-    // disableDefaultUI:true,
-    mapTypeControl:false,
-    mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+
+
+
+
+
+
+    /*================================
+              新建marker
+    ===================================*/
+    // markera = new google.maps.Marker({
+    //     map: map,
+    //     title: 'Hello World!',
+    //     draggable: true,
+    //     animation: google.maps.Animation.DROP,
+    //     position: twCenter
+    // });
+
+/*=====================================
+            設定zIndex
+    =======================================*/
+google.maps.InfoWindowZ=function(opts){
+          var GM = google.maps,
+              GE = GM.event,
+              iw = new GM.InfoWindow(),
+              ce;
+
+             if(!GM.InfoWindowZZ){
+                GM.InfoWindowZZ=Number(GM.Marker.MAX_ZINDEX);
+             }
+
+             GE.addListener(iw,'content_changed',function(){
+               if(typeof this.getContent()=='string'){
+                  var n=document.createElement('div');
+                      n.innerHTML=this.getContent();
+                      this.setContent(n);
+                      return;
+               }
+               GE.addListener(this,'domready',
+                               function(){
+                                var _this=this;
+                                _this.setZIndex(++GM.InfoWindowZZ);
+                                if(ce){
+                                  GM.event.removeListener(ce);
+                                }
+                                ce=GE.addDomListener(this.getContent().parentNode
+                                                  .parentNode.parentNode,'mouseover',
+                                                  function(){
+                                                  _this.setZIndex(++GM.InfoWindowZZ);
+                                });
+                              })
+             });
+
+             if(opts)iw.setOptions(opts);
+             return iw;
+        }
+
+
+     /*=====================================
+                北中南東
+        =======================================*/
+    var north = document.getElementById("a-north");
+    google.maps.event.addDomListener(north, 'click', function() {
+        map.setZoom(9);
+        map.setCenter(new google.maps.LatLng(25.105497, 121.397366));
+    });
+    var a_center = document.getElementById("a-center");
+    google.maps.event.addDomListener(a_center, 'click', function() {
+        map.setZoom(9);
+        map.setCenter(new google.maps.LatLng(23.876571, 121.091443));
+    });
+    var south = document.getElementById("a-south");
+    google.maps.event.addDomListener(south, 'click', function() {
+        map.setZoom(9);
+        map.setCenter(new google.maps.LatLng(22.876571, 120.991443));
+    });
+    var east = document.getElementById("a-east");
+    google.maps.event.addDomListener(east, 'click', function() {
+        map.setZoom(9);
+        map.setCenter(new google.maps.LatLng(23.80083, 121.63528));
+    });
+       
+lightBox();
+
+} //initMap end
+
+
+infoArray=[];
+/*================================
+        newMarker
+===================================*/
+function newMarker() {
+    clearMarkers();
+    // markerArray=[];
+    // clearMarkers();
     
-  });//map結束
-    //Associate the styled map with the MapTypeId and set it to display.
-    map.mapTypes.set('map_style', styledMap);
-    map.setMapTypeId('map_style');
- 
+    for (var i = 0; i <act.length; i++) {
 
-    //===========新建marker================
-      markera = new google.maps.Marker({
-        map: map,
-        title: 'Hello World!',
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: twCenter
-      });
-      markera.addListener('click', toggleBounce);
-    //==============marker結束===============
+        console.log("creatMarker", parseFloat(act[i].act_lat), parseFloat(act[i].act_lng));
+        tmp = new google.maps.LatLng(parseFloat(act[i].act_lat), parseFloat(act[i].act_lng));
+        // var marker="marker";
 
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Zero-Gravity</h1>'+
-      '<div id="bodyContent">'+
-      '<img src="img/a_001.jpg" width="100"><p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
+        markerb = new google.maps.Marker({
+            map: map,
+            title: act[i].act_name,
+            animation: google.maps.Animation.DROP,
+            position: tmp,
+            icon:"img/a_telescope.png"
+        });
+          console.log(act[i].act_name);
+        
+         var content = '<div id="iw-container"><div class="iw-title ff_lightbox_link">'+act[i].act_name+'</div>'+
+         '<input type="hidden" value="'+act[i].act_no+'" /></div>';
+         infowindow = new google.maps.InfoWindowZ({
+            content: content
+          });
+
+        infowindow.open(map, markerb);
+
+        infoArray.push(infowindow);
+
+        markerArray.push(markerb);//用一個陣列將產出的marker存起來
+        // console.log("markerArray", markerArray);
+    }//for end
+    google.maps.event.addListener(infowindow, 'domready', function() {
+         lightBox();
+        infowindow.addListener('click', lightBox);
+    });
+    console.log('infoWindow',infoArray);
+    setInfoWindow();
+        
+}//new marker end
+
+function lightBox(){
+/*=====================================
+            lightbox
+    =======================================*/
+
+// lightbox效果--主題被點擊後，lightbox跳出
+$('.ff_lightbox_link').click(function(e){
+    e.preventDefault();
+
+    $('#ff_lightbox').css({
+        transform: 'scale(1) ',
+        transition:'.5s linear'
+
+    })
+    
+});
+
+$('#close-btn').click(function(){
+    $('#ff_lightbox').css({
+        transform: 'scale(0)',
+        transition:'.5s linear'
+    })
+})
 
 
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-  markera.addListener('click', function() {
-    infowindow.open(map, markera);
-  });
+//lightbox close-btn
+$('#close-btn').hover(function(){
+    $('#closeIt').css({
+        color: '#ffc889',
+        opacity: '1'
+    });
+    $('.closeIco').attr({
+        src: 'img/close2.svg'
+    });
+},function(){
+    $('#closeIt').css({
+        color: 'white',
+        opacity: '1'
+    });
+    $('.closeIco').attr({
+        src: 'img/close.svg'
+    });
+})//lightbox close-btn end
+$(".ff_lightbox_link").click(function(){
+    $('div').remove(".a-removeComm");
+    var act_no = $(this).next("input").val();
+    $.ajax({
+        url: 'php/activity.php',//php,jsp and etc..
+        type: 'POST',
+        data: {
+            act_no:act_no
+        },
+        dataType: "json",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log('lightBox Success: ' + textStatus);
+            console.log(data);
+                $(".aa_banner").css({
+                    'background':'url('+data[0][0].act_img+')'
+                });
+
+                $("#a-lb-act_name").text(data[0][0].act_name);
+                $("#a-lb-act_info").text(data[0][0].act_info);
+                $("#a-lb-act_date").text(data[0][0].act_startDate+"~"+data[0][0].act_endDate);
+                $("#a-lb-actCla_name").text(data[0][0].actCla_name);
+                $("#a-lb-act_place").text(data[0][0].act_place);
+                $("#a-lb-act_price").text(data[0][0].act_price);
+
+                // if(data[0].actMs)
+                if(data[1][0]!=0){
+                    for(var i=0;i<data.length;i++){
+                        $("#a-comm").append(
+                            '<div class="comment ct1 a-removeComm"><div class="user"><div class="user-pic"><img src="'+data[1][i].act_img+'">'+
+                            '</div><div class="user-info"><span><a href="">'+data[1][i].mem_name+'</a></span></div></div>'+'<div class="ct-content">'+
+                            '<p>參加活動：'+data[1][i].act_name+'<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i>'+
+                            '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>'+
+                            '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>'+
+                            '<p>'+data[1][i].actMsg_content+'</p>'+
+                            '<p>'+data[1][i].actMsg_content+'</p></div>'+
+                            '<div class="clear"></div></div>'
+                        )                
+                    }                    
+                }else{
+                    $("#a-comm").append(
+                        '<div class="ct-content a-removeComm" style="color:#fff;text-align:center;padding-bottom:30px;font-size:20px;">尚無評論</div>'
+                    );
+                }
 
 
-  // Create the search box and link it to the UI element.
-  input = document.getElementById('pac-input');
-  searchBox = new google.maps.places.SearchBox(input);
-  // map.controls[google.maps.ControlPosition.RIGHT_TOP].push(input);
-  // input.style.left='0px';
+
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle errors here
+            console.log('Errors: ' + textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+            // STOP LOADING SPINNER
+        }
+
+    });    
+})    
+}
+function setMapOnAll(map) {//把所有之前產出的marder都設成null
+    for (var i = 0; i < markerArray.length; i++) {
+        markerArray[i].setMap(map);
+    }
+}
+
+// Removes themarkerArray from the map, but keeps them in the array.
+function clearMarkers() {//將null值帶入setMapOnAll()
+    setMapOnAll(null);
+};
+
+// // Shows anymarkerArray currently in the array.
+// function showMarkers() {
+//   setMapOnAll(map);
+// }
 
 
-  // //=============================
-  //             自建div_controler
-  // ===================================
-  var conBar = document.getElementById('co');
-  conBar.style.position='fixed';
-  conBar.style.backgroundColor='rgba(0,0,0,0.7)';
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(conBar);
 
-  // //=============================
-  //             自建div_zero
-  // ===================================
-  var zero = document.getElementById('zero');
-  zero.style.position='fixed';
-  zero.style.backgroundColor='rgba(255,0,0,0.7)';
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push(zero);
+/*=====================================
+            改變infoWindow
+    =======================================*/
+function setInfoWindow(){
+google.maps.event.addListener(infowindow, 'domready', function() {
 
-  //bounds界限
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
 
-  var markers = [];
-  // [START region_getplaces]
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    /*=====================================
+                將XX弄掉
+        =======================================*/
+    iwOuter.next().css({'display':'none'});
+    var iwBackground = iwOuter.prev();
 
-    if (places.length == 0) {
-      return;
+    // Removes background shadow DIV
+    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+    // Removes white background DIV
+    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+    //Moves the infowindow 115px to the right.
+    // iwOuter.parent().parent().css({left: '115px'});
+
+    // Moves the shadow of the arrow 76px to the left margin.
+    iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+    
+    var left =iwBackground.children(':nth-child(3)').children(':nth-child(1)').children(':nth-child(1)');
+    var right=iwBackground.children(':nth-child(3)').children(':nth-child(2)').children(':nth-child(1)');
+    left.css({'background-color':'#48b5e9'});
+    right.css({'background-color':'#48b5e9'});
+
+    $(".iw-title").mouseover(function(){
+        $(this).parent().parent().parent().parent().prev().children(':nth-child(3)')
+        .children(':nth-child(1)').children(':nth-child(1)').css({'background-color':'#fa0'});
+        $(this).parent().parent().parent().parent().prev().children(':nth-child(3)')
+        .children(':nth-child(2)').children(':nth-child(1)').css({'background-color':'#fa0','z-index':'1000'});
+
+        $(this).css({'background-color':'#fa0','z-index':'1000'});
+    }).mouseout(function(){
+        $(this).parent().parent().parent().parent().prev().children(':nth-child(3)')
+        .children(':nth-child(1)').children(':nth-child(1)').css({'background-color':'#48b5e9','z-index':'1'});
+        $(this).parent().parent().parent().parent().prev().children(':nth-child(3)')
+        .children(':nth-child(2)').children(':nth-child(1)').css({'background-color':'#48b5e9','z-index':'1'});
+        $(this).css({'background-color':'#48b5e9','z-index':'1'});       
+    });
+
+
+    // Moves the arrow 76px to the left margin.
+    // iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+
+    // Changes the desired tail shadow color.
+    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(255, 255, 255, 1) 0px 1px 6px', 'z-index' : '1'});
+
+    // Reference to the div that groups the close button elements.
+    var iwCloseBtn = iwOuter.next();
+
+    // Apply the desired effect to the close button
+    // iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
+
+    // If the content of infowindow not exceed the set maximum height, then the gradient is removed.
+    if($('.iw-content').height() < 140){
+      $('.iw-bottom-gradient').css({display: 'none'});
     }
 
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
+    // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
+    iwCloseBtn.mouseout(function(){
+      $(this).css({opacity: '1'});
     });
-    markers = [];
-
-    // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      var icon = {
-        url: '../img/a_001.jpg',
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(50, 50)
-      };
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
-  });
-  // [END region_getplaces]
-  //新建一個div，用來設置map的center
-  // var centerControlDiv = document.createElement('div');
-  // var centerControl = new CenterControl(centerControlDiv, map);
-
-  // centerControlDiv.index = -1;
-  // map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(centerControlDiv);
-  //centerControl結束
-
-
-  //自訂控制板
-  // var contDiv = document.createElement('div');
-  // contDiv.style.position='fixed';
-  // contDiv.style.width='30%';
-  // contDiv.style.height='100%';
-  // contDiv.style.backgroundColor='rgba(0,0,0,0.5)';
-  // contDiv.index=-1;
-  // contDiv.innerHTML='<h1>控制板</h1><br><input>';
-  // contDiv.appendChild(centerControlDiv);
-  // contDiv.appendChild(input);
-  // // contDiv.appendChild(searchBox);
-  // map.controls[google.maps.ControlPosition.LEFT_TOP].push(contDiv);
-
-  //===============Marker==============
-  
-}
+  });   
+}//change infoWindow end
 
 
 
-function CenterControl(controlDiv, map) {
-
-  // Set CSS for the control border.
-  //生一個div出來
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid #fff';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlUI.title = 'Click to recenter the map';
-  controlDiv.appendChild(controlUI);
-
-  // Set CSS for the control interior.
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Center Map';
-  controlUI.appendChild(controlText);
-
-  // Setup the click event listeners: simply set the map to Chicago.
-  controlUI.addEventListener('click', function() {
-    
-    map.setCenter(twCenter);
-  });
-
-}

@@ -1,7 +1,19 @@
 $(function(){
+
+
+
 /*=====================================
-            fullpage
-    =======================================*/
+              判定會員登入
+      =======================================*/  
+mem = JSON.parse(localStorage.getItem('mem'));
+
+
+//判定會員登入==================================
+if (localStorage.mem) {
+    // $('.mainMenu.signArea').children('li').css('display', 'none');
+    // $('#navMemPhoto').css('display', 'inline-block').find('img').attr('src', mem.mem_img);
+    // $('#navMemInfo').css('display', 'inline-block').find('#navMemberName').text(mem.mem_name);
+}
 
 /*=====================================
             slider

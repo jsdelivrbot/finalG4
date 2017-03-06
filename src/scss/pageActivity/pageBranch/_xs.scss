@@ -1,5 +1,24 @@
 @include respones(xs) {
 	//在此輸入內容
+.a-add-dot{display: none;}
+.section{
+.next{
+	width:120px;
+		.next-text{
+			width:120px;
+			height:38px;
+			text-align: center;
+			
+			border-radius: 5px 5px;
+			
+		}
+		a{
+			font-size: 16px;
+
+		}
+	}
+}
+
 .a-add-container{
 	width: 100%;
 }
@@ -7,7 +26,7 @@
 	width: 90%;
 }
 .a-page{
-	width: 90%;
+	width: 100%;
 }
 .a-add-mapControl{
 	height: auto;
@@ -17,9 +36,7 @@
 	width: 98%;
 	height:85%;
 }
-.a-top25{
-	top: 10%;
-}
+
 #fp-nav{
 	display: none;
 }
@@ -41,26 +58,345 @@
 #a-add-phoneDate{
 	display: block;
 }
-.a-add-item{
-	.a-add-class{
-		width: 50px;
-		height: 50px;
-	}
-	.a-relative{
-		height: 50%;
-	}
-	.a-add-put{
-		height: 100%;
-		margin: 0;
-		top: 100px;
-	}
-}
-.a-add-cTitle{
-font-size: 12px;
-}
 .a-add-classCover{
-	top: 200px;
+	width: 100%;
+	height:100%;
+	top: 40%;
+	.a-add-class{
+		width: 80px;
+		height: 80px;
+		display: inline-block;
+	}
 }
+// .a-add-item{
+// 	.a-add-class{
+// 		width: 50px;
+// 		height: 50px;
+// 		display: inline-block;
+// 	}
+
+// 	.a-add-put{
+// 		height: 100%;
+// 		margin: 0;
+// 		top: 100px;
+// 	}
+// }
+// .a-add-cTitle{
+// font-size: 12px;
+// }
+// .a-add-classCover{
+// 	top: 200px;
+// }
+
+// ----------步驟一---------------
+
+.a-add-intro{
+	width:100%;
+	z-index: -1;
+	position: absolute;
+			  top:3%;
+			  bottom: 0;
+			  left: 0;
+			  margin: auto;
+			  text-align: center;
+	i{
+		font-size:24px;
+		color:#fff;
+		margin-right: 5px;
+	}
+	h1{
+		font-size: 18px;
+
+	}
+	.intro-text{
+		width:auto;
+		font-size: 18px;
+		display: inline-block;
+		text-align: left;
+	}
+}
+.a-add-google{
+	width: 100%;
+.a-add-mapControl{
+	height: 120px;
+.a-add-map{
+
+	input{
+		
+		width: 120px;
+		
+	}
+	#act_name{
+		height: 22px;
+		font-size: 14px;
+		color: #000;
+	}
+	#a-add-mapInput{
+		height: 22px;
+		font-size: 14px;
+		color: #000;
+	}
+	.a-add-mapInput{
+		font-size: 12px;
+	}
+	i{
+		font-size: 12px;
+	}
+}
+}
+}
+
+// ----------步驟二---------------
+
+.a-top25{
+	top: 0px;
+	i{
+		font-size:22px;
+		margin: 20px 0;
+
+	}
+	span{
+		margin-left: 10px;
+		font-size: 18px;
+	}
+	#a-add-phoneDate{  //----活動日期開關----
+	display:block;
+	}
+	.a-text{
+		padding: 20px 0;
+		width: 100%;	
+		text-align: center;	
+		font-size: 24px;
+		background-color:rgba(255,255,255,1);
+		letter-spacing: 1px;
+		color: #000;
+		i{
+			font-size: 26px;
+			padding-right:8px;
+			
+		}
+	}
+	.a-add-date{
+		width:100%;
+		height:400px;
+		text-align: center;
+		// position: relative;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color:rgba(0,0,0,0.6);
+		.a-add-content{
+			font-weight: bolder;
+			margin: 10px 0;
+		}
+		#a-timePicker3{
+			width: 160px;
+			border-radius: 5px 5px;
+		}
+		#a-timePicker4{
+			width: 160px;
+			border-radius: 5px 5px;
+		}
+	}
+}
+// ----------步驟三---------------
+
+#a-add-top{
+	width: 100%;
+	height: 70%;
+	.a-add-put-text{
+		width: 100%;
+		top:10px;
+		left:0%;
+		.fa-check-circle-o{
+		font-size: 22px;
+	}
+	span{
+		margin-left: 10px;
+		font-size: 18px;
+	}
+	}
+}
+.a-add-put{
+	
+	.a-add-p{
+	width: 100%;
+	height:80%;
+	position: absolute;
+	top:14%;
+	left:0%;
+	box-shadow: 0 0 10px #ccc;
+	.add-put-txt{
+		position: absolute;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.6);
+		padding: 10px;
+		h1{
+			font-size: 22px;
+			color: #FFC889;
+		}
+		p{
+			font-size: 12px;
+			line-height:28px;
+		}
+}
+
+}
+}
+#a-add-bottom{
+	
+	width: 100%;
+	height: 30%;
+	text-align: center;
+	.a-add-class-text{
+		width: 100%;
+		height:auto;
+		top:0px;
+		left:0%;
+		margin-bottom:10px;
+		.fa-plus-circle{
+		font-size: 22px;
+	}
+	span{
+		margin-left: 10px;
+		font-size: 18px;
+	}
+	}
+	.a-add-class{
+		margin: 5px;
+		height:30px;
+		width:100px;
+	}
+	.a-add-cTitle{
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		font-size:16px;
+		height:18px;
+	}
+}
+// ----------步驟四---------------
+#a-add-section4{
+	.a-add-intro{
+		top: 0;
+	}
+}
+.section3-box{
+	width:100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	.a-add-left {
+
+	.a-add-box{
+		width:100%;
+		height: auto;
+		left: 0;
+		right: 0;
+		margin: auto;
+
+	}
+	#act_price{
+		width: 78px;
+		height: 20px;
+	}
+	#act_limit{
+		width: 78px;
+		height: 20px;
+	}
+	#act_img{
+		padding-left: 0;
+		width: 200px;
+		height: 20px;
+	}
+	input{
+		margin-left: 3px;
+		border-radius: 5px 5px;
+		color: #000;
+		font-size: 16px;
+	}
+	label{
+		font-size: 16px;
+	}
+	.a-add-box-text{
+		width:72px;
+		font-weight: bold;
+    	font-size: 16px;
+    	color: #fff;
+    	display: inline-block;
+		margin:5px 0;
+		text-align: right;
+    	// vertical-align: middle;
+    	// text-shadow: 2px 2px 5px #666;
+	}
+	.a-add-drag{
+		width: 100%;
+		height: 100%;
+		box-shadow: 2px 1px 5px #ccc;
+	}
+	#act_img{
+		color: #fff;
+		background-color: rgba(255,255,255,0.1);
+
+	}
+	}
+	.a-add-right{
+			margin-top: 10px;
+
+		.a-add-box-text{
+			margin: 20px 0;
+			// width: 140px;
+			font-weight: bold;
+    		font-size: 20px;
+    		color: #fff;
+		}
+		textarea{
+		// margin-top: 20px;	
+		background-color: rgba(0,0,0,0.8);
+		display:block;
+		width:100%;
+		height:200px;
+		font-size: 14px;
+		left: 0;
+		right: 0;
+		margin: auto;
+
+	}
+
+
+
+}
+}
+//------------------步驟五--------------
+#a-add-section5{
+	width: 100%;
+	#a_1activity_wrapper{
+		margin: auto;
+		margin-top: 20px;
+		position: relative;
+		top: 40px;
+		width: 100%;
+		height:80%;
+		overflow-y:scroll;
+		overflow-x:hidden;
+		.aa_banner{
+			margin-top: 0px;
+		}
+		.aa_info{
+			top: 0px;
+		}
+	}
+}
+
+
+
 .a-add-form{
 	margin: 10px 0;
 	textarea{
@@ -73,11 +409,17 @@ font-size: 12px;
 	}
 }
 .a-add-write{
-	margin-top: 100px;
+	margin-top: 50px;
 }
+#a_1activity_wrapper{
 
 
-
+	.aa_banner{
+		.aa_info{
+			
+		}
+}
+}
 
 
 
