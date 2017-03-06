@@ -629,7 +629,7 @@
 			<div class="aa_info">
 				<h3 id="a-lb-act_name"></h3>
 				<p id="a-lb-act_info"></p>
-				<span class="Organiser"><i class="fa fa-user-o" aria-hidden="true"></i>主辦人：<div class="a-lb-content">Leo S</div></span>
+				<span class="Organiser"><i class="fa fa-user-o" aria-hidden="true"></i>主辦人：<div class="a-lb-content" id="a-lb-mem_name"></div></span>
 				<span><i class="fa fa-calendar-o" aria-hidden="true"></i><div class="a-lb-content"  id="a-lb-act_date"></div></span>
 				<span class="type"><i class="fa fa-tags" aria-hidden="true"></i>類型：<div id="a-lb-actCla_name" class="a-lb-content"></div></span>
 				<span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>地點：<div id="a-lb-act_place" class="a-lb-content"></div></span>
