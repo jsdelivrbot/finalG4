@@ -329,7 +329,7 @@
                 </div>
                 <ul class="mainMenu menu">
                     <li><a href="activity.php" class="onThisPage">觀星活動</a></li>
-                    <li><a href="#">星際論壇</a></li>
+                    <li><a href="forum.html">星際論壇</a></li>
                     <li><a href="photo.html">照片牆</a></li>
                     <li><a href="article.html">星知識</a></li>
                     <li><a href="for_newer.html">觀星指南</a></li>
