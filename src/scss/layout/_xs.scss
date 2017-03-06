@@ -1,0 +1,170 @@
+@include respones(xs) {
+  #nav{
+    height: 60px;
+    z-index: 999;
+    // background: rgba(0,0,0,.6);
+  }
+    #ham{
+      position:absolute;
+      top:15px;
+      left:10px;
+      width: 40px;
+      line-height: 40px;
+      text-align:center;
+      i{
+        color:$white;
+        font-size: 20px;
+        transition:1s;
+      }
+    }
+    #logo {
+        // float: left;
+        position:relative;
+        display:block;
+        text-align:center;
+        width: 12%;
+        margin: auto;
+        padding-top: 15px;
+        padding-right: 120px;
+        z-index: 10000;
+        img{
+          width: 100px;
+        }
+    }
+    .mainMenu {
+        padding: 20px;
+        li {
+            display: inline-block;
+            position: relative;
+        }
+        &.menu {
+            position:absolute;
+            top:60px;
+            left: -500px;
+            float:none;
+            width: 100%;
+            text-align: center;
+            // display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            transition:.7s;
+            z-index:99;
+            li {
+            display: block;
+            position: relative;
+            }
+            a {
+                display: block;
+                color: rgba(255,255,255,.8);
+                font-size: $fz-nav;
+                padding: 30px 10px;
+                letter-spacing: 1.2px;
+                font-weight: 600;
+            }
+          &.open{
+            display:block;
+            // top:60px;
+            left:0;
+            transition:.7s;
+            height: 100vh;
+            // z-index: 9999;
+          }
+        }
+        &.signArea {
+            position:absolute;
+            right: -6px;
+            top: -7px;
+            text-align: center;
+            a {
+                display: block;
+                font-size: 15px;
+                color: rgba(218, 175, 115, 0.6);
+                letter-spacing: 1px;
+                padding: 10px 10px;
+                margin-top: 5px;
+                margin-right: 5px;
+                // font-weight: 800;
+                border: 1px solid rgba(218, 175, 115, 0.6);
+                &:hover {
+                    color: rgba(218, 175, 115, 1);
+                    border: 1px solid rgba(218, 175, 115, 1);
+                }
+            }
+        }
+        #navMemPhoto {
+            text-align: center;
+            cursor: pointer;
+            img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                vertical-align: middle;
+                &:hover{
+                  box-shadow:0px 0px 10px 1px rgba(218, 175, 115, 1);
+                 }
+            }
+            
+        }
+        #navMemberName {
+            color: #ddddcc;
+            font-size: 14px;
+            display: none;
+            cursor: pointer;
+            margin-top:5px;
+        }
+
+        #signLeft{
+            display: none;
+        } 
+        #signRight a {
+                border: 2px solid #f3d4a9;
+                color: #f3d4a9;
+                text-shadow: 0px 0px 3px #3e3e43;
+                font-weight: 500;
+                border-radius: 50%;
+                font-size: 15px;
+                width: 100%;
+            &:hover {
+                background-color: rgba(218, 175, 115, 0);
+                // border: 1px solid rgba(218, 175, 115, 0.6);
+                color: rgba(218, 175, 115, 1);
+            }
+        }
+    }
+
+    //03/03 
+#nav{
+    .subMenu{
+        position: absolute;
+        width: 150px;
+        top: 65px;
+        right: 0px;
+        background:rgba(0, 0, 0, 0.8);
+        box-shadow: 1px 1px 5px #000;
+        padding: 5px;
+        opacity: 0;
+        display: none;
+        transition: .5s;
+
+        li{
+            display: block;
+
+            a{
+                border: 0px solid #fff;
+                color: #f3d4a9;
+
+            }
+
+            .fa{
+                margin-right: 5px;
+            }
+        }
+
+        &.show{
+              opacity: 1;
+              display: block;
+              transition: .5s;
+            }
+    }
+
+}
+}

@@ -1,0 +1,44 @@
+*{
+	font-family: $font-family !important;
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+}
+
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+.text-left{
+	text-align: left;
+}
+.hidden{
+	visibility: hidden;
+}
+.relative{
+	position: relative;
+}
+
+.btn{
+	@include btn(65px,35px,5px,16px);
+}
+.btn-sm{
+	@include btn(60px,28px,5px,14px);
+}
+.btn-lg{
+	@include btn(125px,38px,5px,18px);
+}
+.btn-blue{
+	@include btn-color($blue,$white);
+}
+.btn-blue:hover{
+		@include btn-color($white,$blue,$blue);
+		text-shadow: 1px 1px 1px $black;
+		box-shadow: 1px 5px 10px $black;
+}
+.btn-blue1{
+	@include btn-color(transparent,$blue,$blue);
+}

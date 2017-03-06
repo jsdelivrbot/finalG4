@@ -1,0 +1,147 @@
+#admin {
+  overflow: hidden;
+  background-image: -webkit-linear-gradient(bottom, #007adf 0%, #00ecbc 100%);
+  background-image: linear-gradient(to top, #007adf 0%, #00ecbc 100%);
+}
+
+#admin .logOut {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 40px;
+  background-color: #4f9ede;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
+
+#admin .main {
+  margin-top: 0px;
+  width: 100%;
+  height: 800px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+#admin .main #view {
+  background-color: rgba(255, 255, 255, 0.6);
+  max-width: 1050px;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 100px;
+}
+
+#admin .main #view:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  clear: both;
+  z-index: -2;
+}
+
+#admin .main #adminNav {
+  height: 100vh;
+  float: left;
+  width: 15%;
+}
+
+#admin .main #adminNav .adminMenu {
+  width: 110px;
+  margin-right: 30px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #fff;
+  margin-left: 30px;
+}
+
+#admin .main #adminNav .adminMenu li {
+  height: 80px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+#admin .main #adminNav .adminMenu li + li {
+  border-top: 1px solid #ddf;
+}
+
+#admin .main #adminNav .adminMenu li.show {
+  background-image: -webkit-linear-gradient(bottom, #007adf 0%, #00ecbc 100%);
+  background-image: linear-gradient(to top, #007adf 0%, #00ecbc 100%);
+}
+
+#admin .main #adminNav .adminMenu li.show .pic {
+  color: #fff;
+}
+
+#admin .main #adminNav .adminMenu li.show a {
+  color: #fff;
+}
+
+#admin .main #adminNav .adminMenu li a {
+  display: block;
+  color: #888;
+  margin-top: 10px;
+}
+
+#admin .main #adminNav .adminMenu li .pic {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px auto;
+  font-size: 40px;
+  color: #aaa;
+}
+
+#admin .main #memberTable, #admin .main #forumTable, #admin .main #actTable, #admin .main #photoTable, #admin .main #knowTable {
+  width: 90%;
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 200%;
+  right: 0;
+  margin: auto;
+  background-color: #f1f1f1;
+  margin-top: 50px;
+}
+
+#admin .main #memberTable th, #admin .main #forumTable th, #admin .main #actTable th, #admin .main #photoTable th, #admin .main #knowTable th {
+  background-color: rgba(0, 122, 223, 0.7);
+  color: #f1f1f1;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-shadow: 1px 0px 2px #212121;
+  padding: 20px;
+}
+
+#admin .main #memberTable tr:hover, #admin .main #forumTable tr:hover, #admin .main #actTable tr:hover, #admin .main #photoTable tr:hover, #admin .main #knowTable tr:hover {
+  background-color: rgba(0, 122, 223, 0.4);
+  color: #111;
+}
+
+#admin .main #memberTable tr, #admin .main #forumTable tr, #admin .main #actTable tr, #admin .main #photoTable tr, #admin .main #knowTable tr {
+  color: #444;
+}
+
+#admin .main #memberTable td, #admin .main #memberTable tr, #admin .main #forumTable td, #admin .main #forumTable tr, #admin .main #actTable td, #admin .main #actTable tr, #admin .main #photoTable td, #admin .main #photoTable tr, #admin .main #knowTable td, #admin .main #knowTable tr {
+  padding: 30px 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  letter-spacing: .5px;
+}
+
+#admin .main #actTable {
+  left: 0;
+}

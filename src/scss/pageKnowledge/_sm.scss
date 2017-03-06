@@ -1,0 +1,26 @@
+@include respones(sm) {
+		//在此輸入內容
+
+	.kn-svg{
+		display: none;
+	}
+
+	#kn_wrapper{
+		.kn_content{
+			.kn_posts{
+				.kn-p{
+					width: 90%;
+					margin: auto;
+
+					&:nth-child(odd),&:nth-child(even) {
+						float: none;
+						margin-top: 50px;
+					}
+					
+				}
+
+				
+			}
+		}
+	}
+}

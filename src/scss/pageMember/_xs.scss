@@ -1,0 +1,234 @@
+@include respones(xs) {
+	//手機版
+	#m_wrapper{
+		.m_user_img{
+			width: 120px;
+			height: 120px;
+			.m_user_lv{
+				// display: none;
+				bottom: -100%;
+				right: 5%;
+				text-align: center;
+				// width: 300px;
+				padding: 0;
+
+				&:before{
+					display: none;
+				}
+			}
+
+
+		}
+
+		#canvas{
+			width: 100%;
+			}
+
+		.m_info{
+			
+			.m_value{
+				display: none;
+			}
+		}
+
+		.m_info_id{  //帳號
+			top:10%; 
+			left: 5%;
+		}
+
+		.m_info_activity{
+			top:-20%;
+		}
+
+		.m_info_photo{
+			left: 50%;
+			top: -20%;
+		}
+
+		.m_info_save{
+			top: 80%;
+		}
+				
+
+			
+		
+
+	}
+
+	//lightbox
+	// .m_lightbox_area{
+	// 	width: 
+	// }
+
+	.m_lightbox_area{
+		.lightbox_content{
+			width: 100%;
+			padding: 5px;
+			overflow-y:auto;
+			height: 100vh; 
+
+			.m_left, .m_right{
+				float: none;
+				width: 100%;
+				height: auto;
+			}
+
+			.m_left{
+				margin-top: 0px;
+				position: relative;
+				ul{
+					height: auto;
+					// position: absolute;
+					background-color: #000;
+					z-index: 9999;
+					// height: 20%;
+					// overflow: hidden;
+					// overflow: hidden;
+
+					li{
+						display: inline-block;
+						line-height: 0px;
+						margin-bottom: 10px;
+					}
+				}
+
+				
+			}
+
+			.m_right{
+				padding-bottom: 100px;
+				.m_title{
+					display: none;
+					h4{
+						text-align: center;
+					}					
+				}
+
+				.m_content{
+					width: 100%;
+					padding-bottom: 50px;
+
+					.lightbox-main{
+						padding-bottom: 100px;
+					}
+
+				}
+
+				.account_info{
+					width: 80%;
+
+					p{
+						padding: 10px;
+						border-bottom: 0px solid #000;
+					}
+
+					.info-th, .info-td{
+						width: 100%;
+						text-align: center;
+					}
+
+					.info-td{
+						padding-left: 0px;
+						margin-top: 10px;
+						margin-bottom: 10px;
+						padding-bottom: 20px;
+						border-bottom: 1px solid rgba(255,255,255,.3);
+						font-size: 16px;
+					}
+					input{
+						width: 90%;
+					}
+				}
+
+				.m_sub_tab{
+					text-align: center;
+				}
+			}
+
+			.m_activity_table{
+				height: 500px;
+				
+			}
+			.m_act_box{
+				margin-bottom: 30px;
+				height: auto;
+				padding-bottom: 20px;
+					.m_act_photo{
+						width: 100%;
+
+						img{
+							width: 100%;
+							height: auto;
+						}
+					}
+
+					.m_act_info{
+						width: 100%;
+						text-align: center;
+					}
+
+					.f_btn{
+						margin-top: 20px;
+						text-align: center;
+					}
+				}
+
+			.m_post_box{
+				width: 100%;
+
+				.m_post_info{
+					padding: 20px 5px;
+					text-align: center;
+
+					.aa{
+						margin-top: 10px;
+					}
+
+					.f_btn{
+						position: relative;
+						margin-bottom: 10px;
+					}
+
+					h3{
+						margin-top: 20px;
+						// text-align: left;
+					}
+				}
+			}
+
+			.m_sub_tab1{
+				text-align: center;
+			}	
+		}
+	}
+
+	#ff_lightbox{
+		// overflow: auto;
+	}
+
+	.m_photos{
+		
+		.photo-gallery{
+			margin-bottom: 60px;
+			.box{
+				margin-bottom: 20px;
+
+				.text{
+					bottom: 1px;
+				}
+
+				.edit{
+					display: block;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+
+
+
+
+	
+
+
+}

@@ -1,0 +1,718 @@
+*{
+	// outline: 1px solid red; 
+}
+#for-newers{
+
+	section{
+		width: 100%;
+		// height: 100vh;
+		position: relative;
+		// padding: 50px;
+		font-weight: 700;
+	}
+	.story{
+		width: 100%;
+		margin: 0 auto;
+		line-height: 1.5em;
+		letter-spacing: 0.08em;
+
+		.bg{
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+			margin: 0 auto;
+		    padding: 0;
+		    background-repeat: no-repeat;
+
+		}
+		.float-right{
+			position: relative;
+			 margin: 0px 0 0 20px;
+			 padding: 200px 50px;
+			 // outline: 1px solid red;
+			 padding-top: 250px;
+			 width: 60%;
+			 float: right;
+		} 
+
+		h2{
+			font-size: $fz-h2;
+			color: #fff;
+			padding-bottom: 50px;
+			font-weight: 500;
+			text-shadow: 3px 3px 20px rgba(255,255,255,.6);
+		}
+
+		p{
+			font-size: 18px;
+			color: rgba(255,255,255,.8);
+			text-shadow: 1px 1px 5px rgba(0,0,0,.8);
+			text-align: justify;
+			font-weight: 500;
+			line-height: 1.5em;
+		}
+
+	}
+//第一區
+	#intro{
+		// background: url(../img/gigg-1.jpg) fixed;
+		background:url(../img/star-sky-1.jpg) fixed;
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 100vh;
+
+
+
+
+		.bg1{
+			// background: linear-gradient(-180deg, rgba(9, 45, 108, 0.1) 0%, rgba(11, 71, 109, 0.3) 10%, rgba(107, 62, 24, 0.4) 60%, rgba(124, 152, 37, 0.4) 100%);
+			// background:url(../img/gigg.jpg);
+			background-size: cover;
+			background-repeat: no-repeat;
+		    z-index: 1;
+		}
+
+		.bg2{
+			background-image: url(../img/i-ground.png);
+			background-position: 10% 20%;
+			z-index: 500;
+			
+		}
+
+		.bg3{
+			background: url(../img/shooting_stars_background.png) 10% 0 no-repeat fixed;
+			z-index: 501;
+			background-position: 30% 40%;
+
+		}
+
+		.text1{
+			// position: fixed;
+		}
+
+		.bg4{
+			background: url(../img/i-people.png);
+			background-repeat: no-repeat;
+			z-index: 500;
+			background-position: 30% 98%;
+		}
+
+		.bg5{
+			background: url(../img/i-telescop.png);
+			background-repeat: no-repeat;
+			z-index: 500;
+			background-position: 35% 100%;
+		}
+
+
+
+	}
+
+	
+//第二區
+
+	#second{
+		// background-image: url(../img/background_yellow.jpg);
+		background-color: #0e0e0e;
+		z-index: 500;
+		height: 60vh;
+		
+
+		.text2{
+			width: 80%;
+			height: 80%;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			text-align: center;
+			line-height: 1.5em;
+			letter-spacing: 0.08em;
+
+			h3{
+				font-size: $fz-h3;
+				margin-bottom: 30px;
+				color: rgb(241, 215, 130);
+				
+			}
+
+			.desc{
+				margin-top: 10px;
+				margin-bottom: 30px;
+				font-size: 18px;
+				color: rgba(255,255,255,.6);
+				text-shadow: 1px 1px 5px rgba(0,0,0,.8);
+				font-weight: 400;
+			}
+			.box{
+				padding: 20px 40px;
+			}
+			.image{
+				width: 40%;
+				margin: auto;
+				margin-bottom: 10px;
+				padding: 20px;
+				// border: 1px solid #fff;
+				border-radius: 50%;
+				img{
+					width: 100%;
+				}
+			}
+			.o-title{
+				font-size: 20px;
+				color: rgba(241, 215, 130, 1);
+				font-weight: 500;
+				text-shadow: 1px 1px 20px rgba(255,255,255,.8);
+			}
+
+			.o-desc{
+				font-size: 16px;
+				margin-top: 10px;
+				color: rgba(255,255,255,.7);
+				text-align: justify;
+				letter-spacing: .05em;
+				font-weight: 400;
+			}
+		}
+	}
+
+	//第三區
+	#third{
+		background: url(../img/star-sky-3.png);
+		// background: linear-gradient(-180deg, rgba(9, 45, 108, 0.1) 0%, rgba(11, 71, 109, 0.3) 10%, rgba(107, 62, 24, 0.4) 60%, rgba(124, 152, 37, 0.4) 100%);
+		background-size: cover;
+		// background-repeat: no-repeat;
+		z-index: 600;
+		height: 100vh;
+		padding-top: 100px;
+		// background-repeat: no-repeat;
+		line-height: 1.5em;
+		letter-spacing: 0.08em;
+
+		.text{
+			width: 60%;
+			height: 50%;
+			// float: right;
+			margin: auto;
+			text-align: center;
+
+
+			h3{
+				font-size: $fz-h3;
+				margin-bottom: 30px;
+				color: rgb(241, 215, 130);
+			}
+
+			.desc{
+				color: rgba(255,255,255,.8);
+				line-height: 1.5em;
+				letter-spacing: 0.08em;
+				text-align: justify;
+				text-shadow: 1px 1px 5px rgba(0,0,0,.8);
+				font-size: 18px;
+				font-weight: 400;
+			}
+
+			h4{
+				font-size: $fz-h5;
+				margin-top: 40px;
+				color: rgba(241, 215, 130, .9);
+				// text-align: center;
+				margin-bottom: 20px;
+				.fa{
+					margin-right: 10px;
+					font-size: 24px;
+				}
+			}
+
+			.box{
+				width: 70%;
+				margin: auto;
+				color: #fff;
+				// text-align: center;
+				margin-bottom: 10px;
+				background-color: rgba(0,0,0,.5);
+				padding: 20px;
+				box-shadow: 1px 1px 10px #fff;
+
+				p{
+					font-size: 18px;
+					text-align: justify;
+					font-weight: 500;
+				}
+
+				.t-tile{
+					font-size: 20px;
+					margin-bottom: 20px;
+					font-weight: 800;
+					text-align: center;
+					text-shadow: 1px 1px 20px rgba(255,255,255,.8);
+					// margin-top: 30px;
+				}
+
+			}
+		}
+
+		.map-area{
+			width: 50%;
+			float: left;
+			.map{
+				width: 90%;
+				float: right;
+				position: relative;
+				top: 60px;
+				// box-shadow: 1px 1px 10px #fff;
+				
+
+				h1{
+					background-color: #fff;
+					text-align: center;
+					color: #666;
+					height: 50px;
+					line-height: 50px;
+					margin-top: -10px;
+
+					// width: 800px;
+				}
+
+				
+				img{
+					width: 100%;
+				}
+
+				.photo{
+					width: 100%;
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+
+				
+				}
+				.photo1{
+					transform:rotate(-15deg) scale(1);
+					// left: 100px;
+				}
+				.photo2{
+					transform:rotate(-30deg) scale(1);
+					// left: 100px;
+				}
+				.photo3{
+					// transform:rotate(30deg) scale(1);
+					// left: 100px;
+				}
+
+			}
+		}
+
+		
+	}
+
+	//第四區
+	#forth{
+		background: #000;
+		z-index: 700;
+		height: 70vh;
+
+		.text2{
+			width: 80%;
+			height: 70%;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			text-align: center;
+			line-height: 1.5em;
+			letter-spacing: 0.08em;
+
+			h3{
+				font-size: $fz-h3;
+				margin-bottom: 30px;
+				color: rgb(241, 215, 130);
+				
+			}
+
+			.desc{
+				margin-top: 10px;
+				color: rgba(255,255,255,.8);
+				margin-bottom: 60px;
+				font-size: 18px;
+				font-weight: 400;
+			}
+			.box{
+				padding: 10px;
+			}
+			.image{
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				// padding: 20px;
+				// border: 1px solid #fff;
+				// border-radius: 50%;
+				// text-align: center;
+				img{
+					width: 100%;
+				}
+			}
+			.o-title{
+				font-size: 20px;
+				// font-weight: 700;
+				color: rgba(241, 215, 130, .8);
+				text-shadow: 1px 1px 20px rgba(255,255,255,.8);
+			}
+
+			.o-desc{
+				font-size: 15px;
+				margin-top: 10px;
+				color: rgba(255,255,255,.7);
+				text-align: justify;
+				letter-spacing: .02em;
+			}
+		}
+
+		#container-1 {
+			  position: relative;
+			  width: 200px;
+			  height: 200px;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  // border:1px solid #000;
+			  overflow: hidden;
+			  border-radius: 10px;
+			  margin: auto;
+			}
+
+			#corona {
+			  height: 200px;
+			  width: 200px;
+			}
+
+			#mask {
+			  height: 200px;
+			  width: 200px;
+			}
+
+			#sun {
+			  position: absolute;
+			  top: 25px;
+			  left: 25px;
+			  width: 150px;
+			  height: 150px;
+			  border-radius: 100%;
+			}
+
+			#moon {
+			  position: absolute;
+			  top: 25px;
+			  left: 25px;
+			  width: 150px;
+			  height: 150px;
+			  border-radius: 100%;
+			 }
+
+
+
+
+			/*----------COLOR & MOTION----------*/
+
+			.sun-moon {
+			  animation: colorchange 35s infinite linear;
+			}
+
+			#corona {
+			  background-image: radial-gradient(circle closest-side, rgb(255, 250, 166) 80%, rgb(248, 213,112) 82%, transparent);
+			}
+
+			#mask {
+			  animation: glow 35s infinite linear;
+			}
+
+			#sun {
+			  /*background: rgb(254,173,3);*/
+			  background-image: radial-gradient( rgb(251,192,69) 10%, rgb(255,193,62) 40%,
+			  rgb(254,173,3) 65%);
+			}
+
+			#moon {
+			  animation: colorchange 35s infinite linear,
+			    time 35s infinite linear;
+			}
+
+
+
+
+			/* ------ ANIMATIONS ------ */
+
+
+			/* opacity would have been inherited by the sun, so used rgba values. Color change should align with the sky, but opacity should go to 0 right at the time of full eclipse, to reveal the corona  */
+			@keyframes glow {
+			  0% {
+			    background-color: rgb(0,0,0);
+			  }
+			  45% {
+			    background-color: rgba(1,1,1,1);
+			  }
+			  50% {
+			    background-color: rgba(0,0,0,0);
+			  }
+			  53% {
+			    background-color: rgba(1,1,1,1);
+			  }
+			  100% {
+			    background-color: rgb(0,0,0);
+			  }
+			}
+
+			/* Added incremental stops at 46, 54, to stay in sync with the mask*/
+			@keyframes colorchange {
+			  0% {
+			    background-color:rgb(0,0,0);
+			  }  
+			  45% {
+			    background-color: rgb(1,1,1);
+			  }
+			  50% {
+			    background-color: rgb(0,0,0);
+			  }
+			  53% {
+			    background-color: rgb(1,1,1);
+			  }
+			  100% {
+			    background-color: rgb(0,0,0);
+			  }
+			}
+
+
+
+			@keyframes time {
+			  0% {
+			    left: 175px; /* +25 orig pos. */
+			  }  
+			  100% {
+			    left: -125px; /* -25 orig pos. */
+			  }
+			}
+	}
+
+	#fifth{
+		background:url(../img/stargazing-tour.jpg) fixed;
+		background-size: cover;
+		background-position: right bottom;
+		background-repeat: no-repeat;
+		height: 100vh;
+		z-index: 990;
+
+		.text2{
+			width: 50%;
+			height: 50%;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			text-align: center;
+			line-height: 1.5em;
+			letter-spacing: 0.08em;
+			padding: 50px;
+
+			h3{
+				font-size: $fz-h3;
+				margin-bottom: 30px;
+				color: rgb(241, 215, 130);
+				text-shadow: 1px 1px 20px rgba(255,255,255,.6);
+				
+			}
+
+			.desc{
+				padding: 0px 10px;
+				margin-top: 10px;
+				color: rgba(255,255,255,.8);
+				text-shadow: 1px 1px 10px rgba(0,0,0,.6);
+				margin-bottom: 30px;
+				font-size: 18px;
+				font-weight: 500;
+				line-height: 1.5em;
+			}
+			
+		}
+
+		
+	}
+
+	.btn{
+		width: 50%;
+		margin: auto;
+		position: relative;
+		z-index: 999;
+	}
+
+
+}
+
+@include respones(xs) {
+	#for-newers{
+		#intro{
+			.bg4{
+				background-position: 15% 98%;
+			}
+		}
+		.story{
+			.float-right{
+				float: none;
+				width: 100%;
+				text-align: center;
+				padding: 180px 10px;
+				margin: auto;
+			}
+		}
+
+		#second{
+			height: 200vh;
+
+			.text2{
+				width: 100%;
+				height: auto;
+				top: 50px;
+			}
+		}
+
+		#third{
+			background: url(../img/star-sky-2.png);
+			height: auto;
+			.text{
+				width: 100%;
+				float: none;
+				padding: 15px;
+				text-align: center;
+
+				.box{
+					width: 90%;
+				}
+			}
+
+			.map-area{
+				display: none;
+			}
+			
+		}
+
+		#forth{
+			height: 180vh;
+
+			.text2{
+				width: 100%;
+				padding: 15px;
+				top: -200px;
+
+				.box{
+					margin-bottom: 30px;
+				}
+			}
+		}
+
+		#fifth{
+			.text2{
+				width: 100%;
+				padding: 20px;
+
+				h3{
+					line-height: 1.2em;
+				}
+			}
+
+			#star-particle{
+				display: none;
+			}
+		}
+	}
+}
+
+@include respones(sm) {
+	#for-newers{
+		.story{
+			.float-right{
+				float: none;
+				width: 80%;
+				text-align: center;
+				padding: 400px 10px;
+				margin: auto;
+			}
+		}
+
+		#second{
+			height: 60vh;
+
+			.text2{
+				width: 80%;
+				height: auto;
+				top: 50px;
+
+				.box{
+					padding: 20px;
+				}
+
+				.image{
+					width: 70%;
+				}
+			}
+		}
+
+		#third{
+			height: auto;
+			.text{
+				width: 80%;
+				float: none;
+				padding: 15px;
+				text-align: center;
+				margin: auto;
+
+				.box{
+					width: 90%;
+				}
+			}
+
+			.map-area{
+				display: none;
+			}
+			
+		}
+
+		#forth{
+			height: 120vh;
+
+			.text2{
+				width: 80%;
+				padding: 15px;
+				top: -100px;
+
+				.box{
+					margin-bottom: 30px;
+				}
+			}
+		}
+
+		#fifth{
+			.text2{
+				width: 80%;
+				padding: 20px;
+
+				h3{
+					line-height: 1.2em;
+				}
+			}
+		}
+	}
+}

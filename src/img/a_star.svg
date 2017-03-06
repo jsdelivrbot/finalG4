@@ -1,0 +1,27 @@
+<svg id="a-star" width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+							<g>
+							  <title>Layer 1</title>
+							  <polygon transform="rotate(-90 279.40002441406256,210.50000000000003) " id="svg_3" fill-opacity="0" stroke-width="5" stroke="#c3d5da" points="433.8207702636719,210.5 356.61041259765625,344.2323303222656 202.1896209716797,344.2323303222656 124.97923278808594,210.5 202.1896209716797,76.76766967773438 356.61041259765625,76.76766967773438 433.8207702636719,210.5 " strokeWidth="5" strokecolor="#000000" fill="#000000" edge="154.420782" orient="x" sides="6" shape="regularPoly" cy="210" cx="279.399994">
+							
+							
+							  
+							  <animateTransform attributeType="xml"
+							                    attributeName="transform"
+							                    type="rotate"
+							                    from="0 279.399994 210"
+							                    to="360 279.399994 210"
+							                    dur="40s"
+							                    repeatCount="indefinite"/>
+							 </polygon>
+							  <polygon fill-opacity="0" stroke-width="5" stroke="#0dd1d7" points="433.820775457056,210 356.6103846767702,343.7323197037026 202.1896031161986,343.7323197037026 124.97921233591276,210.00000000000003 202.1896031161985,76.26768029629739 356.6103846767702,76.26768029629739 433.820775457056,210 " strokeWidth="5" strokecolor="#000000" fill="#000000" edge="154.420782" orient="x" sides="6" shape="regularPoly" id="svg_1" cy="210" cx="279.399994">
+							  <animateTransform 
+							                    attributeName="transform"
+							                    type="rotate"
+							                    from="0 279.399994 210"
+							                    to="-360 279.399994 210"
+							                    dur="40s"
+							                    repeatCount="indefinite"/>
+							  </polygon>
+
+							 </g>
+						</svg>

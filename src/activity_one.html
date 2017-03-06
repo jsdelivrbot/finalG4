@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<title>單則活動</title>
+
+	<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<style type="text/css">
+		*{
+			/*outline: 1px solid red;*/
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			box-sizing: border-box;
+		}
+
+		body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } 
+
+		canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ 
+
+		#particles-js{ 
+			position:absolute; 
+			width: 100%; height: 100%; 
+			background-color: transparent;
+			background-image: url("");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 50% 50%;
+			opacity: 0.1;
+			/*transform: scale(0.1,0.1);*/
+			transition: 5s ease;
+
+
+		} 
+
+		#aa_bg_wrapper{
+			position: fixed;
+			/*height: 100vh;*/
+			top: 0;
+		    left: 0;
+		    /*background-image: url(img/forum/f_001.jpg);*/
+		    background-size: cover;
+		    background-color: #333;
+		    z-index: -99;
+		}
+
+		#aa_bg1 {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  background:linear-gradient(to bottom, rgba(31, 76, 116, .6) 0%, rgba(21, 28, 60, .6) 30%, rgba(9, 10, 15, 0.9) 60%, rgba(0,0,0,1) 80%);
+		  /*background:linear-gradient(to top, rgba(67, 67, 67, 1) 0%, rgba(0,0,0,0.9) 20%);*/
+
+		  /*.6 .9 .9*/
+		 
+		}
+
+
+
+	</style>
+
+</head>
+<body id="a_1activity_wrapper">
+<!-- 導覽列 -->
+<nav id="nav">
+		<div class="relative">
+			<div class="row">
+				<input type="checkbox" id="navButtonHidden">
+				<label id="navButton" for="navButtonHidden"></label>
+				<div id="logo">
+					<a href="#"><img src="img/logo.png" alt="ZeroGravity"></a>
+				</div>
+				<ul class="mainMenu menu">
+					<li><a href="activity.html"  class="onThisPage">觀星活動</a></li>
+					<li><a href="forum.html">星際論壇</a></li>
+					<li><a href="photo.html">照片牆</a></li>
+					<li><a href="article.html">星知識</a></li>
+				</ul>
+				<ul class="mainMenu signArea">
+					<li id="signLeft">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						<span><a href="#">註冊</a></span>
+					</li>
+					<li id="signRight">
+						<span><a href="#">登入</a></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!-- 導覽列結束 -->
+
+<!-- background-image -->
+<div id="aa_bg_wrapper"  style="width:100%; height:100vh;background-color: #333" >
+		<div id="aa_bg1">
+			<div id="particles-js"></div> 
+		</div>
+</div>
+<!-- background-image -->
+
+<div class="aa_banner">
+	<div class="aa_info">
+		<h3>墾丁南十字星觀星露營</h3>
+		<p>時序漸入夏，落山風遠離了恆春半島，5月的墾丁在春雨澆淋下，大地重披翠綠青衫，天地一片明淨，也正是認識春夏星空及屬於南半球的南十字星座的好時間，邀請您一起感受兼具知性與感性的夜空。 </p>
+		<span class="Organiser"><i class="fa fa-user-o" aria-hidden="true"></i>主辦人：Leo S</span>
+		<span class="day"><i class="fa fa-calendar-o" aria-hidden="true"></i>日期：2017-05-01(週一) 8:00~2017-05-02(週二)16:00</span>
+		<span class="type"><i class="fa fa-tags" aria-hidden="true"></i>類型：休閒聯誼</span>
+		<span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>地點：屏東縣恆春鎮100號(貓鼻頭國家公園)</span>
+		<span class="cost"><i class="fa fa-money" aria-hidden="true"></i>費用：3000元</span>
+		<div class="btn-lg btn-blue"><a href="">我要報名</a></div>
+	</div>
+</div>
+<div class="aa_comments">
+	<div class="container">
+	<div class="row">
+	<h4>主辦人-評價Comment</h4>
+	<div class="comment ct1">
+		<div class="user">
+			<div class="user-pic">
+				<img src="img/i-member2.png">
+			</div>
+			<div class="user-info">
+				<span><a href="">Kattie918</a></span>
+			</div>
+		</div>
+		<div class="ct-content">
+			<p>參加活動：2015年墾丁南十字觀星攝影<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>
+			<p>主辦很細心，活動安排很讚。很推薦大家參加他的活動唷！</p>
+			<p>2015-06-01 11:00</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="comment ct2">
+		<div class="user">
+			<div class="user-pic">
+				<img src="img/i-member2.png">
+			</div>
+			<div class="user-info">
+				<span><a href="">Kattie918</a></span>
+			</div>
+		</div>
+		<div class="ct-content">
+			<p>參加活動：2015年墾丁南十字觀星攝影<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>
+			<p>主辦很細心，活動安排很讚。很推薦大家參加他的活動唷！</p>
+			<p>2015-06-01 11:00</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="comment ct3">
+		<div class="user">
+			<div class="user-pic">
+				<img src="img/i-member2.png">
+			</div>
+			<div class="user-info">
+				<span><a href="">Kattie918</a></span>
+			</div>
+		</div>
+		<div class="ct-content">
+			<p>參加活動：2015年墾丁南十字觀星攝影<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>
+			<p>主辦很細心，活動安排很讚。很推薦大家參加他的活動唷！</p>
+			<p>2015-06-01 11:00</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="comment ct4">
+		<div class="user">
+			<div class="user-pic">
+				<img src="img/i-member2.png">
+			</div>
+			<div class="user-info">
+				<span><a href="">Kattie918</a></span>
+			</div>
+		</div>
+		<div class="ct-content">
+			<p>參加活動：2015年墾丁南十字觀星攝影<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>
+			<p>主辦很細心，活動安排很讚。很推薦大家參加他的活動唷！</p>
+			<p>2015-06-01 11:00</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+		
+	</div>
+	</div>
+</div>	
+
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	particlesJS("particles-js", {"particles":{"number":{"value":50,"density":{"enable":true,"value_area":500}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"rgb(255, 255, 255)"},"polygon":{"nb_sides":5},"image":{"src":"","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.8,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":104.7579603868735,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":100,"color":"#ffffff","opacity":0.9,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":500,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":8},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+
+
+	   var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+</script>

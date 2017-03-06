@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<link href="parallax.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://www.solodev.com/assets/parallax/jquery.localscroll-1.2.7-min.js"></script>
+	<script src="https://www.solodev.com/assets/parallax/jquery.parallax-1.1.3.js"></script>
+	<script src="https://www.solodev.com/assets/parallax/jquery.scrollTo-1.4.2-min.js"></script>
+
+	<!-- tweenmax -->
+	<script type="text/javascript" src="libs/gsap/src/minified/TweenMax.min.js"></script>
+
+
+	<!-- scrollmagic -->
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<script src="js/fornewer.js"></script>
+	<script src="js/nav2.js"></script>
+
+	<title>觀星新手導覽</title>
+	<style type="text/css">
+	
+	.image:hover #a-ast-star{
+	    transform-origin:50% 50%; 
+	    animation: shoo 2s both;
+	  }
+	.image:hover #meteor line{
+		transform-origin:50% 50%; 
+	    animation: shoo 1s both;
+	}
+
+	.bg3{
+		transform-origin:50% 50%; 
+	    animation: shoo2 1.5s  1s both;
+	}
+
+	.text1{
+		animation: show 3s both;
+	}
+
+	@keyframes shoo{
+         0%{ transform: translate(500px, -500px) scale(0.1);  }
+        100%{ transform:scale(1) translate(0px, 0);}
+    } 
+
+    @keyframes shoo2{
+         0%{ transform: translate(-500px, -500px) scale(0.1);  }
+        100%{ transform:scale(1) translate(0px, 0);}
+    }
+
+    @keyframes show{
+    	0%{ opacity: 0;}
+    	100% {opacity: 1;}
+    } 
+
+    
+	
+	</style>
+
+</head>
+<body id="for-newers">
+<!-- 導覽列 -->
+<nav id="nav">
+        <div class="relative">
+            <div class="row">
+                <div id="ham">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div id="logo">
+                    <a href="home.html"><img src="img/logo.png" alt="ZeroGravity"></a>
+                </div>
+                <ul class="mainMenu menu">
+                    <li><a href="activity.php">觀星活動</a></li>
+                    <li><a href="#">星際論壇</a></li>
+                    <li><a href="photo.html">照片牆</a></li>
+                    <li><a href="article.html">星知識</a></li>
+                    <li><a href="for_newer.html" class="onThisPage">觀星指南</a></li>
+                </ul>
+                <ul class="mainMenu signArea">
+                    <ul class="subMenu">
+                        <li><a href="member.html"><i class="fa fa-user-circle" aria-hidden="true"></i>會員專區</a></li>
+                        <li><a href="#"><i class="fa fa-wpexplorer" aria-hidden="true"></i>我的活動</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-grav" aria-hidden="true"></i>我的貼文</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>
+                        我的照片</a></li>
+                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>我的收藏</a></li>
+                        <li><a href="#" id="logOut">登出</a></li>
+                    </ul>
+                    <li id="navMemPhoto">
+                        <img src="">
+                    </li>
+                    <li id="navMemInfo">
+                        <span id="navMemberName"></span>
+                    </li>
+                    <li id="signLeft">
+                        <span><a href="#" id="navSignup">註冊</a></span>
+                    </li>
+                    <li id="signRight">
+                        <span><a href="#" id="navLogin"><i class="fa fa-user" aria-hidden="true"></i></a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- 導覽列結束 -->
+	<!-- intro -->
+	<section id="intro" class="inview">
+	
+		<div class="story">
+			<div class="bg bg1"></div>
+			<div class="bg bg2" style="background-position: center bottom;"></div>
+			<div class="bg bg3">
+			  
+				
+			</div>
+			<div class="bg bg4"></div>
+			<div class="bg bg5"></div>
+		<div class="container">
+		<!-- <div class="row"> -->
+			<div class="text1 float-right">
+		      <h2>觀星新手入門指南</h2>
+		      <p>看星星不只浪漫，也能知性。只要找到最佳的觀測條件，能看到愈多天體，樂趣也愈多。天文新手如何踏入這浩瀚的宇宙世界呢？快來瞧瞧入門指南，邁入迷人的觀星世界吧！</p>
+		    </div>
+		<!-- </div> -->
+		</div>
+		</div>
+	</section>
+
+	<!-- second -->
+	<section id="second">
+	<div class="container">
+	<div class="row">
+		<div class="text2 col-sm-12 col-md-12">
+			<h3>觀星前該準備哪些裝備?</h3>
+			<p class="desc">觀星其實是不需要太多裝備的休閒活動，準備以下東西，就能獲得觀星樂趣哦！</p>
+			<div class="box col-sm-4 col-md-4">
+				<div class="image"><img src="img/SW_icon.png"></div>
+				<p class="o-title">下載一款星圖APP</p>
+				<p class="o-desc">觀星App有不少是免費的，較常見的有：Star Walk 2 Free、星圖和觀星精簡版。只要做好基本設定，螢幕就會顯示所在位置的天空中的星座等資訊。</p>
+			</div>
+			<div class="box col-sm-4 col-md-4">
+				<div class="image"><img src="img/ffac81_con.png"></div>
+				<p class="o-title">準備一隻紅光手電筒</p>
+				<p class="o-desc">使用紅電筒能減低光源對瞳孔的影響，可以看見更多更暗的星星。熱門觀星點多有其他觀星及攝星活動，也可以避免影響其他天文迷哦！</p>
+			</div>
+			<div class="box col-sm-4 col-md-4">
+				<div class="image"><img src="img/cloth.png"></div>
+				<p class="o-title">帶上一件保暖外套</p>
+				<p class="o-desc">較好的觀星地點通常海拔較高，入夜後氣溫也較低，建議前往觀星時，帶一件保暖外套，還有一些食物跟水，以備不時之需。</p>
+			</div>
+
+		</div>
+	</div>	
+	</div>	
+	</section>
+
+	<!-- third 地點挑選-->
+	<section id="third">
+	<!-- <canvas id='star-particle'></canvas> -->
+		<div class="container">
+			<div class="text">
+				<h3>選擇觀星地點...</h3>
+				<p class="desc">天文觀測需要有黑暗的天空，由於市區有光害，所以在都市裡多只能看見較亮的星體，如太陽、月亮、行星等，至於較暗淡的星體，如星雲、星團、星座等應選擇在郊區，沒有街燈的海邊、高山、田野等。若能看見北極星，就算是良好的地點。</p>
+				<h4><i class="fa fa-hand-o-right" aria-hidden="true"></i>台灣熱門觀星地點</h4>
+				<div class="box">
+					<p class="t-tile">北部</p>
+					<p>北部有新店的雲海國小，金山活動中心，觀音山、桃園復興鄉附近。</p>
+				</div>
+				<div class="box">
+					<p class="t-tile">中部</p>
+					<p>中部有玉山北峰、新中橫一帶、清境農場、天池、阿里山。</p>
+				</div>
+				<div class="box">
+					<p class="t-tile">南部</p>
+					<p>南部的墾丁公園、恆春、蘭嶼等。</p>
+				</div>
+			</div>
+			
+			<!-- <div class="clear"></div> -->
+			<!-- <div class="map-area"> -->
+				<!-- <ul class="map">
+					<li class="photo photo1"><img src="img/p_p_001.png"></li>
+					<li class="photo photo2"><img src="img/p_p_005.png"></li>
+					<li class="photo photo3"><img src="img/p_p_006.png"></li>
+					<li class="photo photo4"><img src="img/p_p_006.png"></li>
+					<li class="photo photo5"><img src="img/p_p_006.png"></li>
+				</ul> -->
+				<!-- <div class="aslider map" data-hide-mute data-hide-pause style="background-color: #fff;">
+				    <div class="aslide" data-duration="5">
+				        <img src="img/p_p_001.png" alt="an image" />
+				         <h1>武嶺觀星</h1>
+				    </div>
+				    <div class="aslide" data-duration="5">
+				        <img src="img/p_p_002.png" alt="an image" />
+				         <h1>清境農場美麗的銀河</h1>
+				    </div>
+				    <div class="aslide" data-duration="5">
+				        <img src="img/p_p_003.png" alt="an image" />
+				         <h1>墾丁公園星軌</h1>
+				    </div>
+				   
+				</div> -->
+			<!-- </div> -->
+		</div>
+	</section>
+
+	<!-- forth 不可錯過的天文奇景-->
+	<section id="forth">
+	<div class="container">
+		<div class="text2 col-sm-12 col-md-12">
+			<h3>不可錯過的天文奇景</h3>
+			<p class="desc">除了觀賞每夜固定現身的星星，天際不時也會出現「特異」天象。人生難得一回，有三種天象不能不看。</p>
+			<div class="box col-xs-12 col-sm-12 col-md-4">
+				<div class="image">
+					<svg version="1.1" id="meteor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="220px" height="220px" viewBox="0 0 220 220" enable-background="new 0 0 220 220" xml:space="preserve">
+					<!-- <defs>
+					    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+					      <stop offset="5%" stop-color="#F00" />
+					      <stop offset="95%" stop-color="#ff0" />
+					    </linearGradient>
+					    <linearGradient id="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
+					      <stop offset="5%" stop-color="#F00" />
+					      <stop offset="95%" stop-color="#ff0" />
+					    </linearGradient>
+					  </defs> -->
+						<line fill="url(#userSpaceOnUse)" stroke="#FFF100" stroke-width="2" stroke-miterlimit="10" x1="65" y1="19.5" x2="29" y2="52.5"/>
+						<line fill="url(#bg)" stroke="#FFF100" stroke-width="2" stroke-miterlimit="10" x1="84.5" y1="59.5" x2="36.5" y2="105.5"/>
+						<line fill="#FFF100" stroke="#FFF100" stroke-width="2" stroke-miterlimit="10" x1="184.5" y1="29.5" x2="115.5" y2="88"/>
+						<line fill="#FFF100" stroke="#FFF100" stroke-width="2" stroke-miterlimit="10" x1="161.5" y1="99" x2="110" y2="146"/>
+						<line fill="#FFF100" stroke="#FFF100" stroke-width="2" stroke-miterlimit="10" x1="188.5" y1="150.5" x2="135.75" y2="195.5"/>
+					</svg>
+				</div>
+				<p class="o-title">看一場壯觀的流星雨</p>
+				<p class="o-desc"></p>
+			</div>
+			<div class="box col-xs-12 col-sm-12 col-md-4">
+				<div class="image">
+					<div class="a-ast-cover">
+                      <!-- a-ast-star -->
+                        <?xml version="1.0" encoding="utf-8"?>
+                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                               width="220px" height="220px" viewBox="0 0 595.279 841.89" enable-background="new 0 0 595.279 841.89"
+                               xml:space="preserve" style="transform:scale(1)">
+                            <g id="a-ast-star">
+                              <path fill="#F3D55B" d="M385.816,375.523l28.105-60.24l-61.888,28.882c13.234-25.257,28.031-53.288,40.596-76.589L85.519,446.722
+                                C19.974,484.958-8.599,567.416,24.417,635.736c7.048,14.584,16.625,28.254,28.712,40.34c12.086,12.086,25.756,21.664,40.341,28.711
+                                c68.318,33.027,150.775,4.455,189.012-61.1l180.753-309.866L385.816,375.523z"/>
+                              <circle fill="#AF8066" cx="159.45" cy="569.765" r="95.67"/>
+                              <circle fill="#F29C1F" cx="159.45" cy="612.286" r="10.63"/>
+                              <circle fill="#F29C1F" cx="138.19" cy="633.545" r="10.63"/>
+                              <circle fill="#F29C1F" cx="138.19" cy="591.026" r="10.63"/>
+                              <circle fill="#F29C1F" cx="116.93" cy="612.286" r="10.63"/>
+                              <circle fill="#F29C1F" cx="138.19" cy="548.504" r="10.63"/>
+                              <circle fill="#F29C1F" cx="116.93" cy="569.765" r="10.631"/>
+                              <circle fill="#F29C1F" cx="95.67" cy="548.504" r="10.63"/>
+                              <circle fill="#F29C1F" cx="95.67" cy="591.026" r="10.63"/>
+                              <circle fill="#F29C1F" cx="180.71" cy="633.545" r="10.63"/>
+                              <circle fill="#F29C1F" cx="170.08" cy="580.395" r="10.63"/>
+                              </g>
+                              <g>
+                                <path fill="#F3D55B" d="M174.481,197.715h16.859c5.878,0,10.63-4.762,10.63-10.63s-4.752-10.63-10.63-10.63h-16.859
+                                  l-25.661-25.661v-16.859c0-5.868-4.751-10.63-10.63-10.63c-5.878,0-10.63,4.763-10.63,10.63v16.859l-25.66,25.661H85.04
+                                  c-5.879,0-10.63,4.762-10.63,10.63s4.751,10.63,10.63,10.63H101.9l25.66,25.661v16.859c0,5.868,4.752,10.63,10.63,10.63
+                                  c5.879,0,10.63-4.763,10.63-10.63v-16.859L174.481,197.715z"/>
+                                <circle fill="#F3D55B" cx="382.68" cy="187.085" r="10.63"/>
+                                <circle fill="#F3D55B" cx="467.72" cy="569.765" r="10.631"/>
+                                <circle fill="#F3D55B" cx="574.02" cy="208.345" r="10.63"/>
+                                <circle fill="#F3D55B" cx="574.02" cy="410.315" r="10.63"/>
+                                <circle fill="#F3D55B" cx="350.79" cy="654.805" r="10.63"/>
+                                <circle fill="#F3D55B" cx="116.93" cy="357.165" r="10.63"/>
+                                <circle fill="#F3D55B" cx="201.97" cy="250.865" r="10.63"/>
+                                <circle fill="#F3D55B" cx="42.52" cy="240.235" r="10.63"/>
+                              </g>
+                            
+                            </svg>
+
+                      </div>
+				</div>
+				<p class="o-title">看一次夾帶著大尾巴的彗星</p>
+				<p class="o-desc"></p>
+			</div>
+			<div class="box col-xs-12 col-sm-12 col-md-4">
+				<div class="image sun-moon">
+					<div id="container-1">
+					  <div id="corona">
+					    <div id="mask">
+					      <div id="sun">
+					      </div>
+					    </div>
+					  </div>
+					  <div id="moon">
+					  </div>
+					</div>
+				</div>
+				<p class="o-title">好好看一次日全蝕</p>
+				<p class="o-desc"></p>
+			</div>
+
+		</div>
+	</div>
+	</section>
+
+	<!-- fifth 讓達人帶你入門-->
+	<section id="fifth">
+	<div class="container">
+		<div class="text2 col-sm-12 col-md-12">
+			<h3>讓天文達人帶你一起探索天際</h3>
+			<p class="desc">看了以上入門簡介，還是不知道怎麼跨出第一步嗎？那就來加入天文達人們所發起的各類觀星活動吧！不管是星座觀測、奇景觀賞，或是天文攝影，都能獲得更多的觀星樂趣與天文知識哦！</p>
+			<div class="btn">
+				<button class="btn-lg btn-blue"><a href="activity-1.html">觀星活動</a></button>
+			</div>
+		</div>
+		 <canvas id='star-particle' style="position: absolute;
+		 top: 0;bottom:0;left: 0;right: 0;margin: auto;width: 90%;height: 80%;"></canvas>
+
+	</div>
+		
+	</section>
+	<div class="loginPopup">
+        <div class="i-lightboxBg"></div>
+        <div class="login">
+            <h4>會員登入</h4>
+            <!-- <form action="php/login.php" method="post"> -->
+            <input id="loginAccount" type="Email" value="guest" name="memEmail">
+            <input id="loginPsw" type="password" value="guest" name="memPsw" maxlength="12" minlength="4">
+            <input id="loginConfirmPsw" type="password" placeholder="*確認密碼" maxlength="12" minlength="4">
+            <input id="loginMemName" type="text" placeholder="*暱稱(2~12個字元)" name="memName" maxlength="12" minlength="2">
+            <input type="submit" class="searchBar-btn" id="i-loginBtn" value="登入">
+            <!-- <div class="searchBar-btn" id="i-loginBtn">
+                    <a href="#">登入</a>
+                </div> -->
+            <!-- </form> -->
+            <div class="logOn">
+                按此註冊會員
+            </div>
+        </div>
+    </div>
+	<footer id="#footer">
+<p>Copyright@2017 by Zero Gravity</p>
+</footer>
+	
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+        $('#nav').localScroll(800);
+        $('#intro').parallax("50%", .3);
+        $('#second').parallax("50%",.1);
+        $('#third').parallax("50%", 2);
+        $('#forth').parallax("50%", 3);
+        // $('#fifth').parallax("50%", .1);
+
+})
+</script>
+
+<script>
+    	var WIDTH;
+var HEIGHT;
+var canvas;
+var con;
+var g;
+var pxs = new Array();
+var rint = 60;
+
+$(document).ready(function(){
+	WIDTH = window.innerWidth;
+	HEIGHT = window.innerHeight;
+	$('#container').width(WIDTH).height(HEIGHT);
+	canvas = document.getElementById('star-particle');
+	$(canvas).attr('width', WIDTH).attr('height',HEIGHT);
+	con = canvas.getContext('2d');
+	for(var i = 0; i < 500; i++) {
+		pxs[i] = new Circle();
+		pxs[i].reset();
+	}
+	setInterval(draw,rint);
+
+
+  var $container = $('.container');
+	$container.mousedown(function(ev){
+		var ox = ev.clientX;
+		
+		$container.mouseup(function(){
+			$container.unbind('mousemove');
+			$container.unbind('mouseup');
+		});
+	});
+});
+
+function draw() {
+	con.clearRect(0,0,WIDTH,HEIGHT);
+	for(var i = 0; i < pxs.length; i++) {
+		pxs[i].fade();
+		pxs[i].move();
+		pxs[i].draw();
+	}
+}
+
+function Circle() {
+	this.s = {ttl:8000, xmax:5, ymax:2, rmax:10, rt:1, xdef:960, ydef:540, xdrift:4, ydrift: 4, random:true, blink:true};
+
+	this.reset = function() {
+		this.x = (this.s.random ? WIDTH*Math.random() : this.s.xdef);
+		this.y = (this.s.random ? HEIGHT*Math.random() : this.s.ydef);
+		this.r = ((this.s.rmax-1)*Math.random()) + 1;
+		this.dx = (Math.random()*this.s.xmax) * (Math.random() < .5 ? -1 : 1);
+		this.dy = (Math.random()*this.s.ymax) * (Math.random() < .5 ? -1 : 1);
+		this.hl = (this.s.ttl/rint)*(this.r/this.s.rmax);
+		this.rt = Math.random()*this.hl;
+		this.s.rt = Math.random()+1;
+		this.stop = Math.random()*.2+.4;
+		this.s.xdrift *= Math.random() * (Math.random() < .5 ? -1 : 1);
+		this.s.ydrift *= Math.random() * (Math.random() < .5 ? -1 : 1);
+	}
+
+	this.fade = function() {
+		this.rt += this.s.rt;
+	}
+
+	this.draw = function() {
+		if(this.s.blink && (this.rt <= 0 || this.rt >= this.hl)) this.s.rt = this.s.rt*-1;
+		else if(this.rt >= this.hl) this.reset();
+		var newo = 1-(this.rt/this.hl);
+		con.beginPath();
+		con.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+		con.closePath();
+		var cr = this.r*newo;
+		g = con.createRadialGradient(this.x,this.y,0,this.x,this.y,(cr <= 0 ? 1 : cr));
+		g.addColorStop(0.0, 'rgba(255,255,255,'+newo+')');
+		g.addColorStop(this.stop, 'rgba(77,101,181,'+(newo*.6)+')');
+		g.addColorStop(1.0, 'rgba(77,101,181,0)');
+		con.fillStyle = g;
+		con.fill();
+	}
+
+	this.move = function() {
+		this.x += (this.rt/this.hl)*this.dx;
+		this.y += (this.rt/this.hl)*this.dy;
+		if(this.x > WIDTH || this.x < 0) this.dx *= -1;
+		if(this.y > HEIGHT || this.y < 0) this.dy *= -1;
+	}
+
+	this.getX = function() { return this.x; }
+	this.getY = function() { return this.y; }
+}
+    </script>

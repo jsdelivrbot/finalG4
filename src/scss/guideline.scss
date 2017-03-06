@@ -1,0 +1,138 @@
+@import "assets/font";
+@import "assets/color";
+@import "../libs/normalize-scss/sass/normalize/import-now";
+@import "../libs/font-awesome/css/font-awesome.min.css";
+
+
+.cross{
+	margin:30px auto;
+	font-size: 24px;
+	text-align:center;
+}
+
+@mixin btn($width,$height,$radius){
+	width:$width;
+	height:$height;
+	text-align:center;
+	display:inline-block;
+	border:1px solid transparent;
+	border-radius: $radius;
+	a{
+		padding:0px 10px;
+		display:block;
+		text-decoration: none;
+		line-height: $height;
+		font-size: 18px;
+		letter-spacing: 2px;
+	}
+}
+
+@mixin btn-color($bgcolor,$fzcolor,$bdcolor:$bgcolor ){
+	background-color: $bgcolor;
+	border:1px solid $bdcolor;
+	a{
+		color:$fzcolor;
+	}
+}
+.content{
+	padding:30px;
+}
+.en{
+	padding-top: 8px;
+	padding-bottom: 25px;
+}
+.en1,.ch1{
+	font-size: $fz-h1;
+}
+.en2,.ch2{
+	font-size: $fz-h2;
+}
+.en3,.ch3{
+	font-size: $fz-h3;
+}
+.en4,.ch4{
+	font-size: $fz-h4;
+}
+.en5,.en5{
+	font-size:$fz-p;
+}
+.btnGroup{
+	text-align:center;
+	margin:100px 0;
+}
+.btn{
+	@include btn(85px,35px,5px);
+}
+
+.btn-lg{
+	@include btn(125px,38px,5px);
+}
+
+.btn-purple{
+	@include btn-color($purple,$white);
+}
+.btn-blue{
+	@include btn-color($blue,$white);
+}
+.btn-purple1{
+	@include btn-color(transparent,$purple,$purple);
+}
+.btn-blue1{
+	@include btn-color(transparent,$blue,$blue);
+}
+
+
+.item{
+	width: 150px;
+	margin:1px;
+	height: 150px;
+	color:#fff;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	padding:20px;
+}
+
+.item1{
+	background-color: $black;
+}
+.item2{
+	background-color: $o-black;
+}
+.item3{
+	background-color: $white;
+}
+.item4{
+	background-color: $o-white;
+}
+.item5{
+	background-color: $purple;
+}
+.item6{
+	background-color: $light-blue;
+}
+.item7{
+	background-color: $blue-green;
+}
+.item8{
+	background-color: $green-blue;
+}
+.item9{
+	background-color: $blue;
+}
+.item10{
+	background-color: $orange;
+}
+.item12{
+	background-color: $light-grey;
+}
+.item13{
+	background-color: $grey;
+}
+
+
+
+
+// .item18{
+// 	background-color: $o-black;
+// }

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/googleMap.css">
+	<!-- <script src="js/star.js"></script> -->
+
+	<!-- maginic -->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+     <!-- <link rel="stylesheet" type="text/css" href="css/magnific.css"> -->
+     <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+     <script type="text/javascript" src="js/magnific.js"></script>
+	
+     <script type="text/javascript" src="js/googleMap.js"></script>
+     <script type="text/javascript" src="js/activity.js"></script>
+</head>
+<style type="text/css" media="screen">
+	body,html {
+		  background: #343434;
+		  /*overflow: hidden;*/
+		  width: 100%;
+		  height: 100%;
+		}
+		#canvas{
+			width: 100%;	
+			height: 900px;	
+		}
+
+		canvas {
+		  opacity: 0.7;
+		  
+		}
+			#a-star{
+				width: 450px;
+				margin:auto;	
+				margin-top: 80px;
+				margin-left: -90px;
+				/*background-color: #fff;		*/
+				stroke-dashoffset: 3000;
+    			stroke-dasharray: 3000;
+				animation: circle 10s linear both;
+				/*z-index: 10;*/
+				height: 40vh;
+			}
+
+			@keyframes circle{
+				100%{
+					stroke-dashoffset:0;
+				}
+				
+			}
+		#tit{
+			opacity: 0;
+			animation: fadeIn 5s both;
+		}
+		@keyframes fadeIn{
+			100%{
+				opacity: 1;
+			}
+		}
+		.a-btn{
+			
+			margin: auto;		
+			z-index: 10;
+		}
+		nav{
+			z-index: 10;
+		}
+		.a-map{
+	display: block;
+}
+</style>
+<body>
+	<div class="a-phone-mapNav">
+		<a href="activity.html">點我回去</a>
+	</div>
+    <div class="container a-map">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 googleMap">
+					<div id="co">
+					        <p></p>
+					        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+					</div>
+					<div id="zero"></div>
+				      <div id="map">
+				      	
+				      </div>
+					<!-- <img src="img/a_014.jpg" alt="" class="rwd-img"> -->
+				</div>
+			</div>
+		</div>
+	<div class="container">
+			<div class="row" id="a-popups">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="a-tab">
+						<div><p>最近時間</p></div>
+						<div><p>最高瀏覽</p></div>
+						<div><p>最多收藏</p></div>
+					</div>	
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3">
+						<a href="#a-popup-act" data-effect="mfp-3d-unfold">
+						<div class="a-item a-phone-searchContainer">
+							<img src="img/a_007.jpg" alt="" class="rwd-img">
+							<p class="a-text">墾丁南十字觀星露營</p>
+							<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+							<p class="a-text-content">名額：16人</p>
+							<p class="a-text-content">發起人：Leo S</p>
+						</div></a>
+					</div>
+				<div class="col-xs-3 col-sm-3 col-md-3">
+					<a href="#a-popup-act"  data-effect="mfp-3d-unfold">
+						<div class="a-item a-phone-searchContainer">
+							<img src="img/a_006.jpg" alt="" class="rwd-img">
+							<p class="a-text">墾丁南十字觀星露營</p>
+							<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+							<p class="a-text-content">名額：16人</p>
+							<p class="a-text-content">發起人：Leo S</p>
+						</div></a>
+					</div>
+				<div class="col-xs-3 col-sm-3 col-md-3">
+					<a href="#a-popup-act"  data-effect="mfp-3d-unfold">
+						<div class="a-item a-phone-searchContainer">
+							<img src="img/a_001.jpg" alt="" class="rwd-img">
+							<p class="a-text">墾丁南十字觀星露營</p>
+							<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+							<p class="a-text-content">名額：16人</p>
+							<p class="a-text-content">發起人：Leo S</p>
+						</div></a>
+					</div>
+			<div class="col-xs-3 col-sm-3 col-md-3">
+					<a href="#a-popup-act"  data-effect="mfp-3d-unfold">
+						<div class="a-item a-phone-searchContainer">
+							<img src="img/a_002.jpg" alt="" class="rwd-img">
+							<p class="a-text">墾丁南十字觀星露營</p>
+							<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+							<p class="a-text-content">名額：16人</p>
+							<p class="a-text-content">發起人：Leo S</p>
+						</div></a>
+					</div>
+			</div>
+		</div>
+
+
+
+		<!-- 活動開始 -->
+  <div id="a-popup-act" class="white-popup mfp-with-anim mfp-hide">
+  	<div class="a-lb-act">
+		<div class="container">
+			<div class="row">
+				<div class="table">
+				<div class="tr">
+						<div class="td">
+							<img src="img/a_011.jpg" alt="" class="rwd-img">
+							<i class="fa fa-times a-x"></i>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<p>墾丁南十字星觀星露營</p>
+								<span>主辦人　<i class="fa fa-user-circle-o" aria-hidden="true"></i>Leo S </span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動日期：2017-05-01(週一) 8:00~2017-05-02(週二)16:00
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動地點：屏東縣恆春鎮100號(貓鼻頭國家公園)
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動類型：
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動費用：3000元
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動介紹 留言詢問 <span><i class="fa fa-star-o" aria-hidden="true"></i>save　<i class="fa fa-share-square-o" aria-hidden="true"></i>share</span>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<p>活動介紹</p>
+								時序漸入夏，落山風遠離了恆春半島，5月的墾丁在春雨澆淋下，大地重披翠綠青衫，天地一片明淨。為讓遊客們親近墾丁國家公園明淨的天空、認識春夏星空及屬於南半球的南十字星座，墾管處將於6月1日晚間舉辦「南十字星光之旅」觀星活動，一起感受兼具知性與感性的夜空。
+				<br><br>
+				墾丁地區視野開闊、無空氣污染、天空淨朗且少光害，是夜觀星斗的極佳去處。而屬於南半球的南十字星，在台灣平地更只有墾丁地區可以清楚看見。南十字星座在墾丁出現的時間是4至6月，又以5月的觀賞條件最佳。
+				
+				夜觀星斗，特別是觀看，墾管處建議，最好能尋找一個視野開闊、無空氣污染，亦無光害的所在，高山夜晚溫度低，氣候溫暖、海風徐拂的5月墾丁，正是觀賞南十字星的理想去處。
+				<br><br>
+				夜觀星斗，特別是觀看南十字星座，墾管處建議，最好能尋找一個視野開闊、無空氣污染，亦無光害的所在，高山夜晚溫度低，氣候溫暖、海風徐拂的5月墾丁，正是觀賞南十字星的理想去處
+							<div class="btn-lg btn-blue">我要報名</div>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								Comment
+								<span>Login<i class="fa fa-caret-down" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<i class="fa fa-star-o" aria-hidden="true"></i>save　<i class="fa fa-share-square-o" aria-hidden="true"></i>share
+								<div class="a-user">
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i><textarea name="" placeholder="Start the discussion"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+<!-- 活動結束   -->
+</body>
+</html>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtYAguCIykzC-F3lBBYbxLEbQAPqUhFvo&libraries=places&callback=initAutocomplete"></script>

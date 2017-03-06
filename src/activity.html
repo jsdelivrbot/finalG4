@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ZeroGravity</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/googleMap.css">
+	<!-- <script src="js/star.js"></script> -->
+
+	<!-- maginic -->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+     
+     <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+     <script type="text/javascript" src="js/magnific.js"></script>
+	
+     <script type="text/javascript" src="js/googleMap.js"></script>
+     <script type="text/javascript" src="js/activity.js"></script>
+
+
+     <!-- fullpage -->
+     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+     <!-- <link rel="stylesheet" type="text/css" href="libs/fullpage.js/jquery.fullPage.css" /> -->
+     <script type="text/javascript" src="libs/fullpage.js/vendors/scrolloverflow.min.js"></script>
+
+	<script type="text/javascript" src="libs/fullpage.js/jquery.fullPage.min.js"></script>
+
+	<!-- <script type="text/javascript" src="js/fullpage_extension.js"></script> -->
+	<!-- <script type="text/javascript" src="js/fullpage_overflowReset.js"></script> -->
+
+
+	<!-- sly -->
+	<!-- <script type="text/javascript" src="js/plugins.js"></script> -->
+	<!-- <script type="text/javascript" src="js/sly.js"></script> -->
+	<!-- <script type="text/javascript" src="js/a_slider.js"></script> -->
+	
+	<!-- calendar -->
+	<link rel="stylesheet" type="text/css" href="libs/pg-calendar/demo/css/semantic.ui.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/pg-calendar/demo/css/prism.css" />
+	<link rel="stylesheet" type="text/css" href="libs/pg-calendar/demo/css/calendar-style.css" />
+	<link rel="stylesheet" type="text/css" href="libs/pg-calendar/demo/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="libs/pg-calendar/src/css/pignose.calendar.css" />
+	<link type="text/css" href="libs/pg-calendar/dist/pignose.calendar.min.css">
+
+	
+	<script type="text/javascript" src="libs/pg-calendar/demo/js/semantic.ui.min.js"></script>
+	<script type="text/javascript" src="libs/pg-calendar/demo/js/prism.min.js"></script>
+	<script type="text/javascript" src="libs/pg-calendar/vender/moment.min.js"></script>
+	<script src="libs/pg-calendar/src/js/pignose.calendar.js"></script>
+	<script src="js/jquery.mobile.custom.min.js"></script>
+	<script type="text/javascript" src="js/nav.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            
+        });
+    </script>
+	<style>
+		body,html {
+		  background: #343434;
+		  /*overflow: hidden;*/
+		  width: 100%;
+		  height: 100%;
+		}
+		#a-canvas{
+			width: 100%;	
+			height: 100vh;
+			 opacity: 0.7;
+			 position: absolute;
+			 top: 0;
+			 left: 0;
+			 /*z-index: 1;*/
+		}
+		
+		
+
+
+		#a-star{
+			width: 450px;
+			margin:auto;	
+			margin-top: 90px;
+			margin-bottom: 20px;
+			margin-left: -90px;
+			stroke-dashoffset: 3000;
+			stroke-dasharray: 3000;
+			animation: circle 10s linear both;
+			height: 45vh;
+		}
+
+		#tit{
+			opacity: 0;
+			animation: fadeIn 5s both;
+		}
+		@keyframes fadeIn{
+			100%{
+				opacity: 1;
+			}
+		}
+		.a-btn{
+			
+			/*margin: auto;		*/
+			z-index: 10;
+		}
+		nav{
+			z-index: 10;
+		}
+		.myContent{
+        height: 50vh;
+      }
+      .wrap {
+      	width: 100%;
+		  position: absolute;
+		  bottom: -200px;
+		  left: 0;
+		}
+
+
+/* Frame */
+
+.frame {
+  /*height: 250px;*/
+  /*line-height: 250px;*/
+  /*overflow: hidden;*/
+}
+
+.frame ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 12px;
+}
+
+.frame ul li {
+  float: left;
+  width: 227px;
+  height: 100%;
+  margin: 0 10px 0 0;
+  padding: 0;
+  background: url(img/a_002.jpg);
+  color: #ddd;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.frame ul li.active {
+  color: #fff;
+  background: #a03232;
+}
+
+
+/* Scrollbar */
+
+.scrollbar {
+  margin: 0 0 1em 0;
+  height: 2px;
+  background: #666;
+  line-height: 0;
+}
+
+.scrollbar .handle {
+  width: 100px;
+  height: 100%;
+  background: #f00;
+  cursor: pointer;
+}
+
+.scrollbar .handle .mousearea {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+
+/* Pages */
+
+.pages {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  text-align: center;
+}
+
+.pages li {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px;
+  text-indent: -999px;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
+}
+
+.pages li:hover {
+  background: #aaa;
+}
+
+.pages li.active {
+  background: #666;
+}
+
+
+/* Controls */
+
+.controls {
+  margin: 25px 0;
+  text-align: center;
+}
+
+
+/* One Item Per Frame example*/
+
+.oneperframe {
+  height: 300px;
+  line-height: 300px;
+}
+
+.oneperframe ul li {
+  width: 1140px;
+}
+
+.oneperframe ul li.active {
+  background: #333;
+}
+
+
+/* Crazy example */
+
+.crazy ul li:nth-child(2n) {
+  width: 100px;
+  margin: 0 4px 0 20px;
+}
+
+.crazy ul li:nth-child(3n) {
+  width: 300px;
+  margin: 0 10px 0 5px;
+}
+
+.crazy ul li:nth-child(4n) {
+  width: 400px;
+  margin: 0 30px 0 2px;
+}
+.a-actItem{
+	width: 100%;	
+}
+.a-actItem img{
+	width: 100%;	
+}
+.scrollable-element{
+            height: 100vh;
+            width:100%;
+            /*overflow-y: scroll;*/
+            margin: 0 auto;
+        }
+</style>
+<script type="text/javascript">
+// var top = $('#setion1').scrollTop();
+// if($(document).scroll()>top){
+// 	$.fn.fullpage.setAllowScrolling(false);
+// }
+
+$(function(){
+	$('#multiple').hide();
+
+	$('#a-date-control').focus(function(){
+		$('#multiple').show().css({
+			'position':'absolute',
+			'top':'30px',
+			'left':0,
+			'width':'320px',
+			'height':'320px',
+			'z-index':20
+		});
+	});
+	$('body').click(function(evt) {
+				console.log($(evt.target).parents("#multiple").length);
+	            if($(evt.target).parents("#multiple").length==0 && 
+	                evt.target.id != "a-date-control" && evt.target.class != "calendar-dark") {
+	                $('#multiple').hide();
+
+	            }
+	        });
+})
+	// $('#multiple').not('#multiple').children().click(function(){
+	// 		console.log('hide');
+	// 		$('#multiple').hide();
+	// 	});
+
+	
+		// $('#a-date-control').click(function(){
+		// 	$('.calendar-dark').show();
+		// });
+
+// $.fn.fullpage.setAllowScrolling(false, 'down');
+// 	$('#a-oldSlider').fullpage({
+//     scrollOverflow: true
+// });
+
+</script>
+
+</head>
+
+<body id="a-body">
+<!-- <canvas id="a-canvas">
+			
+
+		</canvas> -->
+<nav id="nav">
+		<div class="relative">
+			<div class="row">
+				<input type="checkbox" id="navButtonHidden">
+				<label id="navButton" for="navButtonHidden"></label>
+				<div id="logo">
+					<a href="#"><img src="img/logo.png" alt="ZeroGravity"></a>
+				</div>
+				<ul class="mainMenu menu">
+					<li><a href="activity.html" class="onThisPage">觀星活動</a></li>
+					<li><a href="forum.html">星際論壇</a></li>
+					<li><a href="photo.html">照片牆</a></li>
+					<li><a href="article.html">星知識</a></li>
+				</ul>
+				<ul class="mainMenu signArea">
+					<li id="signLeft">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						<span><a href="#">註冊</a></span>
+					</li>
+					<li id="signRight">
+						<span><a href="#">登入</a></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<div id="fullpage">
+	<div class="section" id="section0">
+	<header id="header" class=""> 
+		<div class="col-xs-12  col-sm-12 col-md-12  a-banner">
+		<div class="container ">
+			<div class="row">
+			<!-- h1＋svg動畫開始 -->
+				<svg id="a-star">
+					<g>
+					  <title>Layer 1</title>
+					  <polygon transform="rotate(0 279.40002441406256,210.50000000000003) " id="svg_3" fill-opacity="0.1" stroke-width="3" stroke="rgba(195, 213, 218, .7)" points="433.8207702636719,210.5 356.61041259765625,344.2323303222656 202.1896209716797,344.2323303222656 124.97923278808594,210.5 202.1896209716797,76.76766967773438 356.61041259765625,76.76766967773438 433.8207702636719,210.5 " strokeWidth="1" strokecolor="#000000" fill="#000000" edge="154.420782" orient="x" sides="6" shape="regularPoly" cy="210" cx="279.399994">
+					  <animateTransform attributeType="xml"
+					                    attributeName="transform"
+					                    type="rotate"
+					                    from="0 279.399994 210"
+					                    to="360 279.399994 210"
+					                    dur="40s"
+					                    repeatCount="indefinite"/>
+					 </polygon>
+					  <polygon fill-opacity="0" stroke-width="3" stroke="rgba(13, 209, 215, .8)" points="433.820775457056,210 356.6103846767702,343.7323197037026 202.1896031161986,343.7323197037026 124.97921233591276,210.00000000000003 202.1896031161985,76.26768029629739 356.6103846767702,76.26768029629739 433.820775457056,210 " strokeWidth="1" strokecolor="#000000" fill="#000000" edge="154.420782" orient="x" sides="6" shape="regularPoly" id="svg_1" cy="210" cx="279.399994">
+					  <animateTransform 
+		                    attributeName="transform"
+		                    type="rotate"
+		                    from="0 279.399994 210"
+		                    to="-360 279.399994 210"
+		                    dur="40s"
+		                    repeatCount="indefinite"/>
+					  </polygon>
+					  <text id=tit x="200" y="230" fill="#fff"  style="font:40px 微軟正黑體;font-weight: 800; text-shadow: 1px 10px 10px #000">觀星活動
+						  
+					  </text>
+					  <!-- <text x="200" y="200" fill="none" stroke="red" style="font:70px 標楷體;writing-mode:tb;">你好!?</text> -->
+
+					 </g>
+				</svg>
+		    <!-- h1的svg動畫結束 -->
+				<p class="a-title">
+					<i class="fa fa-quote-left" aria-hidden="true"></i>體驗觀星的感性與知性<i class="fa fa-quote-right" aria-hidden="true"></i>
+				</p>
+				<div class="a-btn">
+					<div class="btn-lg btn-blue"><a href="activity_recommend.html">推薦活動</a>
+					</div>
+
+					<div class="btn-lg btn-blue">
+						<a href="activity_addACT.html">新增活動</a>
+					</div>
+					<div class="a-down">
+						<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+					</div>
+				</div>
+				</div>
+				<div class="clear"></div>		
+			</div>
+		</div>
+	</header><!-- /header -->
+    </div><!-- session1 -->
+		
+	
+
+	<div class="section" id="section1">
+	<!-- <div class="container"> -->
+          <main>
+				<div class="a-map">
+					<div class="row">
+<!-- right 活動區塊 -->
+					<div class="col-xs-12 col-sm-7 col-md-7 a-mR">
+						<div class="a-panel">
+							<div class="a-controls">
+								<div class="a-panel-top">
+								
+								<div class="aa-date">
+									<p class="a-text aa-date"><i class="fa fa-calendar-o" aria-hidden="true"></i>活動日期</p>
+									<div class="a-panel-date">
+									<div id="wrapper">
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+										<input type="text" id="a-date-control" placeholder="選擇日期" />
+										<div id="multiple">
+								            <div class="calendar-dark"></div>
+											
+										</div>			
+										</div>
+										<!-- <input type="date" name="" value="" placeholder="">
+										<p class="a-text">到</p>
+										<input type="date" name="" value="" placeholder=""> -->
+									</div>
+								</div>
+									
+									<div class="a-panel-item">
+										<p class="a-text"><i class="fa fa-tags" aria-hidden="true"></i>活動類型</p>
+										<ul>
+											<a href="#" id="turnOff"><li>全部</li></a>
+											<a href="#"><li>天文觀測</li></a>
+											<a href="#"><li>親子觀星</li></a>
+											<a href="#"><li>天文攝影</li></a>
+											<a href="#"><li>休閒聯誼</li></a>
+										</ul>
+									</div>
+
+									<div class="a-panel-item">
+										<p class="a-text"><i class="fa fa-map-marker" aria-hidden="true"></i>活動地點</p>
+										<ul>
+											<a href="#"><li>全部</li></a>
+											<a href="#"><li>北部地區</li></a>
+											<a href="#"><li>中部地區</li></a>
+											<a href="#"><li>南部地區</li></a>
+											<a href="#"><li>東部地區</li></a>
+										</ul>
+									</div>
+
+									<div class="aa-location">
+									<!-- <p class="a-text">地點搜尋</p> -->
+									<div class="a-searchInput">
+
+										<i class="fa fa-search a-phone-icon" aria-hidden="true" ></i>
+
+										<input id="pac-input" class="controls" type="text" placeholder="搜尋">
+									</div>
+								</div>
+
+								</div>
+									
+									<!-- oldslider -->
+								<div id="a-oldSlider" class="element2">
+									<a class="a-phone-control" href="activity_phone_map.html">
+										<div class="a-phone-btn btn-lg btn-blue" id="a-phone-mapBtn">
+											地圖搜尋
+										</div>
+									</a>
+									<div class="row scrollable-element" id="">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<div class="a-tab">
+												<div><p>最近時間</p></div>
+												<div><p>最高瀏覽</p></div>
+												<div><p>最多收藏</p></div>
+											</div>	
+										</div>
+										<div class="col-xs-12 col-md-12 col-lg-12 a-phone-search">
+											<i class="fa fa-search a-phone-icon" aria-hidden="true" ></i>
+												<input id="a-phone-input_1" type="text" name="" value="" placeholder="　　　搜尋日期、類型、地點">
+												<i class="fa fa-chevron-up" aria-hidden="true"></i>
+												<i  class="a-phone-input fa fa-clock-o a-phone-icon-2" aria-hidden="true"></i>
+												<input type="text" class="a-phone-input" placeholder="　　　依日期">
+												<i  class="a-phone-input fa fa-star-o a-phone-icon-2" aria-hidden="true"></i>
+												<input type="text" class="a-phone-input" placeholder="　　　依類型">
+												<i  class="a-phone-input fa fa-globe a-phone-icon-2" aria-hidden="true"></i>
+												<input type="text" class="a-phone-input" placeholder="　　　依地點">
+										</div>
+									<div class="a-scrollArea">
+
+										<!-- oldslider -->
+									<div id="a-oldSlider" class="element2">
+										<a class="a-phone-control" href="activity_phone_map.html">
+											<div class="a-phone-btn btn-lg btn-blue" id="a-phone-mapBtn">
+												地圖搜尋
+											</div>
+										</a>
+										<div class="row scrollable-element" id="">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="a-tab">
+													<div><p>最近時間</p></div>
+													<div><p>最高瀏覽</p></div>
+													<div><p>最多收藏</p></div>
+												</div>	
+											</div>
+											<div class="col-xs-12 col-md-12 col-lg-12 a-phone-search">
+												<i class="fa fa-search a-phone-icon" aria-hidden="true" ></i>
+													<input id="a-phone-input_1" type="text" name="" value="" placeholder="　　　搜尋日期、類型、地點">
+													<i class="fa fa-chevron-up" aria-hidden="true"></i>
+													<i  class="a-phone-input fa fa-clock-o a-phone-icon-2" aria-hidden="true"></i>
+													<input type="text" class="a-phone-input" placeholder="　　　依日期">
+													<i  class="a-phone-input fa fa-star-o a-phone-icon-2" aria-hidden="true"></i>
+													<input type="text" class="a-phone-input" placeholder="　　　依類型">
+													<i  class="a-phone-input fa fa-globe a-phone-icon-2" aria-hidden="true"></i>
+													<input type="text" class="a-phone-input" placeholder="　　　依地點">
+											</div>
+										<div class="a-scrollArea">
+											
+										
+											<div class="col-xs-12 col-sm-12 col-md-12 a-pReset">
+												<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+													<a href="activity_one.html" data-effect="mfp-3d-unfold">
+													<div class="a-item a-phone-searchContainer">
+														<img src="img/a_007.jpg" alt="" class="rwd-img">
+															<p class="a-text-title">墾丁南十字觀星露營</p>
+															<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+															<p class="a-text-content">名額：16人</p>
+															<p class="a-text-content">發起人：Leo S</p>
+													</div></a>
+												</div>
+
+											<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+												<a href="activity_one.html"  data-effect="mfp-3d-unfold">
+													<div class="a-item a-phone-searchContainer">
+														<img src="img/a_006.jpg" alt="" class="rwd-img">
+															<p class="a-text-title">墾丁南十字觀星露營</p>
+															<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+															<p class="a-text-content">名額：16人</p>
+															<p class="a-text-content">發起人：Leo S</p>
+													</div></a>
+												</div>
+
+											</div>
+
+										<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+
+											<a href="activity_one.activity.html"  data-effect="mfp-3d-unfold">
+												<div class="a-item a-phone-searchContainer">
+													<img src="img/a_006.jpg" alt="" class="rwd-img">
+														<p class="a-text-title">墾丁南十字觀星露營</p>
+														<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+														<p class="a-text-content">名額：16人</p>
+														<p class="a-text-content">發起人：Leo S</p>
+												</div></a>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-12 a-pReset">
+
+										<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+											<a href="activity_one.activity.html"  data-effect="mfp-3d-unfold">
+												<div class="a-item a-phone-searchContainer">
+													<img src="img/a_001.jpg" alt="" class="rwd-img">
+														<p class="a-text-title">墾丁南十字觀星露營</p>
+														<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+														<p class="a-text-content">名額：16人</p>
+														<p class="a-text-content">發起人：Leo S</p>
+												</div></a>
+											</div>
+
+												<a href="activity_one.html"  data-effect="mfp-3d-unfold">
+													<div class="a-item a-phone-searchContainer">
+														<img src="img/a_001.jpg" alt="" class="rwd-img">
+															<p class="a-text-title">墾丁南十字觀星露營</p>
+															<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+															<p class="a-text-content">名額：16人</p>
+															<p class="a-text-content">發起人：Leo S</p>
+													</div></a>
+												</div>
+
+										<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+												<a href="activity_one.html"  data-effect="mfp-3d-unfold">
+													<div class="a-item a-phone-searchContainer">
+														<img src="img/a_002.jpg" alt="" class="rwd-img">
+															<p class="a-text-title">墾丁南十字觀星露營</p>
+															<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+															<p class="a-text-content">名額：16人</p>
+															<p class="a-text-content">發起人：Leo S</p>
+													</div></a>
+												</div>
+										</div>
+										</div><!-- scrollArea -->
+
+
+									<div class="col-xs-12 col-sm-6 col-md-6 ">
+
+											<a href="activity_one.activity.html"  data-effect="mfp-3d-unfold">
+												<div class="a-item a-phone-searchContainer">
+													<img src="img/a_002.jpg" alt="" class="rwd-img">
+														<p class="a-text-title">墾丁南十字觀星露營</p>
+														<p class="a-text-content">時間：2017-05-02至2017-05-06</p>
+														<p class="a-text-content">名額：16人</p>
+														<p class="a-text-content">發起人：Leo S</p>
+												</div></a>
+											</div>
+									</div>
+									</div><!-- scrollArea -->
+
+								</div>
+								
+								</div>
+							</div>
+							
+						</div>
+
+					</div>
+<!-- left googleMap -->
+					<div class="col-xs-12 col-sm-5 col-md-5 googleMap a-mL a-main-map">
+						<div id="co">
+						        <p></p>
+						        
+						</div>
+						<div id="zero"></div>
+					      <div id="map">
+					      	
+					      </div>
+						<!-- <img src="img/a_014.jpg" alt="" class="rwd-img"> -->
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+			
+		</main>
+    </div><!-- fullpage	 -->
+
+
+	<!-- 活動開始 -->
+  <div id="a-popup-act" class="white-popup mfp-with-anim mfp-hide">
+  	<div class="a-lb-act">
+		<div class="container">
+			<div class="row">
+				<div class="table">
+				<div class="tr">
+						<div class="td">
+							<img src="img/a_011.jpg" alt="" class="rwd-img">
+							<i class="fa fa-times a-x"></i>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<p>墾丁南十字星觀星露營</p>
+								<span>主辦人　<i class="fa fa-user-circle-o" aria-hidden="true"></i>Leo S </span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動日期：2017-05-01(週一) 8:00~2017-05-02(週二)16:00
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動地點：屏東縣恆春鎮100號(貓鼻頭國家公園)
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動類型：
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動費用：3000元
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								活動介紹 留言詢問 <span><i class="fa fa-star-o" aria-hidden="true"></i>save　<i class="fa fa-share-square-o" aria-hidden="true"></i>share</span>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<p>活動介紹</p>
+								時序漸入夏，落山風遠離了恆春半島，5月的墾丁在春雨澆淋下，大地重披翠綠青衫，天地一片明淨。為讓遊客們親近墾丁國家公園明淨的天空、認識春夏星空及屬於南半球的南十字星座，墾管處將於6月1日晚間舉辦「南十字星光之旅」觀星活動，一起感受兼具知性與感性的夜空。
+				<br><br>
+				墾丁地區視野開闊、無空氣污染、天空淨朗且少光害，是夜觀星斗的極佳去處。而屬於南半球的南十字星，在台灣平地更只有墾丁地區可以清楚看見。南十字星座在墾丁出現的時間是4至6月，又以5月的觀賞條件最佳。
+				
+				夜觀星斗，特別是觀看，墾管處建議，最好能尋找一個視野開闊、無空氣污染，亦無光害的所在，高山夜晚溫度低，氣候溫暖、海風徐拂的5月墾丁，正是觀賞南十字星的理想去處。
+				<br><br>
+				夜觀星斗，特別是觀看南十字星座，墾管處建議，最好能尋找一個視野開闊、無空氣污染，亦無光害的所在，高山夜晚溫度低，氣候溫暖、海風徐拂的5月墾丁，正是觀賞南十字星的理想去處
+							<div class="btn-lg btn-blue">我要報名</div>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								Comment
+								<span>Login<i class="fa fa-caret-down" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								<i class="fa fa-star-o" aria-hidden="true"></i>save　<i class="fa fa-share-square-o" aria-hidden="true"></i>share
+								<div class="a-user">
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i><textarea name="" placeholder="Start the discussion"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">
+							<div class="a-text">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+<!-- 活動結束   -->
+
+	<!-- add活動開始 -->
+<div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+	<div class="a-lb-add">
+		<div class="container">
+			<div class="row">
+				<div class="table">
+				
+					<div class="tr">
+						<div class="td">
+							新增活動
+							<div class="fa fa-times a-x"></div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="table">
+					
+					<div class="tr">
+						<div class="td">活動名稱</div>
+						<div class="td">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動地點</div>
+						<div class="td">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="tr">
+
+						<div class="td">活動日期</div>
+						<div class="td">
+
+							<input type="date" name="">
+							<p class="a-text">到</p>
+							<input type="date" name="">
+				
+							<p class="a-text">共計兩天一夜</p>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動類型</div>
+						<div class="td">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動費用</div>
+						<div class="td">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動人數</div>
+						<div class="td">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動介紹</div>
+						<div class="td">
+							<textarea name=""></textarea>
+						</div>
+					</div>
+					<div class="tr">
+						<div class="td">活動圖檔</div>
+						<div class="td">
+							<input type="file" value="選擇檔案">
+							<div class="btn btn-blue"><a href="">上傳</a></div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="table">
+					<div class="tr">
+						<div class="td">
+							<input type="submit" name="" value="確定送出" class="btn-lg btn-blue">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+</div>
+<!-- add活動結束 -->
+
+		<!-- <footer>
+	Copyright@2017 by Zero Gravity
+</footer> -->
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtYAguCIykzC-F3lBBYbxLEbQAPqUhFvo&libraries=places&callback=initAutocomplete"></script>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoawYvLTgMObeyY-Ng0r4-f-vLhWoZZxQ&libraries=places&callback=initAutocomplete"
+         async defer></script> -->
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+	$(function() {
+		$('#wrapper .version strong').text('v' + pignoseCalendar.VERSION);
+		function onClickHandler(date, obj) {
+			/**
+			 * @date is an array which be included dates(clicked date at first index)
+			 * @obj is an object which stored calendar interal data.
+			 * @obj.calendar is an element reference.
+			 * @obj.storage.activeDates is all toggled data, If you use toggle type calendar.
+			 */
+
+			var $calendar = obj.calendar;
+			var $box = $calendar.parent().siblings('.box').show();
+			text = '';
+
+			if(date[0] !== null) {
+				text += date[0].format('YYYY-MM-DD');
+			}
+
+			if(date[0] !== null && date[1] !== null) {
+				text += '~';
+			} else if(date[0] === null && date[1] == null) {
+				text += 'nothing';
+			}
+
+			if(date[1] !== null) {
+				text += date[1].format('YYYY-MM-DD');
+			}
+			//操作區
+			$box.text(text);
+			console.log(text);
+			$('#a-date-control').val(text);
+		}//end
+
+
+		// Default Calendar
+		$('.calendar').pignoseCalendar({
+			select: onClickHandler
+		});
+
+		// Input Calendar
+		$('.input-calendar').pignoseCalendar({
+			buttons: true, // It means you can give bottom button controller to the modal which be opened when you click.
+		});
+
+		// Calendar modal
+		var $btn = $('.btn-calendar').pignoseCalendar({
+			modal: true, // It means modal will be showed when you click the target button.
+			buttons: true,
+			apply: function(date) {
+				$btn.next().show().text('You applied date ' + date + '.');
+			}
+		});
+
+		// Color theme type Calendar
+		$('.calendar-dark').pignoseCalendar({
+			theme: 'dark', // light, dark
+			select: onClickHandler,
+			lang: 'ch',
+			multiple: true,
+			select: function(dates, obj) {
+			console.log('toggle active dates', obj.storage.activeDates);
+			},
+			select: onClickHandler	
+		});
+		
+		// Multiple picker type Calendar
+		$('.multi-select-calendar').pignoseCalendar({
+			multiple: true,
+			select: onClickHandler
+		});
+
+		// Toggle type Calendar
+		$('.toggle-calendar').pignoseCalendar({
+			toggle: true,
+			select: function(date, obj) {
+				var $target = obj.calendar.parent().next().show().html('You selected ' + 
+				(date[0] === null? 'null':date[0].format('YYYY-MM-DD')) + 
+				'.' +
+				'<br /><br />' +
+				'<strong>Active dates</strong><br /><br />' +
+				'<div class="active-dates"></div>');
+
+				for(var idx in obj.storage.activeDates) {
+					var date = obj.storage.activeDates[idx];
+					if(typeof date !== 'string') {
+						continue;
+					}
+					$target.find('.active-dates').append('<span class="ui label default">' + date + '</span>');
+				}
+			}
+		});
+
+		// Disabled date settings.
+		!(function() {
+			// IIFE Closure
+			var times = 30;
+			var disabledDates = [];
+			for(var i=0; i<times; /* Do not increase index */) {
+				var year = moment().year();
+				var month = 0;
+				var day = parseInt(Math.random() * 364 + 1);
+				var date = moment().year(year).month(month).date(day).format('YYYY-MM-DD');
+				if($.inArray(date, disabledDates) === -1) {
+					disabledDates.push(date);
+					i++;
+				}
+			}
+
+			disabledDates.sort();
+
+			var $dates = $('.disabled-dates-calendar').siblings('.guide').find('.guide-dates');
+			for (var idx in disabledDates) {
+				$dates.append('<span>' + disabledDates[idx] + '</span>');
+			}
+
+			$('.disabled-dates-calendar').pignoseCalendar({
+				select: onClickHandler,
+				disabledDates: disabledDates
+			});
+		} ());
+
+		// Disabled Weekdays Calendar.
+		$('.disabled-weekdays-calendar').pignoseCalendar({
+			select: onClickHandler,
+			disabledWeekdays: [0, 6]
+		});
+
+		// Disabled Range Calendar.
+		var minDate = moment().set('dates', Math.min(moment().day(), 2 + 1)).format('YYYY-MM-DD');
+		var maxDate = moment().set('dates', Math.max(moment().day(), 24 + 1)).format('YYYY-MM-DD');
+		$('.disabled-range-calendar').pignoseCalendar({
+			select: onClickHandler,
+			minDate: minDate,
+			maxDate: maxDate
+		});
+
+		// Multiple Week Select
+		$('.pick-weeks-calendar').pignoseCalendar({
+			pickWeeks: true,
+			multiple: true,
+			select: onClickHandler
+		});
+
+		// Disabled Ranges Calendar.
+		$('.disabled-ranges-calendar').pignoseCalendar({
+			select: onClickHandler,
+			disabledRanges: [
+				['2016-10-05', '2016-10-21'],
+				['2016-11-01', '2016-11-07'],
+				['2016-11-19', '2016-11-21'],
+				['2016-12-05', '2016-12-08'],
+				['2016-12-17', '2016-12-18'],
+				['2016-12-29', '2016-12-30'],
+				['2017-01-10', '2017-01-20'],
+				['2017-02-10', '2017-04-11'],
+				['2017-07-04', '2017-07-09'],
+				['2017-12-01', '2017-12-25'],
+				['2018-02-10', '2018-02-26'],
+				['2018-05-10', '2018-09-17'],
+			]
+		});
+
+		// I18N Calendar
+		$('.language-calendar').each(function() {
+			var $this = $(this);
+			var lang = $this.data('lang');
+			$this.pignoseCalendar({
+				lang: lang
+			});
+		});
+
+		// This use for DEMO page tab component.
+		$('.menu .item').tab();
+	});
+</script>
+
+
+<script>
+	$(function(){
+		/*================================
+			fullpage
+	===================================*/
+	$('#turnOff').click(function(){
+		console.log("click");
+		$.fn.fullpage.setAllowScrolling(false);
+  		
+	})
+
+	$('#fullpage').fullpage({
+        //Navigation
+        menu: '#menu',
+        lockAnchors: false,
+        anchors:['firstPage', 'secondPage'],
+        navigation: false,
+        navigationPosition: 'right',
+        navigationTooltips: ['firstSlide', 'secondSlide'],
+        showActiveTooltip: false,
+        slidesNavigation: false,
+        slidesNavPosition: 'top',
+
+        //Scrolling
+        css3: true,
+        scrollingSpeed: 700,
+        autoScrolling: true,
+        fitToSection: true,
+        fitToSectionDelay: 1000,
+        scrollBar: false,
+        easing: 'easeInOutCubic',
+        easingcss3: 'ease',
+        loopBottom: false,
+        loopTop: false,
+        loopHorizontal: true,
+        continuousVertical: false,
+        continuousHorizontal: false,
+        scrollHorizontally: false,
+        interlockedSlides: false,
+        dragAndMove: false,
+        offsetSections: false,
+        resetSliders: false,
+        fadingEffect: false,
+        normalScrollElements: '#element1, .element2',
+        scrollOverflow: true,
+        scrollOverflowReset: true,
+        scrollOverflowOptions: null,
+        touchSensitivity: 15,
+        normalScrollElementTouchThreshold: 20,
+        bigSectionsDestination: top,
+
+        //Accessibility
+        keyboardScrolling: true,
+        animateAnchor: true,
+        recordHistory: true,
+
+        //Design
+        // controlArrows: true,
+        // verticalCentered: true,
+        // sectionsColor : ['#ccc', '#fff'],
+        // paddingTop: '3em',
+        // paddingBottom: '10px',
+        // fixedElements: '#header, .footer',
+        // responsiveWidth: 0,
+        // responsiveHeight: 0,
+        // responsiveSlides: false,
+
+        //Custom selectors
+        sectionSelector: '.section',
+        slideSelector: '.slide',
+
+        lazyLoading: true,
+
+        //events
+        onLeave: function(index, nextIndex, direction){
+        	// $.fn.fullpage.setAllowScrolling(false);
+        },
+        afterLoad: function(anchorLink, index){},
+        afterRender: function(){},
+        afterResize: function(){},
+        afterResponsive: function(isResponsive){},
+        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+    });
+    //fullpageEnd
+	})
+
+</script>
+

@@ -1,0 +1,83 @@
+@include respones(xs) {
+	//在此輸入內容
+#kn_wrapper{
+	.kn-svg{
+		display: none;
+	}
+
+	.kn_content{
+		.kn_posts{
+			.kn-p{
+				width: 95%;
+				padding: 10px;
+				margin-bottom: 20px;
+				box-shadow: 2px 2px 1px rgba(255,255,255,.5);
+				// box-shadow: -2px -2px 2px rgba(255,255,255,.5);
+				margin: auto;
+
+				
+
+				h3{
+
+					font-size: 18px;
+					padding-bottom: 10px;
+					margin-bottom: 10px;
+					// border-bottom: 3px solid rgba(255,255,255,.6);
+					font-weight: 600;
+					text-shadow:1px 1px 1px #000;
+				}
+
+				
+			}
+			.kn-p:nth-child(odd){
+				float: none;
+				// box-shadow: 0px 0px 0px rgba(255,255,255,.5);
+				box-shadow: 2px 2px 1px rgba(255,255,255,.5);
+			}
+			.kn-p:nth-child(even){
+				float: none;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.kn_one_post{
+		.content{
+			padding: 0px;
+			width: 100%;
+			padding-top: 10px;
+		}
+
+		.post{
+			padding: 0px;
+		}
+
+		.post-info, .social-icon{
+			float: none;
+			display: block;
+		}
+
+		.main{
+			padding: 15px 5px;
+
+			img{
+				width: 90%;
+			}
+		}
+
+		h3{
+			font-size: 18px;
+			line-height: 1.5em;
+		}
+
+		.mfp-close{
+			top: 90px;
+		}
+	}
+
+	.white-popup{
+		max-width: 100%;
+	}
+}
+
+}

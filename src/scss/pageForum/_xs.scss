@@ -1,0 +1,319 @@
+@include respones(xs) {
+	//在此輸入內容
+
+
+
+#f_section1{
+	.f_title{
+
+		width: 80%;
+		transform:scale(0.7);
+
+		h1{
+			display: inline-block;
+			width: 100%;
+			font-size: 30px;
+		}
+	}
+
+	.f_desc{
+			width: 80%;
+			transform:scale(0.7);
+	}
+}
+#f_section2{
+	background: rgba(0,0,0,.5);
+		
+
+		#f_tab{
+			width: 100%;
+			float: left;
+			flex-direction: none;
+			margin-bottom: 30px;
+			li{
+				display: inline-block;
+				width: 100%;
+			}
+
+			a{
+				// width: 30%;
+			}
+		}
+		
+		.f_fn_area{
+			width: 100%;
+			text-align: center;
+			// padding-top:;
+			// margin-top: 100px; 
+
+			button{
+				width: 40%;
+				font-size: 14px;
+
+			}
+
+			.f_search{
+				width: 40%;
+			}
+		}
+
+		.f_posts{
+			width: 100%;
+
+			table{
+				thead{
+					th{
+
+						text-align: center;
+						.fa-sticky-note, .fa-user-o{
+							display: none;
+							
+						}
+					}
+				}
+
+				tbody{
+					tr{
+						td{
+							text-align: center;
+							.fa-commenting{
+								display: none;
+							}
+						}
+						.f_response{
+							float: none;
+
+						}
+
+						.f_topic{
+							width: 60%;
+						}
+
+						.f_user{
+							width: 40%;
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+
+#f_one_post{
+	.f_lightbox_content{
+		width: 100%;
+		table{
+			th{
+				text-align: center;
+				h5{
+					text-align: center;
+
+					
+				}
+			}
+
+			.social-icon{
+				float: none;
+			}
+
+			.f_sub_user{
+				width: 100%;
+				border-right: none;
+				 padding-top: 20px;
+				 float: none;
+				 text-align: center;
+				 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+				 img{
+				 	width: 55px;
+				 	height: 55px;
+				 }
+
+				 .f_user_info{
+				 	padding-top: 0px;
+				 }
+			}
+			.f_post_text{
+				width: 100%;
+				 padding: 10px;
+			    padding-left: 10px;
+			}
+
+			
+		}
+		
+
+		
+
+		.f_user{
+			text-align: center;
+		}
+	}
+}
+
+.ff-right{
+		display: none;
+	}
+.ff_left{
+	.post_text{
+		.main{
+			text-align: center;
+			position: relative;
+
+			.social-icon{
+				display: block;
+				position: absolute;
+				bottom: 10px;
+				.fa{
+					font-size: 20px;
+				}
+			}
+		}
+		h3{
+			font-size: 18px;
+			text-align: center;
+		}
+		.f_sub_user{
+			text-align: center;
+			margin: auto;
+			.f_user_info{
+				font-size: 14px;
+			}
+			img{
+				width: 25px;
+				height: 25px;
+				margin-right: 5px;
+			}
+		}
+
+		.text{
+			padding: 0px 10px;
+		}
+
+		h4{
+			&:after, &:before{
+				width: 38%;
+			}
+		}
+
+		.response-box{
+			width: 95%;
+		}
+	}
+}
+
+.ff_post{
+	#box{
+		width: 300px;
+	}
+
+	#box .left {
+        transform: rotateY(-90deg) translateZ(150px);//md
+        display: none;
+    }
+
+    #box .right {
+        transform: rotateY(-90deg) translateZ(150px);//md
+          display: none;
+    }
+
+     #box .back {
+
+          display: none;
+    }
+
+     #box .front {
+		box-shadow: 0px 0px 0px #fff;
+          // height: 300px;
+    }
+
+    .box-content{
+    	.topic, .f_user{
+    		width: 100%;
+    	}
+
+    	.topic{
+    		font-size: 15px;
+	    	text-align: center;
+    		
+    	}
+
+    	.f_user{
+    		width: 30%;
+    		float: right;
+    		img{
+    			width: 15px;
+    			height: 15px;
+    		}
+
+    		p{
+    			a{
+    				font-size: 12px;
+    			}
+    			&:nth-child(3) {
+	    			display: none;
+	    		}
+    		}
+
+    		
+    	}
+    	.f_response{
+    		font-size: 12px;
+    		width: 50%;
+    		float: left;
+    		display: inline-block;
+    	}
+    }
+}
+
+.postForumPop{
+	// overflow-y:auto; 
+	.editorContainer{
+		width: 80%;
+		// height: 50%;
+		height: 90%;
+			overflow-y:auto; 
+
+		form{
+			position: relative;
+			top: 40px;
+			height: 70%;
+			
+		}
+
+		#editorTitle{
+			font-size: 15px;
+			height: 30px;
+			text-align: center;
+			padding-left: 0px;
+		}
+
+		#editorSubmit, #editorReset{
+			// left: 36px;
+			font-size: 16px;
+			font-weight: 700;
+		}
+
+		.chooseGroup{
+			text-align: center;
+			.typeChoose{
+				font-size: 15px;
+				padding:5px;
+
+				span{
+					font-size: 15px;
+					display: block;
+					display: none;
+				}
+			}
+		}
+	}
+
+	 #close-btn{
+	 	display: none;
+	 } 
+}	
+
+
+}

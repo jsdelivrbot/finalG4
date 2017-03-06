@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link type="text/css" rel="stylesheet" href="css/reset.css">
+	<link type="text/css" rel="stylesheet" href="css/colorfulTab.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+
+	<title>welcome to Forum</title>
+
+	<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+	<!-- tweenmax -->
+	<script type="text/javascript" src="libs/gsap/src/minified/TweenMax.min.js"></script>
+
+
+	<!-- scrollmagic -->
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<!-- this page's js -->
+	<script type="text/javascript" src="js/forum.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+
+		})
+
+	</script>
+
+
+
+
+	<style type="text/css">
+
+	*{
+		/*outline: 1px solid red;*/
+		/*font-family: 微軟正黑體!important;*/
+	}
+		.f_bg_wrapper{
+			position: fixed;
+			top: 0;
+		    left: 0;
+		    background-image: url(img/forum/f_001.jpg);background-size: cover;
+		    /*background-color: #333;*/
+		}
+
+		#f_bg1 {
+		  width: 100%;
+		  height: 100%;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  background: radial-gradient(ellipse at center, rgba(31, 76, 116, .6) 0%, rgba(21, 28, 60, .9) 30%, rgba(9, 10, 15, .9) 50%);
+
+
+		}
+
+
+	</style>
+</head>
+<body id="f_wrapper">
+	<!-- 導覽列 -->
+	<nav id="nav" style="background-color: rgba(0,0,0,0.8);">
+		<div class="relative">
+			<div class="row">
+				<input type="checkbox" id="navButtonHidden">
+				<label id="navButton" for="navButtonHidden"></label>
+				<div id="logo">
+					<a href="#"><img src="img/logo.png" alt="ZeroGravity"></a>
+				</div>
+				<ul class="mainMenu menu">
+					<li><a href="#">觀星活動</a></li>
+					<li><a href="#" class="onThisPage">星際論壇</a></li>
+					<li><a href="#">照片牆</a></li>
+					<li><a href="#">星知識</a></li>
+				</ul>
+				<ul class="mainMenu signArea">
+					<li id="signLeft">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						<span><a href="#">註冊</a></span>
+					</li>
+					<li id="signRight">
+						<span><a href="#">登入</a></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- 導覽列結束 -->
+
+<!--background img fixed    -->
+
+	<div class="f_bg_wrapper" style="width:100%; height:100vh;">
+		<div id="f_bg1">
+			<div id="canvas"></div>
+		</div>
+	</div>
+<!-- background-image  -->
+
+
+	<!-- 第二區 論壇內容開始 -->
+	<section class="f_section" id="f_section2">
+		<!-- 論壇內容選單 -->
+		<div class="colorful-tab-wrapper f_tab" id="colorful-background-image" style="width: 100vw; padding-top: 80px;">
+		<div class="container">
+		<div class="row">
+
+			<!-- f_tab_area_控制js的pin -->
+			<div id="f_tab_area">
+				<ul class="colorful-tab-menu" id="f_tab" style="float: left;">
+				  <li class="colorful-tab-menu-item active" tab-background=""><a href="#bg-0">綜合討論區</a></li>
+				  <li class="colorful-tab-menu-item" tab-background=""><a href="#bg-1">天文攝影區</a></li>
+				  <li class="colorful-tab-menu-item" tab-background=""><a href="#bg-2">觀星設備區</a></li>
+
+				</ul>
+
+				<div class="f_fn_area text-right" >
+					<button class="btn-lg btn-blue">
+					<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp發表文章</button>
+					<div class="f_search">
+						<input type="text" name="" placeholder="找你有興趣的天文主題...">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!-- 上方被pin住的tab選單 -->
+
+			<div class="colorful-tab-container" style="width: 100%;margin: auto; padding-top:50px;padding-bottom: 30px;overflow-y:auto;">
+
+			  <div class="colorful-tab-content active" id="bg-0">  
+				  <div class="f_posts" id="f_one_post">
+					<!-- 單篇post格式 -->
+					<div class="f_lightbox_content">
+						<table border="0" width="80%" >
+							<thead>
+								<tr><th><h5>主題：star trek 50年了
+									<div class="social-icon">
+										<i class="fa fa-eye" aria-hidden="true"></i>50
+										<i class="fa fa-star-o" aria-hidden="true"></i>50
+										<i class="fa fa-share-square-o" aria-hidden="true"></i>50
+
+									</div></h5>
+								</th></tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td class="text-left">
+									<div class="f_sub_user">
+										<img src="img/forum/f_005.png" width="80" height="80">
+										<div class="f_user_info">
+											<span>Allie213</span><span class="user_level">星際過客</span>
+											<p>2017-01-01 12:00發表</p>
+										</div>
+									</div>
+									<div class="f_post_text">
+										<p>《星艦奇航記》（Star Trek）50年 _日期就訂在50年前首播的9月，但票價和出席名單等細節都還未定。 這場影迷大會將舉辦在紐約曼哈頓的Javits會議中心，這也是New York Comic Con.的舉辦地點。</p>
+										<p>2016年是 Star Trek電視影集50周年紀念</p>
+										<p>Star Trek已經要50周年了，這禮拜的電影──《星際爭霸戰：浩瀚無垠》（Star Trek: Beyond）更是紀念這項盛舉的作品。</p>
+									</div>
+								<!-- 回覆&檢舉 -->
+									<div class="f_btn">
+										<button>檢舉</button>
+										<button>回覆</button>
+									</div>
+								<!-- 回覆&檢舉end -->
+								</td></tr>
+
+
+
+								<!-- 第三列開始 -->
+								<tr>
+								<td class="text-left">
+									<div class="f_sub_user">
+										<img src="img/forum/f_004.png" width="80" height="80">
+										<div class="f_user_info">
+											<span>Katie918</span><span class="user_level">星際新手</span>
+											<p>2017-01-01 18:00發表</p>
+										</div>
+									</div>
+									<div class="f_post_text">
+										<p>最近mod有上架一系列的電影</p>
+										<p>看到睡著(揍扁)</p>
+										<p>啊~ID4加減看就好惹</p>
+									</div>
+								<!-- 回覆&檢舉 -->
+									<div class="f_btn">
+										<button>檢舉</button>
+										<button>回覆</button>
+									</div>
+								<!-- 回覆&檢舉end -->
+
+								</td></tr>
+								<tr>
+								<td class="text-left">
+									<div class="f_sub_user">
+										<img src="img/forum/f_005.png" width="80" height="80">
+										<div class="f_user_info">
+											<span>Allie213</span><span class="user_level">星際過客</span>
+											<p>2017-01-01 19:00發表</p>
+										</div>
+									</div>
+									<div class="f_post_text">
+										<p>裡面也有航海家號，不過看那樣子應該是依照最後一季最後一集裝了燒蝕船體裝甲的外型做的~~</p>
+									</div>
+								<!-- 回覆&檢舉 -->
+									<div class="f_btn">
+										<button>檢舉</button>
+										<button>回覆</button>
+									</div>
+								<!-- 回覆&檢舉end -->
+								</td></tr>
+
+								<!-- 第n列結束 -->
+							</tbody>
+						</table>
+					</div>
+
+					<!-- 單篇post結束 -->
+				  </div>
+			  </div>
+
+			  <div class="colorful-tab-content" id="bg-1">
+				<div class="f_posts">
+
+				  </div>
+			  </div>
+
+			  <div class="colorful-tab-content" id="bg-2">
+				<div class="f_posts">
+
+				  </div>
+			  </div>
+
+			</div>
+
+
+
+
+		</div>
+		</div>
+		</div>
+
+
+		<!-- 論壇內容區塊end -->
+	</section>
+
+	<!-- 第二區結束 -->
+<!-- </div> -->
+
+	<!-- 第三區開始 -->
+
+<!-- </div> -->
+
+
+<footer></footer>
+
+
+
+</body>
+</html>
+
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/colorfulTab.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#colorful").colorfulTab();
+
+	$("#colorful-elliptic").colorfulTab({
+		theme: "elliptic"
+	});
+
+   $("#colorful-flatline").colorfulTab({
+		theme: "flatline"
+	});
+
+	$("#colorful-background-image").colorfulTab({
+		theme: "flatline",
+		backgroundImage: "true",
+		// overlayColor: "#333333",
+		overlayOpacity: "0.1"
+	});
+
+});
+</script>
+
+
+<!-- 背景動圖 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.js"></script>
+<script type="text/javascript">
+	var renderer, scene, camera, composer, circle, skelet, particle;
+
+window.onload = function() {
+  init();
+  animate();
+}
+
+function init() {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.autoClear = false;
+  renderer.setClearColor(0x000000, 0.0);
+  document.getElementById('canvas').appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+  camera.position.z = 400;
+  scene.add(camera);
+
+  circle = new THREE.Object3D();
+  skelet = new THREE.Object3D();
+  particle = new THREE.Object3D();
+
+  // scene.add(circle);
+  // scene.add(skelet);
+  scene.add(particle);
+
+
+//three.js的幾何圖形
+  var geometry = new THREE.SphereGeometry(1, 20, 10);
+  var geom = new THREE.IcosahedronGeometry(7, 1); //正20邊型
+  var geom2 = new THREE.IcosahedronGeometry(15, 1);
+
+  var material = new THREE.MeshPhongMaterial({    //小飛削
+    color: 0xffffff,
+    shading: THREE.FlatShading
+  });
+
+  for (var i = 0; i < 130; i++) {
+    var mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+    mesh.position.multiplyScalar(90 + (Math.random() * 700));
+    mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
+    particle.add(mesh);
+  }
+
+  var mat = new THREE.MeshPhongMaterial({
+    color: 0xffffff,
+    shading: THREE.FlatShading
+  });
+
+  var mat2 = new THREE.MeshPhongMaterial({
+    color: 0xffffff,
+    wireframe: true,
+    side: THREE.DoubleSide
+
+  });
+
+  var planet = new THREE.Mesh(geom, mat);
+  planet.scale.x = planet.scale.y = planet.scale.z = 16;
+  circle.add(planet);
+
+  var planet2 = new THREE.Mesh(geom2, mat2);
+  planet2.scale.x = planet2.scale.y = planet2.scale.z = 10;
+  skelet.add(planet2);
+
+  var ambientLight = new THREE.AmbientLight(0x999999 );
+  scene.add(ambientLight);
+
+  var lights = [];
+lights[0] = new THREE.DirectionalLight( 0xffffff, 1 );
+lights[0].position.set( 1, 0, 0 );
+lights[1] = new THREE.DirectionalLight( 0x11E8BB, 1 );
+lights[1].position.set( 0.75, 1, 0.5 );
+lights[2] = new THREE.DirectionalLight( 0x8200C9, 1 );
+lights[2].position.set( -0.75, -1, 0.5 );
+scene.add( lights[0] );
+scene.add( lights[1] );
+scene.add( lights[2] );
+
+
+  window.addEventListener('resize', onWindowResize, false);
+
+};
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  particle.rotation.x += 0.0000;
+  particle.rotation.y -= 0.0040;
+  circle.rotation.x -= 0.0020;
+  circle.rotation.y -= 0.0030;
+  skelet.rotation.x -= 0.0010;
+  skelet.rotation.y += 0.0020;
+  renderer.clear();
+
+  renderer.render( scene, camera )
+};
+
+
+</script>

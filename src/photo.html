@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroGravity</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/p-magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="css/p-magnific.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/animations.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/p-jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="js/p-magnific.js"></script>
+    <script src="js/nav2.js"></script>
+    <script src="js/photo.js"></script>
+    <!--  <script type="text/javascript" src="js/p-jquery.js"></script>
+     <script type="text/javascript" src="js/p-starfield.js"></script> -->
+    <script src="js/p-wow.min.js"></script>
+    <script>
+    new WOW().init();
+    </script>
+    <script>
+    $(function() {
+        $(window).load(function() {
+            $(window).bind('scroll resize', function() {
+                var $this = $(this);
+                var $this_bottom = $this.scrollTop();
+
+                //當高度小於100時，關閉區塊	
+                if ($this_bottom < 10) {
+                    $('.p-go-top').stop().animate({
+                        bottom: "-80px"
+                    });
+                }
+                if ($this_bottom > 10) {
+                    $('.p-go-top').stop().animate({
+                        bottom: "50px"
+                    });
+
+                }
+            }).scroll();
+        });
+    });
+
+    $(function() {
+
+        $("#goTop").click(function() {
+
+            $("html,body").animate({
+                scrollTop: 0
+            }, 900);
+
+            return false;
+
+        });
+
+//           var mem = JSON.parse(localStorage.getItem('mem'));
+//           var  diva =  $('.p-n-icon div.a');
+//         $('body').on('click','.p-n-icon div.a',function(){
+//             var $this = $(this);
+//             alert($this.children('input').val());
+//             $.ajax({
+//                 url: 'php/phoColl.php',
+//                 type: 'post',
+//                 dataType: 'json',
+//                 data: {
+//                     memNo:mem.mem_no,
+//                     phoNo:$this.children('input').val()
+//                 },
+//                 success:function(res){
+//                     alert('ok');
+//                 },
+//                 error:function(responseText){
+//                     console.log(responseText);
+//                 }
+//         })
+
+// })
+
+    });
+    </script>
+</head>
+<style type="text/css">
+#f_bg1 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #11e8bb;
+    /* Old browsers */
+    background: -moz-radial-gradient(ellipse at center, #1f4c74 0%, rgb(29, 34, 60) 30%, #090a0f 50%);
+    /* FF3.6-15 */
+    background: -webkit-radial-gradient(ellipse at center, #1f4c74 0%, rgb(29, 34, 60) 30%, #090a0f 50%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #1f4c74 0%, rgb(29, 34, 60) 30%, #090a0f 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#11e8bb', endColorstr='#8200c9', GradientType=0);
+    /* IE6-9 */
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+@media screen and (max-width: 767px) {
+    #outbox {
+        -moz-column-count: 1;
+        -moz-column-gap: 10px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 15px;
+        column-count: 1;
+        column-gap: 15px;
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #outbox {
+        -moz-column-count: 2;
+        -moz-column-gap: 10px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 15px;
+        column-count: 2;
+        column-gap: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #outbox {
+        -moz-column-count: 3;
+        -moz-column-gap: 10px;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 15px;
+        column-count: 3;
+        column-gap: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+</style>
+
+<body id="p-body">
+    <div id="f_bg1">
+        <div id="canvas"></div>
+    </div>
+    <nav id="nav">
+        <div class="relative">
+            <div class="row">
+                <div id="ham">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div id="logo">
+                    <a href="home.html"><img src="img/logo.png" alt="ZeroGravity"></a>
+                </div>
+                <ul class="mainMenu menu">
+                    <li><a href="activity.php">觀星活動</a></li>
+                    <li><a href="forum.html">星際論壇</a></li>
+                    <li><a href="photo.html" class="onThisPage">照片牆</a></li>
+                    <li><a href="article.html">星知識</a></li>
+                    <li><a href="for_newer.html">觀星指南</a></li>
+                </ul>
+                <ul class="mainMenu signArea">
+                    <ul class="subMenu">
+                        <li><a href="member.html"><i class="fa fa-user-circle" aria-hidden="true"></i>會員專區</a></li>
+                        <li><a href="#"><i class="fa fa-wpexplorer" aria-hidden="true"></i>我的活動</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-grav" aria-hidden="true"></i>我的貼文</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>
+                        我的照片</a></li>
+                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>我的收藏</a></li>
+                        <li><a href="#" id="logOut">登出</a></li>
+                    </ul>
+                    <li id="navMemPhoto">
+                        <img src="">
+                    </li>
+                    <li id="navMemInfo">
+                        <span id="navMemberName"></span>
+                    </li>
+                    <li id="signLeft">
+                        <span><a href="#" id="navSignup">註冊</a></span>
+                    </li>
+                    <li id="signRight">
+                        <span><a href="#" id="navLogin"><i class="fa fa-user" aria-hidden="true"></i></a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="p-bigbanner ">
+        <div class="star1">
+        </div>
+        <div class="star2">
+        </div>
+        <div class="star3">
+        </div>
+        <div class="p-banner-txt bigEntrance">
+            <h1>照片牆</h1></div>
+        <div class="p-search fadeIn">
+            <div class="input ">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" name="search" placeholder="找星空 搜尋一下" maxlength="15" size="15" id="phoSearch">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- 標籤 -->
+    <div class="p-tabsearch">
+        <div class="container ">
+            <!-- <div class="p-search col-xs-12 col-sm-12 col-md-6">
+					
+				<div class="input">	
+
+						<i class="fa fa-search" aria-hidden="true" ></i>
+					<input type="text" name="search" placeholder="找星空 搜尋一下" maxlength="15" size="15">
+				</div>	
+			</div> -->
+            <div class="p-tab col-xs-12 col-sm-12 col-md-12">
+                <div class="label">
+                    <a href="#" id="newestPhoto">最新照片</a>
+                    <a href="#" id="hotestPhoto">熱門照片</a>
+                    <span class="label" id="inline-content">
+						<a href="#test-content" data-effect="mfp-3d-unfold" class="btn-blue" id="camera">
+						<i class="fa fa-camera" aria-hidden="true"></i>上傳</a>
+					</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- 內文 -->
+    <div class="p-new-content ">
+        <div class="star1">
+        </div>
+        <div class="star2">
+        </div>
+        <div class="star3">
+        </div>
+        <div class="container">
+            <!-- <div class="row"> -->
+            <div id="outbox">
+                <!-- <div class="p-n-pic content_box wow fadeInDown">	
+				<div class="whitebox"></div>
+					<div class="p-title">
+						<h5>Amazing star</h5>
+					</div>
+					<div class="user">
+						<img src="img/p_people2.jpg">
+						<p>Allie213</p>
+					</div>
+					<a href="photo-inside.html">
+					<img src="img/a_015.jpg">
+					</a>
+					<div class="p-n-pic-tag ">
+						<div class="txt">
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+						</div>
+					</div>
+					<div class="p-information ">
+						<div class="left ">
+							<span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>	
+							<span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+						</div>
+						<div class="right ">
+							<span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+						</div>
+					</div>
+
+					<div class="p-n-icon ">
+						<div class="a"><i class="fa fa-heart" aria-hidden="true"></i><h5></h5></div>
+						<div class="b"  id="b"><i class="fa fa-share"  id="b" aria-hidden="true"></i></div>
+					</div>
+					<div class="p-n-share "  id="divShow" style="opacity: 0">
+						<p><i class="fa fa-times" aria-hidden="true" ></i></p>
+						<h5 class="share-txt">分享一張相片至:</h5>
+						<div class="share-share">
+						<i class="fa fa-facebook-square" aria-hidden="true"></i>
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+						<i class="fa fa-twitter-square" aria-hidden="true"></i>
+						</div>
+					</div>
+				
+			</div> -->
+                <!-- 	<div class="p-n-pic  content_box wow fadeInDown">
+				
+					<div class="whitebox"></div>
+					<div class="p-title">
+						<h5>Amazing star</h5>
+					</div>
+					<div class="user ">
+						<img src="img/p_people3.jpg">
+						<p>Allie213</p>
+					</div>
+					<img src="img/i-act01.jpg">
+					<div class="p-n-pic-tag">
+						<div class="txt">
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+						</div>
+					</div>
+					<div class="p-information ">
+						<div class="left ">
+							<span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>	
+							<span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+						</div>
+						<div class="right ">
+							<span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+						</div>
+					</div>
+					<div class="p-n-icon ">
+						<div class="a"><i class="fa fa-heart" aria-hidden="true"></i><h5></h5></div>
+						<div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+					</div>
+	
+			</div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+				
+					<div class="whitebox"></div>
+					<div class="p-title">
+					<h5>Amazing star</h5>
+				</div>
+				<div class="user ">
+					<img src="img/p_people4.jpg">
+					<p>Allie213</p>
+				</div>
+				<img src="img/a_015.jpg">
+				<div class="p-n-pic-tag">
+						<div class="txt">
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+							<a href="#">#武嶺觀星團</a>
+						</div>
+					</div>
+				<div class="p-information ">
+						<div class="left ">
+							<span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>	
+							<span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+						</div>
+						<div class="right ">
+							<span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+						</div>
+				</div>
+				<div class="p-n-icon ">
+					<div class="a"><i class="fa fa-heart" aria-hidden="true"></i><h5></h5></div>
+					<div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+				</div>
+	
+			</div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people5.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_p_004.png">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+               <!--  <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people5.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_p_005.png">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_p_002.png">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_p_006.png">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_p_006.png">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+                <!-- <div class="p-n-pic  content_box wow fadeInDown">
+                    <div class="whitebox"></div>
+                    <div class="p-title">
+                        <h5>Amazing star</h5>
+                    </div>
+                    <div class="user ">
+                        <img src="img/p_people.jpg">
+                        <p>Allie213</p>
+                    </div>
+                    <img src="img/p_bigpic_002.jpg">
+                    <div class="p-n-pic-tag">
+                        <div class="txt">
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                            <a href="#">#武嶺觀星團</a>
+                        </div>
+                    </div>
+                    <div class="p-information ">
+                        <div class="left ">
+                            <span class="p-information-fav"><i class="fa fa-heart" aria-hidden="true"></i>1,000</span>
+                            <span class="p-information-views"><i class="fa fa-eye" aria-hidden="true"></i>10,000</span>
+                        </div>
+                        <div class="right ">
+                            <span class="p-information-day"><i class="fa fa-map-marker" aria-hidden="true"></i>Biarritz France</span>
+                        </div>
+                    </div>
+                    <div class="p-n-icon ">
+                        <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                            <h5></h5></div>
+                        <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+    <!-- 相片內頁 -->
+    <div class="p-inside white-inside-popup mfp-with-anim mfp-hide" id="test-popup">
+        <!-- 照片 -->
+        <!-- <div class="row"> -->
+        <div class="p-in-pic ">
+            <div class="p-in-icon ">
+                <div class="a"><i class="fa fa-heart" aria-hidden="true"></i>
+                    <h5>1555</h5></div>
+                <div class="b"><i class="fa fa-share" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- 內文 -->
+        <div class="p-in-content col-xs-12 col-sm-12 col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="left col-xs-12 col-sm-12 col-md-12">
+                        <div class="mid">
+                            <div class="user">
+                                <img src="img/p_people.jpg">
+                                <h5>Allie213</h5>
+                            </div>
+                            <div class="content">
+                                <h3>gone with the wind</h3>
+                                <p>no sense. the image simply poped up in my mind.so not sooc. but most of the books are real. one more + behind the scene!Biggest thankyou to you, lovely, talented Kiara for the testimonial :) I was shocked out of joy when I saw it.tumblr or facebook or portfolio facebook or portfolio facebook or </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right col-xs-12 col-sm-12 col-md-12">
+                        <div class="messagebox col-xs-12 col-sm-12 col-md-12">
+                            <div class="message col-xs-12 col-sm-12 col-md-12">
+                                <div class="ms-user">
+                                    <img src="img/p_people2.jpg">
+                                </div>
+                                <div class="ms-content">
+                                    <h5>supermanatee </h5>
+                                    <h6>一個月</h6>
+                                    <p>Beautiful gallery</p>
+                                </div>
+                            </div>
+                            <div class="message col-xs-12 col-sm-12 col-md-12">
+                                <div class="ms-user">
+                                    <img src="img/p_people3.jpg">
+                                </div>
+                                <div class="ms-content">
+                                    <h5>Anthony Thomas </h5>
+                                    <h6>一個月</h6>
+                                    <p>Wow great capture, very nice picture!</p>
+                                </div>
+                            </div>
+                            <div class="message col-xs-12 col-sm-12 col-md-12">
+                                <div class="ms-user">
+                                    <img src="img/p_people4.jpg">
+                                </div>
+                                <div class="ms-content">
+                                    <h5>yupicard</h5>
+                                    <h6>一個月</h6>
+                                    <p>Wonderful image!</p>
+                                </div>
+                            </div>
+                            <div class="message col-xs-12 col-sm-12 col-md-12">
+                                <div class="ms-user">
+                                    <img src="img/p_people.jpg">
+                                </div>
+                                <textarea name="massage"></textarea>
+                            </div>
+                        </div>
+                        <div class="r-left col-xs-12 col-sm-12 col-md-12">
+                            <div class="adress col-xs-12 col-sm-3 col-md-3">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h2>Location</h2>
+                                <h5>Biarritz France</h5>
+                            </div>
+                            <div class="tag col-xs-12 col-sm-3 col-md-3">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                <h2>Tag</h2>
+                                <p><a href="#">#武嶺觀星團</a><a href="#">#南十字</a><a href="#">#白雪</a><a href="#">#今天初雪<a href="#">#武嶺觀星團</a></a>
+                                </p>
+                            </div>
+                            <div class="icon col-xs-12 col-sm-3 col-md-3">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                <h2>Like</h2>
+                                <h5>10000</h5>
+                            </div>
+                            <div class="number col-xs-12 col-sm-3 col-md-3">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <h2>Views</h2>
+                                <h5>100000</h5>
+                            </div>
+                        </div>
+                        <div class="recommend col-xs-12 col-sm-12 col-md-12">
+                            <h2>Recommend</h2>
+                            <div class="itembox">
+                                <div class="item"><img src="img/p_p_001.png"></div>
+                                <div class="item"><img src="img/p_p_002.png"></div>
+                                <div class="item"><img src="img/p_p_003.png"></div>
+                                <div class="item"><img src="img/p_p_004.png"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- 上傳頁面 -->
+    <div class="p-upload  white-upload-popup mfp-with-anim mfp-hide" id="test-content">
+        <div class="container ">
+            <div class="row">
+                <div class="stars"></div>
+                <div class="p-upload-box">
+                    <!-- <div class="title">
+					<h1>上傳照片</h1>
+				</div> -->
+                    <div class="table">
+                        <div class="h1">
+                            <h1>上傳照片</h1></div>
+                        <table>
+                            <form action="php/uploadPhoto.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="memNo" id="memNoUpload" value="">
+                                <tr>
+                                    <th id="tit">照片名稱</th>
+                                    <td id="box">
+                                        <input type="text" name="photoName" maxlength="50" size="20">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="tit">照片地點</th>
+                                    <td id="box">
+                                        <input type="text" name="photoLoc" maxlength="50" size="20">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="tit">照片標籤</th>
+                                    <td id="box">
+                                        <input type="text" name="photoTag" placeholder="#武嶺觀星團 #南十字星" maxlength="50" size="40">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="tit">照片描述</th>
+                                    <td id="box">
+                                        <textarea name="content"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="tit">照片上傳</th>
+                                    <td id="box">
+                                        <input Type="File" Name="YouFile">
+                                        <!-- <div class="btn btn-blue"><a href="#">上傳</a></div> -->
+                                    </td>
+                                </tr>
+                        </table>
+                    </div>
+                    <!-- <div class="check"><div class="btn-lg btn-blue"><a href="#">確認送出</a></div></div> -->
+                    <div class="check">
+                        <input class="btn-lg btn-blue" type="submit" value="確認送出">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="loginPopup">
+        <div class="i-lightboxBg"></div>
+        <div class="login">
+            <h4>會員登入</h4>
+            <!-- <form action="php/login.php" method="post"> -->
+            <input id="loginAccount" type="Email" value="guest" name="memEmail">
+            <input id="loginPsw" type="password" value="guest" name="memPsw" maxlength="12" minlength="4">
+            <input id="loginConfirmPsw" type="password" placeholder="*確認密碼" maxlength="12" minlength="4">
+            <input id="loginMemName" type="text" placeholder="*暱稱(2~12個字元)" name="memName" maxlength="12" minlength="2">
+            <input type="submit" class="searchBar-btn" id="i-loginBtn" value="登入">
+            <!-- <div class="searchBar-btn" id="i-loginBtn">
+                    <a href="#">登入</a>
+                </div> -->
+            <!-- </form> -->
+            <div class="logOn">
+                按此註冊會員
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.js"></script>
+<script type="text/javascript">
+var renderer, scene, camera, composer, circle, skelet, particle;
+
+window.onload = function() {
+    init();
+    animate();
+}
+
+function init() {
+    renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.autoClear = false;
+    renderer.setClearColor(0x000000, 0.0);
+    document.getElementById('canvas').appendChild(renderer.domElement);
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera(750, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 200;
+    scene.add(camera);
+
+    circle = new THREE.Object3D();
+    skelet = new THREE.Object3D();
+    particle = new THREE.Object3D();
+
+    // scene.add(circle);
+    // scene.add(skelet);
+    scene.add(particle);
+
+
+    //three.js的幾何圖形
+    var geometry = new THREE.SphereGeometry(1, 20, 10);
+    var geom = new THREE.IcosahedronGeometry(7, 1); //正20邊型
+    var geom2 = new THREE.IcosahedronGeometry(15, 1);
+
+    var material = new THREE.MeshPhongMaterial({ //小飛削
+        color: 0xffffff,
+        shading: THREE.FlatShading
+    });
+
+    for (var i = 0; i < 200; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+        mesh.position.multiplyScalar(90 + (Math.random() * 700));
+        mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
+        particle.add(mesh);
+    }
+
+    var mat = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        shading: THREE.FlatShading
+    });
+
+    var mat2 = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        wireframe: true,
+        side: THREE.DoubleSide
+
+    });
+
+    var planet = new THREE.Mesh(geom, mat);
+    planet.scale.x = planet.scale.y = planet.scale.z = 16;
+    circle.add(planet);
+
+    var planet2 = new THREE.Mesh(geom2, mat2);
+    planet2.scale.x = planet2.scale.y = planet2.scale.z = 10;
+    skelet.add(planet2);
+
+    var ambientLight = new THREE.AmbientLight(0x333333);
+    scene.add(ambientLight);
+
+    var lights = [];
+    lights[0] = new THREE.DirectionalLight(0x555555, 1);
+    lights[0].position.set(10, 0, 0);
+    lights[1] = new THREE.DirectionalLight(0xffaa00, 0.1);
+    lights[1].position.set(0.75, 1, 0.5);
+    lights[2] = new THREE.DirectionalLight(0x333333, 1);
+    lights[2].position.set(-0.75, -1, 0.5);
+    scene.add(lights[0]);
+    scene.add(lights[1]);
+    scene.add(lights[2]);
+
+
+    window.addEventListener('resize', onWindowResize, false);
+
+};
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    particle.rotation.x += 0.0020;
+    particle.rotation.y -= 0.0010;
+    circle.rotation.x -= 0.0020;
+    circle.rotation.y -= 0.0030;
+    skelet.rotation.x -= 0.0010;
+    skelet.rotation.y += 0.0020;
+    renderer.clear();
+
+    renderer.render(scene, camera)
+};
+</script>
+<script type="text/javascript">
+particlesJS("particles-js", {
+    "particles": {
+        "number": {
+            "value": 50,
+            "density": {
+                "enable": true,
+                "value_area": 1000
+            }
+        },
+        "color": {
+            "value": "#ffffff"
+        },
+        "shape": {
+            "type": "circle",
+            "stroke": {
+                "width": 0,
+                "color": "#000000"
+            },
+            "polygon": {
+                "nb_sides": 5
+            },
+            "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "opacity": {
+            "value": 0.8,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 5,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 130,
+            "color": "#ffffff",
+            "opacity": 0.8,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 962.0472365193136
+            }
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "repulse"
+            },
+            "onclick": {
+                "enable": false,
+                "mode": "repulse"
+            },
+            "resize": true
+        },
+        "modes": {
+            "grab": {
+                "distance": 400,
+                "line_linked": {
+                    "opacity": 1
+                }
+            },
+            "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+            },
+            "repulse": {
+                "distance": 200,
+                "duration": 0.4
+            },
+            "push": {
+                "particles_nb": 4
+            },
+            "remove": {
+                "particles_nb": 2
+            }
+        }
+    },
+    "retina_detect": true
+});
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
+</script>
+<script type="text/javascript">
+$(function() {
+    $('.p-n-icon .b').click(function() {
+            $('#divShow').css({
+                'z-index': '999'
+            }).animate({
+                'opacity': '1'
+            }, 300);
+        })
+        // $("#dwivShow").hide();
+
+    $('body').click(function(evt) {
+        if ($(evt.target).parents("#divShow").length == 0 &&
+            evt.target.id != "b" && evt.target.id != "divShow") {
+            $('#divShow').css({
+                'z-index': '-1'
+            }).animate({
+                'opacity': '0'
+            }, 300);
+        }
+    });
+    $('.p-n-share .fa-times').click(function() {
+        $('#divShow').css({
+            'z-index': '-1'
+        }).animate({
+            'opacity': '0'
+        }, 300);
+    })
+});
+</script>

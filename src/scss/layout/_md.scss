@@ -1,0 +1,156 @@
+@include respones(md) {
+    #logo {
+        float: left;
+        width: 15%;
+        padding-top: 15px;
+        padding-left: 50px;
+    }
+    #ham{
+        display:none;
+    }
+    .mainMenu {
+        float: left;
+        padding-top: 20px;
+        li {
+            display: inline-block;
+            position: relative;
+        }
+        &.menu {
+            width: 67%;
+            text-align: left;
+            a {
+                display: block;
+                color: rgba(226,238,243,.8);
+                font-size: $fz-nav;
+                padding: 14px 15px;
+                letter-spacing: 1.2px;
+                // font-weight: 800;
+                &:hover {
+                    color: #86d4f5;
+                }
+                &:before {
+                    content: '';
+                    width: 0%;
+                    height: 0px;
+                    border: 0px solid #86d4f5;
+                    position: absolute;
+                    top: 80%;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                }
+                &.onThisPage:before {
+                    content: '';
+                    width: 80%;
+                    height: 0px;
+                    border: 1px solid rgba(134, 212, 245, .6);
+                    position: absolute;
+                    top: 80%;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                }
+                &.onThisPage {
+                    color: rgba(134, 212, 245, 1);
+                }
+                &:hover:before {
+                    width: 80%;
+                    border: 1px solid rgba(134, 212, 245, .8);
+                    transition: .6s;
+                }
+            }
+        }
+        &.signArea {
+            width: 18%;
+            text-align: right;
+            padding-right: 50px;
+            position: relative;
+            a {
+                display: block;
+                font-size: 15px;
+                color: #f3d4a9;
+                letter-spacing: 1px;
+                padding: 10px 10px;
+                margin-top: 5px;
+                margin-right: 5px;
+                font-weight: 500;
+                // border: 1px solid rgba(218, 175, 115, 0.6);
+                &:hover {
+                    color: #f3d4a9;;
+                    // border: 1px solid #f3d4a9;
+                }
+            }
+             .subMenu{
+                position:absolute;
+                top: 80px;
+                right: 0px;
+                background:rgba(29, 34, 60, 0.5);
+                box-shadow: 1px 1px 5px #000;
+                width:200px;
+                text-align:center;
+                opacity: 0;
+                transition: .5s;
+                padding: 20px;
+                display: none;
+                li{
+                    display:block;
+                    a{
+                        padding:10px 10px;
+                        border: 0px;
+
+                        .fa{
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            &.show{
+              opacity: 1;
+              transition: .5s;
+              display: block;
+            }
+        }
+    }
+        #navMemPhoto {
+            text-align: center;
+            cursor: pointer;
+            img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                vertical-align: middle;
+                &:hover{
+                  box-shadow:0px 0px 10px 1px rgba(218, 175, 115, 1);
+                 }
+            }
+
+        }
+        #navMemberName {
+            color: #ddddcc;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top:5px;
+        }
+        #signRight a {
+            // background-color: rgba(218, 175, 115, 1);
+                border: 2px solid #f3d4a9;
+                color: #f3d4a9;
+                text-shadow: 0px 0px 3px #3e3e43;
+                font-weight: 500;
+                border-radius: 50%;
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+            &:hover {
+                background-color: #f3d4a9;
+                border: 1px solid rgba(218, 175, 115, 0.6);
+                color: #fff;
+            }
+        }
+    }
+}
+
+@include respones(lg) {
+
+} 

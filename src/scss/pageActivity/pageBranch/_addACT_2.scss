@@ -1,0 +1,18 @@
+#a-add-menu{
+    z-index: 10;
+    position: fixed;
+    top:100px;
+    left:0;
+
+    li{
+    	display: inline-block;
+    }
+}
+#a-add-section1{
+	width: 80%;	
+	height: 80%;	
+	margin: auto;
+}
+.a-add-google{
+	position: relative;	
+}

@@ -1,0 +1,659 @@
+@include respones(xs) {
+	//在此輸入內容
+.p-bigbanner{	
+		width: 100%;
+		height: 580px;
+		// opacity: 0.8;
+		position: relative;
+		background-image: url(../../img/p-banner3.png);
+		background-attachment: fixed; 
+		background-repeat: no-repeat;
+		background-attachment: center;
+		box-shadow: -0px -10px 50px #16192B inset;
+		// box-shadow: -0px -10px 50px #000 ;
+		.p-banner-txt{
+			width: 340px;
+			height: 100%;
+			position: absolute;
+			top:90%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index:1;
+			text-align: center;
+			h1{
+				font-size: 40px;
+				color: #fff;
+			}
+		}
+		.p-search{
+			width:300px;
+			height:auto;
+ 			position: absolute;
+			top:70%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index:1;
+		.input{
+			width: 100%;
+			height: 60px;
+			background-color: rgba(0,0,0,0.2);
+			position: relative;
+			text-align: center;
+			input{
+				width: 260px;
+				height: 40px;
+				border:1px solid #ccc;
+				border-radius:5px 5px;
+				padding-left:38px;
+				outline: none;
+				font-size: 14px;
+				color: #555;
+				background-color: #fff;
+				margin-top: 10px;
+				 
+				}
+			::-webkit-input-placeholder {
+				color:#999;
+			}
+			.fa-search{
+				position: absolute;
+				top:15px;
+				left:28px;
+				color: #555;
+				font-size: 26px;
+				font-weight: bolder;
+			}
+
+		}
+
+		
+	}
+		
+	}
+.p-tabsearch{
+	.container{
+		height:80px ;
+	}
+ 	.p-search{
+ 		// margin: 15px 0 15px 0px;
+ 		.inpunt{
+ 			width: 100%;
+ 			input{
+ 				width: 100px;
+ 			}
+ 		}
+	}
+	.p-tab{
+		height: 60px;
+		text-align:center;
+		.label{
+			margin-top: 10px;
+			a{
+				margin-left: 5px;
+				margin-right: 0px;
+				font-size:16px;
+				color: #fff;
+				
+
+			}
+			a:hover{
+				font-size: 16px;
+			}
+		}
+		
+				
+	}
+
+}
+#f_bg1{
+	// display: none;
+}
+// 內文
+.p-new-content{
+	margin-top: 50px;
+
+ 	.p-n-pic{
+ 		height: 100%;
+ 		margin-top: 60px;
+ 		position: relative;
+ 		overflow: hidden;
+		border-radius: 5px 5px;
+ 		
+ 		img{
+ 			// box-shadow:1px 1px 8px #555;
+ 			width: 100%;
+ 			height::100%;
+ 			border-radius: 5px 5px;
+ 			transition:1.5s;
+ 			opacity: 0.7;
+ 		}
+ 		
+		.whitebox {
+			z-index: 100;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width:100%;
+			height: 100%;
+			background: rgba(255,255,255,0.2);
+			content: '';
+			-webkit-transition: -webkit-transform 0.6s;
+			transition: transform 0.6s;
+			-webkit-transform: scale3d(2.2,1.6,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+			transform: scale3d(2.2,1.6,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+			transition:1s;
+		}
+
+		.p-title{
+			position: absolute;
+			width: 100%;
+			height:50px;
+ 			margin: auto;
+ 			top:8%;
+ 			left:0;
+ 			right: 0;
+ 			bottom:10%;
+ 			text-align: center;
+ 			z-index: 1;
+ 			transition:1s;
+ 			h5{
+ 				font-size: 32px;
+ 				color: rgba(255,255,255,0.9);
+ 			}
+
+		}
+ 		.user{
+ 			position: absolute;
+ 			top:0;
+ 			left:0;
+ 			z-index: 1;
+			padding: 8px 0px 8px 15px;
+			transition:0.5s;
+ 			img{
+ 				width: 15%;
+ 				height: 15%;
+ 				border-radius: 50%;
+ 				float: left;
+ 			}
+ 			p{
+ 				margin-top: 5px;
+ 				margin-left: 10px;
+ 				font-size: 14px;
+ 				color: rgba(255,255,255,0.8);
+ 				float: left;
+ 			}
+ 		}
+ 		.p-information{
+ 			// position: absolute;
+
+ 			width: 100%;
+ 			height: 30px;
+ 			bottom: 0;
+ 			right:0;
+ 			z-index: 1;
+ 			margin-bottom: 5px;
+			padding: 0px 10px 3px 0px;
+			text-align:left;
+			background-color: rgba(255,255,255,0.1);
+			padding-top: 6px;
+			margin-top: 2px;
+			border-radius: 5px 5px;
+			text-align:left;
+			transition:1s;
+			.left{
+				float: left;
+				span{
+					color:#ccc;
+					font-size: 12px;
+					i{
+						margin-left: 12px;
+						margin-right: 6px;
+					}
+				
+				}
+			}
+			.right{
+				float: right;
+				span{
+					color:#ccc;
+					font-size: 12px;
+				}
+			}
+			
+ 		}
+ 		.p-n-pic-tag{
+ 			// position: absolute;
+
+ 			width: 100%;
+ 			height: 30px;
+ 			bottom: 0;
+ 			right:0;
+ 			z-index: 1;
+ 			margin-bottom: 5px;
+			padding: 0px 10px 3px 0px;
+			text-align:left;
+			background-color: rgba(255,255,255,0.1);
+			padding-top: 6px;
+			margin-top: 2px;
+			border-radius: 5px 5px;
+			text-align:left;
+			transition:1s;
+			.txt{
+				padding-left: 10px;
+				a{
+					padding-left: 5px;
+					font-size: 12px;
+					direction: none;
+					color: #4f9cdd;
+				}
+			}
+ 		}
+ 		.p-n-icon{
+ 			// opacity: 0;
+ 			width:100%;
+ 			height: 50px;
+ 			position:  absolute;
+ 			top:10%;
+ 			right: 0;
+ 			left: 0;
+ 			bottom: 15%;
+ 			margin: auto;
+ 			// padding-left:60%;
+			padding-top: 8px;
+			// background-color: rgba(0,0,0,0.1);
+			transition:0.6s;
+			opacity: 0;
+			
+ 			.a{
+ 				width:14%;
+ 				height: 40px;
+ 				float: left;
+ 				margin-left:34%;
+ 				background-color: rgba(255,255,255,0.2);
+ 				border-radius: 5px 5px;
+				text-align: center;
+ 				.fa-heart{
+					margin-top:10px;
+					font-size:20px;
+					color: #F15151;
+ 				}
+ 				
+ 			}
+ 			.a:hover{
+ 				background-color:rgba(255,255,255,0.8);
+ 				transition:0.8s;
+ 			}
+ 			.b{
+ 				float:right;
+ 				width: 14%;
+ 				height: 40px;
+ 				background-color: rgba(255,255,255,0.2);
+ 				border-radius: 5px 5px;
+ 				margin-right:34%;
+ 				text-align: center;
+ 				.fa-share{
+ 					font-size: 20px;
+ 					margin-top: 10px;
+					color: #333;
+ 				}
+ 			}
+ 			.b:hover{
+ 				background-color:rgba(255,255,255,0.8);
+ 				transition:0.8s;
+ 			}
+ 			
+ 		}
+ 	}
+}
+// 相片內頁
+.p-in-content{
+	
+	.p-in-pic{
+		width: 100%;
+		height: 900px;
+		position: relative;
+		overflow: hidden;
+		background-image: url(../img/p_bigpic_001.jpg);
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: 99;
+		
+	.p-in-icon{
+ 			position: absolute;
+ 			top:94%;
+ 			left: 1%;
+ 			.a{
+ 				width: 80px;
+ 				height: 32px;
+ 				float: left;
+ 				background-color: rgba(255,255,255,0.8);
+ 				border-radius: 5px 5px;
+ 				margin-right: 18px;
+ 				margin-bottom: 16px;
+ 			
+ 				.fa-heart{
+					margin-top: 8px;
+					margin-left:8px;
+					font-size:16px;
+					color: #F15151;
+ 				}
+ 				h5{
+ 					display: inline-block;
+ 					margin-left: 10px;
+ 					font-size: 14px;
+ 					color: #555;
+ 				}
+ 			}
+ 			.b{
+ 				float: left;
+ 				width: 46px;
+ 				height: 32px;
+ 				background-color: rgba(255,255,255,0.8);
+ 				border-radius: 5px 5px;
+ 				.fa-share{
+ 					font-size: 16px;
+ 					margin-top: 9px;
+					margin-left: 13px;
+					color: #666;
+ 				}
+ 			}
+ 			
+ 		}
+	 }
+	.p-in-content .container{
+		height: 1600px;
+		background-color: #fff;
+
+	}
+
+.p-in-content{
+	.left{
+		width: 100%;
+	
+	.mid{
+		width: 100%;
+		height: 100%;
+		
+		margin-top: 60px;
+
+	}
+	.user{
+	width: 100%;
+   	text-align: center;
+		img{
+			width:100px;
+			border-radius: 50%;
+		
+		}
+		h5{
+			display:block;	
+			margin-top: 5px;
+		}
+	}
+    }
+
+	.content{
+		padding-bottom: 10px;
+		margin-top: 20px;
+
+	h3{
+		margin-top: 40px;
+		font-size: 22px;
+		text-align: center;
+		color: #4f9cdd
+	}
+	p{	
+		width: 100%;
+		font-size: 14px;
+		margin:auto;
+		margin-top: 10px;
+		line-height: 24px;
+		padding: 5px;
+	}
+ }
+.messagebox{
+	margin-top: 60px;
+	margin-bottom:180px;
+		
+	
+	.message{
+		.ms-user{
+
+		img{
+			margin-top: 5px;
+			width: 30px;
+			height: 100%;
+			border-radius: 50%;
+			overflow: hidden;
+			float: left;
+
+		}
+		}
+		.ms-content{
+			width: 160px;
+			float: left;
+		h5{
+			display:inline-block;
+			margin-left: 5px;
+			font-size: 10px;
+			color: #4f9cdd
+		}
+		h6{
+			display:inline-block;
+			margin-left: 5px;
+			font-size: 10px;
+		
+		}
+		p{
+			margin-top: 10px;
+			margin-left: 5px;
+			font-size:8px;
+
+		}
+		}
+		textarea{
+			width: 140px;
+			margin-top: 5px;
+			margin-left: 10px;
+		}
+	}
+	}
+	
+.r-left{
+	height: 100%;
+	margin-bottom: 210px;	
+	.adress{
+
+		text-align: center;
+		h2{
+			font-size: 18px;
+			display: inline-block;
+
+		}
+		i{
+			font-size: 20px;
+			color: #4f9cdd;
+			padding-right:10px;
+		}
+		h5{	
+			padding: 10px 0px 10px 0px;
+			font-size: 22px;
+			color: #555;
+
+		}
+	}
+	.tag{
+		margin-top: 20px;
+		text-align: center;
+		h2{
+			font-size: 18px;
+			display: inline-block;
+		}
+		i{
+			font-size: 18px;
+			color: #4f9cdd;
+			padding-right:8px;
+		}
+		a{
+			font-size: 14px;
+			line-height:20px;
+			padding:0 5px 0 5px;
+			direction: none;
+			color: #4f9cdd;
+		}
+		p{
+			padding: 12px 0px 10px 0px;
+		}
+
+	}
+	.icon{
+		margin-top: 20px;
+		text-align: center;
+		h2{
+			font-size: 18px;
+			display: inline-block;
+		}
+		i{
+			font-size: 17px;
+			color: #4f9cdd;
+			padding-right:10px;
+		}
+		h5{	
+			padding: 10px 0px 10px 0px;
+			font-size: 22px;
+			color: #555;
+		}
+	}
+	.number{
+		margin-top: 20px;
+		text-align: center;
+		h2{
+			font-size: 18px;
+			display: inline-block;
+		}
+		i{
+			font-size: 20px;
+			color: #4f9cdd;
+			padding-right:10px;
+		}
+		h5{	
+			padding: 10px 0px 10px 0px;
+			font-size: 22px;
+			color: #555;
+		}
+	}
+}	
+	.recommend{
+		h2{
+			margin-left: 28px;
+			font-size:16px;
+		}
+		.itembox{
+			text-align: center;
+		.item{
+			display: inline-block;
+			margin: 10px;
+		}
+		img{
+			width:250px;
+			height: 250px;
+			border-radius: 10px 10px;
+			opacity: 0.8;
+			transition:0.5s;
+		}
+		img:hover{
+			opacity:1;
+			transition:0.5s;
+		}
+		}
+	}
+	.back{
+		margin-top: 100px;
+		margin-bottom: 100px;
+		text-align: center;
+		h2{
+			cursor: pointer;
+			font-size: 28px;
+			display: inline-block;
+			color: #999;
+			transition:0.5s;
+		}
+		h2:hover{
+			color: #000;
+			transition:0.5s;
+		}
+		.fa{
+			
+			font-size:22px;
+			color: #999;
+			margin-right: 20px;
+
+		}
+	}
+}
+}
+// 上傳照片
+.p-upload{
+	.p-upload-box{
+		margin-top: 0px;
+		padding-bottom: 0px;
+	}	
+	.title{
+		.h1{
+			
+			padding-top: 80px;
+			padding-bottom: 30px;
+			text-align: center;
+			font-size: 30px;
+			color: #fff;
+			border-bottom: 0px dotted #ccc;
+			}
+	}
+	.table{
+
+		th{
+			width: 100px;
+			border-bottom: 1px dotted #ccc;
+		}
+		td{
+			
+			border-bottom: 1px dotted #ccc;
+		}
+		#tit{
+
+			height: 80px;
+			font-size: 18px;
+			color: #fff;
+			vertical-align: middle;
+
+		}
+		#box{
+			width: 100px;
+			height: 80px;
+			text-align: left;
+			vertical-align: middle;
+			
+
+
+		}
+		textarea{
+			width: 200px;
+			height: 100px;
+			border-radius: 5px 5px;
+		}
+		input{
+			padding-left:5px;
+			width: 200px;
+			height: 26px;
+			border-radius: 3px 3px;
+			background: rgba(255,255,255,1);
+			border: 1px solid #aaa;
+
+		}
+	}
+}
+}

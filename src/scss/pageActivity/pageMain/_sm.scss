@@ -1,0 +1,59 @@
+@include respones(sm) {
+		//在此輸入內容
+
+#a-star{
+		// height: 60vh;
+	}
+
+#a_1activity_wrapper{
+	.aa_banner{
+		height: 650px;
+		width: 100%;
+		margin-top: 0px;
+		.aa_info{
+			width: 80%;
+			padding: 30px;
+
+			span{
+				padding-left: 35px;
+				padding-right: 35px;
+				// text-align: center;
+			}
+		}	
+	}
+
+	.aa_comments{
+		h4{
+			text-align: center;
+		}
+
+		// .comment{
+		// 	width: 90%;
+		// 	margin-bottom: 30px;
+
+		// 	.user{
+		// 		width: 100%;
+		// 		text-align: center;
+
+		// 		.user-pic{
+		// 			width: 20%;
+		// 			margin: auto;
+		// 		}
+		// 	}
+
+		// 	.ct-content{
+		// 		width: 100%;
+		// 		padding: 10px;
+		// 		padding-top: 80px;
+		// 		position: relative;
+		// 		top: -50px;
+		// 		z-index: -1;
+		// 	}
+		// }
+	}
+}
+
+//單則活動設定結束
+
+
+}

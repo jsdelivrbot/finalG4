@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<title>星知識</title>
+	
+     <!-- <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script> -->
+     
+	<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<!-- tweenmax -->
+	<script type="text/javascript" src="libs/gsap/src/minified/TweenMax.min.js"></script>
+
+
+	<!-- scrollmagic -->
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+	<script type="text/javascript" src="libs/ScrollMagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<!-- this page's js -->
+	<script src="js/f_lightbox.js"></script>
+	<script src="js/article.js"></script>
+	<script src="js/nav2.js"></script>
+
+	<style type="text/css">
+	/*	*{
+			outline: none;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			box-sizing: border-box;
+		}*/
+
+		/*body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } */
+
+		canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ 
+
+		#particles-js{ 
+			position:absolute; 
+			width: 100%; height: 100%; 
+			background-color: transparent;
+			background-image: url("");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 50% 50%;
+			opacity: 0.1;
+			/*transform: scale(0.1,0.1);*/
+			transition: 5s ease;
+
+
+		} 
+
+		#aa_bg_wrapper{
+			position: fixed;
+			/*height: 100vh;*/
+			top: 0;
+		    left: 0;
+		    background-image: url(img/i-bg.jpg);
+		    background-position: 60% center;
+		    background-size: cover;
+		    background-color: #333;
+		    z-index: -99;
+		}
+
+		#aa_bg1 {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  /*background:linear-gradient(to bottom, rgba(31, 76, 116, 1) 0%, rgba(21, 28, 60, 1) 30%, rgba(9, 10, 15, 0.5) 60%, rgba(0,0,0,1) 80%);*/
+		  background:linear-gradient(to bottom, rgba(31, 76, 116, .6) 0%, rgba(29, 34, 60,0.5) 50%, rgba(9, 10, 15, .5) 80%);
+
+		  /*.6 .9 .9*/
+		 
+		}
+
+		.kn-svg{
+			position: absolute;
+		    top: 50%;
+		    left: 10%;
+		    bottom: 0;
+		    right: 0;
+		    margin: auto;
+		    /*fill:transparent;*/
+			stroke:rgba(255,255,255,.4);
+			stroke-width:2;
+			stroke-dasharray:3000; 
+			stroke-dashoffset:3000;
+			
+			/*z-index: 999;*/
+			transition: .5s;
+		}
+		@keyframes change{
+			  /*0%{fill:transparent;stroke-dashoffset:-1400;}*/
+			to{stroke-dashoffset:0;}
+			/*100%{stroke-dashoffset:0;}*/
+		}
+
+		.ff-svg{
+			animation: change 5s 0s 1 linear both;
+		}
+
+
+
+	</style>
+		
+		
+</head>
+<body id="kn_wrapper">
+<!-- 導覽列 -->
+<nav id="nav">
+        <div class="relative">
+            <div class="row">
+                <div id="ham">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <div id="logo">
+                    <a href="home.html"><img src="img/logo.png" alt="ZeroGravity"></a>
+                </div>
+                <ul class="mainMenu menu">
+                    <li><a href="activity.php">觀星活動</a></li>
+                    <li><a href="forum.html">星際論壇</a></li>
+                    <li><a href="photo.html">照片牆</a></li>
+                    <li><a href="article.html" class="onThisPage">星知識</a></li>
+                    <li><a href="for_newer.html">觀星指南</a></li>
+                </ul>
+                <ul class="mainMenu signArea">
+                    <ul class="subMenu">
+                        <li><a href="member.html"><i class="fa fa-user-circle" aria-hidden="true"></i>會員專區</a></li>
+                        <li><a href="#"><i class="fa fa-wpexplorer" aria-hidden="true"></i>我的活動</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-grav" aria-hidden="true"></i>我的貼文</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>
+                        我的照片</a></li>
+                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>我的收藏</a></li>
+                        <li><a href="#" id="logOut">登出</a></li>
+                    </ul>
+                    <li id="navMemPhoto">
+                        <img src="">
+                    </li>
+                    <li id="navMemInfo">
+                        <span id="navMemberName"></span>
+                    </li>
+                    <li id="signLeft">
+                        <span><a href="#" id="navSignup">註冊</a></span>
+                    </li>
+                    <li id="signRight">
+                        <span><a href="#" id="navLogin"><i class="fa fa-user" aria-hidden="true"></i></a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- 導覽列結束 -->
+
+<!-- background-image -->
+<div id="aa_bg_wrapper"  style="width:100%; height:100vh;background-color: #333" >
+		<div id="aa_bg1">
+			<div id="particles-js"></div> 
+		</div>
+</div>
+<!-- background-image -->
+<header class="f_section" id="f_section1" >
+	<div class="f_title">
+		<h1>星知識</h1>
+	</div>
+</header>
+<div class="kn_content">
+	<div class="container">
+		<div class="row">
+			<svg class="kn-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px" height="3000px" viewBox="0 0 800 200" enable-background="new 0 0 500 200" xml:space="preserve">
+				<circle fill="rgba(255,255,255,1)" cx="250" cy="20" r="5"/>
+				<path d="M250 20 L500 120" stroke="rgba(255,255,255,.4)" fill="none"/>
+				<path d="M500 120 L100 420" stroke="rgba(255,255,255,.4)" fill="none"/>
+				<path d="M100 420 L500 620" stroke="rgba(255,255,255,.4)" fill="none"/>
+				<path d="M500 620 L100 1020" stroke="rgba(255,255,255,.4)" fill="none"/>
+				<path d="M100 1020 L500 1320" stroke="rgba(255,255,255,.4)" fill="none"/>
+				<circle fill="rgba(255,255,255,1)" cx="500" cy="1320" r="5"/>
+			</svg>
+			<ul class="kn_posts" id="n-article">
+				<li class="kn-p  ff_lightbox_link">
+					<h3>NASA背後的故事-〔關鍵少數〕探討「種族」與「性別」的標籤</h3>
+					<p class="text">一樁眾人皆知的歷史事件，背後卻藏著不為人知的秘密奉獻，文獻鮮少記載...</p>
+					<!-- <div id="kn-svg" > -->
+					
+				</li>
+				<li class="kn-p ff_lightbox_link">
+					<h3>真正九大行星現身！</h3>
+					<p class="text">美國學者表示，他們有足夠證據證明第九大行星的存在，「新的」第九大行星比被除...</p>
+
+				</li>
+				<li class="kn-p  ff_lightbox_link">
+					<h3>NASA背後的故事-〔關鍵少數〕探討「種族」與「性別」的標籤</h3>
+					<p class="text">一樁眾人皆知的歷史事件，背後卻藏著不為人知的秘密奉獻，文獻鮮少記載...</p>
+				</li>
+				<li class="kn-p  ff_lightbox_link">
+					<h3>真正九大行星現身！</h3>
+					<p class="text">美國學者表示，他們有足夠證據證明第九大行星的存在，「新的」第九大行星比被除...</p>
+				</li>
+				<li class="kn-p  ff_lightbox_link">
+					<h3>NASA背後的故事-〔關鍵少數〕探討「種族」與「性別」的標籤</h3>
+					<p class="text">一樁眾人皆知的歷史事件，背後卻藏著不為人知的秘密奉獻，文獻鮮少記載...</p>
+				</li>
+				<li class="kn-p  ff_lightbox_link">
+					<h3>真正九大行星現身！</h3>
+					<p class="text">美國學者表示，他們有足夠證據證明第九大行星的存在，「新的」第九大行星比被除...</p>
+				</li>
+				
+				<li class="clear"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- 單篇文章 燈箱開啟 -->
+<div class="kn_one_post"  id="ff_lightbox" style="transform: scale(0);">
+	<div id="close-btn">
+		<div id="closeIt">CLOSE</div>
+		<img class="closeIco" src="img/close.svg" alt="close icon">
+	</div>
+	<div class="container">
+		<div class="content">
+			<div class="post">
+				<h3>NASA背後的故事-〔關鍵少數〕探討「種族」與「性別」的標籤</h3>
+				<p class="post-info">
+					<span>一月19日, 2017</span>
+					<span>作者：沙漠裡的魚</span>
+				</p>
+				<p class="social-icon">
+					<i class="fa fa-eye" aria-hidden="true">20</i>
+					<i class="fa fa-star-o" aria-hidden="true">20</i>
+					<i class="fa fa-share-square-o" aria-hidden="true">20</i>
+
+				</p>
+				<div class="clear"></div>
+				<div class="main">
+					<img src="img/kn-1.jpg">
+					<p>在1960年代、美國與蘇聯冷戰時期，一場又一場的太空競爭，如果沒有凱薩琳強生（塔拉吉韓森飾）、桃樂斯范恩（塔薇亞史班森飾）和瑪莉傑克森（賈奈兒夢內飾）的貢獻，太空人約翰葛倫（John Glenn）就無法完成繞行地球的創舉，美國也無法藉此狠狠滅了蘇聯威風。 時隔半世紀，電影《關鍵少數》才向世人揭露這3位在NASA工作的非裔女科學家的故事。儘管電影詼諧地帶過了苦痛，但相信現實中的人生，並不如此開滿外掛，總能輕而易舉地翻越歧視的高牆。</p>
+					<p>先是膚色，後是性別，最後才是工作能力。她們要面對的「玻璃天花板」一個比一個還要高。一句句短而有力的對白，包藏在嬉笑怒罵裡，卻是對性別、種族歧視，一次次的叩問－－你偶爾會驚訝，帶有偏見與歧視的句型，仍確確實實地潛伏於現世。 </p>
+					<p>擔任製作人之一的菲董（Pharrell Williams）表示，「縱使被過去舊時代的黑暗包圍著，她仍看到的是未來。她看到一個女性得以承擔各種期望，並被平等地對待－－我們愈早能有這個共識，我想地球會變得更好。」 他口中的「她」，是指現年高齡90多歲的凱薩琳強生。</p>
+				</div>
+				<div class="kn-comment">
+					<div class="kn-title">
+						<h4>我要留言</h4>
+						<span><a href="">Login<i class="fa fa-caret-down" aria-hidden="true"></i></a></span>
+						<div class="clear"></div>
+					</div>
+					<div class="comment-box">
+						<div class="comment-user">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+						<textarea placeholder="Join the discussion"></textarea>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
+<!-- 單篇文章 燈箱結束 -->
+<div class="loginPopup">
+        <div class="i-lightboxBg"></div>
+        <div class="login">
+            <h4>會員登入</h4>
+            <!-- <form action="php/login.php" method="post"> -->
+            <input id="loginAccount" type="Email" value="guest" name="memEmail">
+            <input id="loginPsw" type="password" value="guest" name="memPsw" maxlength="12" minlength="4">
+            <input id="loginConfirmPsw" type="password" placeholder="*確認密碼" maxlength="12" minlength="4">
+            <input id="loginMemName" type="text" placeholder="*暱稱(2~12個字元)" name="memName" maxlength="12" minlength="2">
+            <input type="submit" class="searchBar-btn" id="i-loginBtn" value="登入">
+            <!-- <div class="searchBar-btn" id="i-loginBtn">
+                    <a href="#">登入</a>
+                </div> -->
+            <!-- </form> -->
+            <div class="logOn">
+                按此註冊會員
+            </div>
+        </div>
+    </div>
+<footer id="#footer">
+<p>Copyright@2017 by Zero Gravity</p>
+</footer>
+</body>
+</html>
+<script type="text/javascript">
+	
+	particlesJS("particles-js", {"particles":{"number":{"value":50,"density":{"enable":true,"value_area":500}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"rgb(255, 255, 255)"},"polygon":{"nb_sides":5},"image":{"src":"","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":1,"sync":false}},"size":{"value":5,"random":true,"anim":{"enable":false,"speed":104.7579603868735,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":100,"color":"#ffffff","opacity":0.9,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":500,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":8},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+
+
+	   var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+</script>
