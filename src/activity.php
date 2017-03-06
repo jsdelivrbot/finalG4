@@ -45,7 +45,7 @@
 	<script type="text/javascript" src="libs/pg-calendar/vender/moment.min.js"></script>
 	<script src="libs/pg-calendar/src/js/pignose.calendar.js"></script>
 	<script src="js/jquery.mobile.custom.min.js"></script>
-	<script type="text/javascript" src="js/nav.js"></script>
+	<script type="text/javascript" src="js/nav2.js"></script>
 	<script src="js/activity-1.js?<%=Timer%>""></script>
 
 <style>
@@ -777,7 +777,7 @@ console.log("input",$(this).children("input").val());
 </script> -->
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function(){
   $('#navButton').click(function(){
     if($('.mainMenu.menu').hasClass('open')){
@@ -956,8 +956,6 @@ var mem = JSON.parse(localStorage.getItem('mem'));
             }
         } //會員註冊======end========
     })
-
-
     $('.login').children('input').on('focus', function() {
         $(this).siblings('p').remove();
     })
@@ -990,7 +988,7 @@ var mem = JSON.parse(localStorage.getItem('mem'));
   
 })	
 </script>
-
+ -->
 
 
 

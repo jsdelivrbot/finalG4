@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/jquery-2.1.4.js"></script>
+	<title>zero gravity後端管理系統</title>
+</head>
+<style type="text/css">
+	.admin-login{
+		width: 100vw;
+		height: 100vh;
+		background: url(img/shooting-star.jpg);
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		position: relative;
+		background-position: center 60%;
+	}
+
+	.login-box{
+		/*border: 1px solid #fff;*/
+		width: 400px;
+		height: 300px;
+		position: absolute;
+		top: 250px;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		padding: 110px 20px 10px;
+		background-color: rgba(0,0,0,.3);
+		border-radius:20px; 
+		box-shadow: 3px 3px 20px #fff;
+
+	}
+
+	input{
+		width: 80%;
+		height: 40px;
+		display: block;
+		margin: auto;
+		margin-bottom: 20px;
+		font-size: 15px;
+		padding-left: 10px;
+		font-weight: 700;
+		border-radius: 4px;
+		color: #333;
+		position: relative;
+	}
+
+	button{
+		width: 80%;
+		height: 40px;
+		margin: auto;
+		display: block;
+		margin-top: 10px;
+		font-size: 15px;
+		font-weight: 700;
+		background-color: #86d4f5;
+		border: 0px solid #fff;
+		color: #fff;
+		text-shadow: 1px 1px 1px #000;
+		border-radius: 4px;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.logo{
+		width: 100%;
+		position: absolute;
+		top: -20px;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		text-align: center;
+	}
+	img{
+		vertical-align: middle;
+		width: 150px;
+	}
+
+	span{
+		font-size: 22px;
+		font-weight: 600;
+		color: #fff;
+		text-shadow: 1px 1px 1px #000;
+		vertical-align: middle;
+		margin-left: 10px;
+		letter-spacing: 0.03em;
+	}
+
+
+</style>
+<body>
+<section class="admin-login">
+	
+	<div class="login-box">
+		<div class="logo">
+	    	<img src="img/logo.png"><span>後端管理系統</span>
+	    </div>
+		<input type="text" name="" placeholder="Username" id="admin_acc">
+		<input type="password" name="" placeholder="Password" id="admin_psw">
+		<a id="admin_login"><button>登入</button></a>
+	</div>
+</section>
+	
+</body>
+</html>
+<script type="text/javascript">
+$("#admin_login").click(function(){
+var adm_acc=$("#admin_acc").val();
+var adm_psw=$("#admin_psw").val();
+  $.ajax({
+    url: 'php/admin.php',//php,jsp and etc..
+    type: 'POST',
+    data: {
+       adm_acc:adm_acc,
+       adm_psw:adm_psw
+    },
+    dataType: "json",
+    async: false,
+    success: function(data, textStatus, jqXHR) {
+        console.log('Success: ' + textStatus);
+        console.log(data);
+        if(data==1){
+        	document.location.href="admin_act.php"; 
+        }else{
+        	alert("帳密錯誤，請重新輸入");
+        }
+    },
+
+    error: function(jqXHR, textStatus, errorThrown,data) {
+        // Handle errors here
+        console.log('Errors: ' + textStatus);
+        // STOP LOADING SPINNER
+         console.log(jqXHR);
+         console.log(errorThrown);
+    }
+
+	});
+	
+
+})
+</script>

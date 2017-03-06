@@ -2,18 +2,10 @@ $(function(){
 
 
 
-/*=====================================
-              判定會員登入
-      =======================================*/  
-mem = JSON.parse(localStorage.getItem('mem'));
 
 
-//判定會員登入==================================
-if (localStorage.mem) {
-    // $('.mainMenu.signArea').children('li').css('display', 'none');
-    // $('#navMemPhoto').css('display', 'inline-block').find('img').attr('src', mem.mem_img);
-    // $('#navMemInfo').css('display', 'inline-block').find('#navMemberName').text(mem.mem_name);
-}
+
+
 
 /*=====================================
             slider
@@ -152,6 +144,7 @@ $("#a-add-mapInput").focus(function(){
     =======================================*/
 
 $('#a-add-next1').click(function(e){
+  mem = JSON.parse(localStorage.getItem('mem'));
   console.log($(this).index());
   e.preventDefault();
   if($("#act_name").val()==""){
@@ -160,12 +153,20 @@ $('#a-add-next1').click(function(e){
   }else if($("#a-add-mapInput").val()==""){
     alert("請輸入地點");
     $("#a-add-mapInput").focus();
-  }
-  else{
+  }else if(!localStorage.mem){
+
+    alert("請先登入會員");
+
+  }else{
     $.fn.fullpage.moveSectionDown();
     moveRight();
   }
   $.fn.fullpage.setAllowScrolling(false);
+  /*=====================================
+              判定會員登入
+      =======================================*/  
+
+
 });
 
 actCla_no="";
@@ -750,7 +751,7 @@ function sendForm(){
   xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   var data_info = "act_name="+act_name+"&act_place="+act_place+"&act_startDate="+act_startDate+
   "&act_endDate="+act_endDate+"&act_limit="+act_limit+"&act_price="+act_price+"&actCla_no="+actCla_no+
-  "&act_info="+act_info+"&act_img="+fileName+"&mem_no="+mem.mem_no;
+  "&act_info="+act_info+"&act_img="+fileName+"&mem_no="+mem.mem_no+"&act_lat="+act_lat+"&act_lng="+act_lng;
   xhr.send(data_info);
   xhr.onreadystatechange = function(){
       if(xhr.readyState == 4){

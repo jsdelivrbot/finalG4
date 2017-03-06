@@ -67,7 +67,12 @@ $(".ad-spe_change").click(function(){
                    '<tr>'+
                     '<th>專欄作者</th>'+
                     '<td><input name="spe_author" type="text" value="'+data[0].spe_author+'"/></td>'+
-                  '</tr>'+ 
+                  '</tr>'+
+                  '<tr>'+
+                    '<th>作者照片</th>'+
+                    '<td><input name="spe_authorImg" type="file" /><img src="'+data[0].spe_authorImg+'" alt="" width="50" /></td>'+
+                  '</tr>'+    
+                  '<tr>'+                   
                     '<th>發表日期</th>'+
                     '<td><input name="spe_date" type="date" value="'+data[0].spe_date+'"/></td>'+
                   '</tr>'+                                     
@@ -79,6 +84,7 @@ $(".ad-spe_change").click(function(){
                     '<th>專欄內容</th>'+
                     '<td><textarea name="spe_content" id="" cols="40" rows="10">'+data[0].spe_content+'</textarea></td>'+
                   '</tr>'+
+              
                   '<tr>'+
                     '<th>確認修改</th>'+
                     '<td><input type="submit" name="" value="確定修改" class="btn-lg btn-blue" id="ad-spe-change">'+
@@ -240,16 +246,22 @@ $(".ad-pho_change").click(function(){
 
 function fileChange(){
     var file = document.getElementById('spe_img').files[0];
+
     var fileName = file.name;
+
+
     /*=====================================
                 fileReader
         =======================================*/
     //要new 一個FileReader
     var readFile = new FileReader();
 
+
     //以DataURL格式回傳結果，讀取圖檔和影片都使用此方法
     readFile.readAsDataURL(file);
-    readFile.addEventListener('load',function(){
+
+
+readFile.addEventListener('load',function(){
         var image = document.getElementById('spe_imgShow');
         //.src是HTML的屬性
         //result是讀取到的內容
@@ -262,8 +274,43 @@ function fileChange(){
         // image.style.maxHeight = '100%';    
 },false);
 
-}//fileChange end 圖片同步顯示
 
+}//fileChange end 圖片同步顯示
+function fileChange2(){
+
+    var file2 = document.getElementById('spe_authorImg').files[0];
+
+    var fileName2 = file2.name;
+
+    /*=====================================
+                fileReader
+        =======================================*/
+    //要new 一個FileReader
+
+    var readFile2 = new FileReader();
+
+    //以DataURL格式回傳結果，讀取圖檔和影片都使用此方法
+
+    readFile2.readAsDataURL(file2);
+
+
+readFile2.addEventListener('load',function(){
+        console.log("load");
+        var image2 = document.getElementById('spe_authorImgShow');
+        //.src是HTML的屬性
+        //result是讀取到的內容
+       
+        image2.src = readFile2.result;
+        //HTML不用加單位
+        //EX:image.width=400;
+        //css的屬性需要加單位
+        image2.style.maxWidth='50px';
+        // image.style.maxHeight = '100%';    
+},false);
+
+
+
+}//fileChange end 圖片同步顯示
 
 /*=====================================
             新增專欄
@@ -284,7 +331,10 @@ $("#admTable").after(
         '<th>專欄作者</th>'+
         '<td><input type="text" name="spe_author" /></td>'+
       '</tr>'+                 
-
+      '<tr>'+
+        '<th>作者照片</th>'+
+        '<td><input type="file" name="spe_authorImg" id="spe_authorImg" /><br><br><img width=50 src="" alt="" id="spe_authorImgShow" /></td>'+
+      '</tr>'+   
       '<tr>'+
         '<th>專欄照片</th>'+
         '<td><input type="file" name="spe_img" id="spe_img" /><br><br><img src="" alt="" id="spe_imgShow" /></td>'+
@@ -312,7 +362,8 @@ function spe(){
     $('div').remove('.ad-remove');
     $('#knowTable').show();      
 })
-    document.getElementById('spe_img').onchange = fileChange;    
+    document.getElementById('spe_img').onchange = fileChange;
+    document.getElementById('spe_authorImg').onchange = fileChange2;    
 }
 
 // $(".ad-spe_add").click(function(){

@@ -2,6 +2,24 @@
 <?php 
 try {
   require_once("connect.php");
+
+
+/*=====================================
+            後端登入判斷
+    =======================================*/
+if(isset($_REQUEST["adm_acc"])){
+  $sql = "select * from adm where adm_acc='".$_REQUEST["adm_acc"]."' and adm_psw='".$_REQUEST["adm_psw"]."'";
+  $admin = $pdo->prepare($sql);
+  $admin->execute();
+  if($admin->rowcount()>=1){
+    // $adminRow = $admin->fetch(PDO::FETCH_ASSOC);
+    // $adminArray[]=$adminRow;
+    // echo json_encode($adminArray);     
+    echo 1;
+  }else{
+    echo 0;
+  }
+}
 /*=====================================
             搜尋活動
     =======================================*/
@@ -23,7 +41,60 @@ if(isset($_REQUEST["act_class"])){
             修改專欄
     =======================================*/
 if(isset($_REQUEST["spe-title"])){
-  $sql = "update spe set spe_title='".$_REQUEST["spe-title"]."',spe_author='".$_REQUEST["spe_author"]."',spe_date='".$_REQUEST["spe_date"]."',spe_img='img/know/".$_FILES["spe_img"]["name"]."',spe_content='".$_REQUEST["spe_content"]."' where spe_no='".$_REQUEST["spe_no"]."'";
+  $sql = "update spe set spe_title='".$_REQUEST["spe-title"]."',spe_author='".$_REQUEST["spe_author"]."',spe_authorImg='img/know/".$_FILES["spe_authorImg"]["name"]."',spe_date='".$_REQUEST["spe_date"]."',spe_img='img/know/".$_FILES["spe_img"]["name"]."',spe_content='".$_REQUEST["spe_content"]."' where spe_no='".$_REQUEST["spe_no"]."'";
+/*=====================================
+            作者照片
+    =======================================*/
+  switch ($_FILES["spe_authorImg"]["error"]) {
+  case 0:
+
+  $from1 = $_FILES["spe_authorImg"]["tmp_name"];
+ 
+  //檢查資料夾或檔案是否存在
+  if( file_exists("../img/know")==false){ //不存在
+    //建立資料夾 make directory
+        mkdir("know");
+  }
+  $fileName1=$_FILES["spe_authorImg"]["name"];//原始檔案
+
+  $to1 = "../img/know/".mb_convert_encoding($fileName1, "Big5","UTF-8");//轉檔utf-8轉big5
+
+  if(copy( $from1, $to1) ){
+
+  $spe = $pdo->prepare($sql);
+  $spe -> execute();
+  echo "成功";
+
+
+  }else{
+    echo "error<br>";
+  }   
+  break;
+
+  case 1:
+  echo "檔案不得超過",ini_get("upload_max_filesize"),"<br>";//抓php設定檔案
+  break;
+
+  case 2:
+  echo "檔案不得超過", $_REQUEST["MAX_FILE_SIZE"] ,"<br>";
+  //自己設定的 利用input type hidden
+  break;
+
+  case 3:
+  echo "上傳不完整<br>";
+  break;
+
+  case 4:
+  echo "沒送檔案<br>";
+  break;
+ 
+  default:
+  echo "錯誤代碼:",$_FILES["img"]["error"],"請通知系統人員<br>";
+    break;
+}
+/*=====================================
+            專欄圖片
+    =======================================*/
   switch ($_FILES["spe_img"]["error"]) {
   case 0:
 
@@ -115,12 +186,64 @@ if(isset($_REQUEST["pho_change"])){
             新增專欄
     =======================================*/
 if(isset($_REQUEST["spe_title"])){
-  $sql = "insert into spe value(null,'".$_REQUEST["spe_title"]."','".$_REQUEST["spe_author"]."','".$_REQUEST["spe_content"]."',
-'".date('Y-m-d H:i:s')."',0,0,0,'img/know/".$_FILES["spe_img"]["name"]."')";
+  $sql = "insert into spe value(null,'".$_REQUEST["spe_title"]."',
+  '".$_REQUEST["spe_author"]."','".$_REQUEST["spe_content"]."',
+  '".date('Y-m-d H:i:s')."',0,0,0,
+  'img/know/".$_FILES["spe_img"]["name"]."',
+  'img/know/".$_FILES["spe_authorImg"]["name"]."')";
   $spe = $pdo->prepare($sql);
   
- 
+/*=====================================
+             作者照片
+     =======================================*/ 
+  switch ($_FILES["spe_authorImg"]["error"]) {
+  case 0:
 
+  $from = $_FILES["spe_authorImg"]["tmp_name"];
+ 
+  //檢查資料夾或檔案是否存在
+  if( file_exists("../img/know")==false){ //不存在
+    //建立資料夾 make directory
+        mkdir("know");
+  }
+  $fileName=$_FILES["spe_authorImg"]["name"];//原始檔案
+
+  $to = "../img/know/".mb_convert_encoding($fileName, "Big5","UTF-8");//轉檔utf-8轉big5
+
+  if(copy( $from, $to) ){
+
+      echo "新增成功";
+
+
+  }else{
+    echo "error<br>";
+  }   
+  break;
+
+  case 1:
+  echo "檔案不得超過",ini_get("upload_max_filesize"),"<br>";//抓php設定檔案
+  break;
+
+  case 2:
+  echo "檔案不得超過", $_REQUEST["MAX_FILE_SIZE"] ,"<br>";
+  //自己設定的 利用input type hidden
+  break;
+
+  case 3:
+  echo "上傳不完整<br>";
+  break;
+
+  case 4:
+  echo "沒送檔案<br>";
+  break;
+ 
+  default:
+  echo "錯誤代碼:",$_FILES["img"]["error"],"請通知系統人員<br>";
+    break;
+}
+/*=====================================
+            專欄圖片
+    =======================================*/
   switch ($_FILES["spe_img"]["error"]) {
   case 0:
 

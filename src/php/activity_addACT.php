@@ -84,8 +84,8 @@ if(isset($_FILES["add_img"])){
   $act->bindValue(":act_startDate" ,$_REQUEST["act_startDate"]);
   $act->bindValue(":act_endDate" ,$_REQUEST["act_endDate"]);
   $act->bindValue(":act_place" ,$_REQUEST["act_place"]);
-  $act->bindValue(":act_lat" ,"23");
-  $act->bindValue(":act_lng" ,"121");
+  $act->bindValue(":act_lat" ,$_REQUEST["act_lat"]);
+  $act->bindValue(":act_lng" ,$_REQUEST["act_lng"]);
   $act->bindValue(":act_limit" ,$_REQUEST["act_limit"]);
   $act->bindValue(":act_price" ,$_REQUEST["act_price"]);
   $act->bindValue(":act_img" ,"img/act/".$_REQUEST["act_img"]);

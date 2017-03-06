@@ -119,6 +119,7 @@ function initAutocomplete() {
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
+    
     if (places.length == 0) {
       return;
     }
@@ -147,7 +148,9 @@ function initAutocomplete() {
         title: place.name,
         position: place.geometry.location
       }));
-
+      act_lat=markers[0].getPosition().lat();
+      act_lng=markers[0].getPosition().lng();
+      console.log(act_lat,act_lng);
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
