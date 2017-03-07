@@ -12,7 +12,34 @@
 try{
   require_once("connect.php");
 
+/*=====================================
+            從首頁搜尋            
+=======================================*/
+if(isset($_REQUEST["actSH_startDate"])){ 
+  $str = '%'.$_REQUEST["actSH_place"].'%';
+  if(isset($_REQUEST["actSH_endDate"])){
+   
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' >=act_startDate ) and ('".$_REQUEST["actSH_endDate"]."' <= act_endDate) and act_place like '".$str."' and actCla_name='".$_REQUEST["actSH_class"]."'";    
+  }
+  else{
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' between act_startDate and act_endDate) and act_place like '".$str."' and actCla_name='".$_REQUEST["actSH_class"]."'";     
+  }
 
+  // $sql = "select * from act where actSH_class='".$_REQUEST["actSH_endDate"]."'";
+  $act = $pdo->prepare($sql);
+  $act->execute();
+  if( $act->rowCount() == 0 ){ //找不到
+    //傳回空的JSON字串
+    echo "0";
+  }else{ //找得到
+    $actArray =array();
+    while($actRow = $act->fetch(PDO::FETCH_ASSOC)){
+      $actArray[] = $actRow; 
+    }
+    //送出json字串
+    echo json_encode($actArray);
+  }    
+}
 /*=====================================
             選類型
     =======================================*/
@@ -62,9 +89,16 @@ try{
   if(isset($_REQUEST["act_lat"])){
       $lat = $_REQUEST["act_lat"];
       $point = '23.876571';
-      if( $lat>=$point){
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat<=$lat";
-
+      if( $lat==25.0000000){
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat>=$lat";
+      }else if($lat==22.0000000){
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat between 23.0000000 and $point";
+      }else if($lat==24.0000000){
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lng>=121.091443 and (act_lat between 22.0000000 and 24.0000000)";
+      }
+      else{
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat<=$point";
+      }
         $act = $pdo->prepare( $sql );
         $act->bindValue($lat,$_REQUEST["act_lat"]);
         $act->execute();//執行
@@ -80,7 +114,7 @@ try{
           //送出json字串
           echo json_encode($actArray);
         }           
-      }
+      
       
   }//lanLng end
 
@@ -200,6 +234,6 @@ try{
 
 }catch(PDOException $e){
   echo $e->getMessage();
-  echo "行號 : " , $ex->getLine() , "<br>";
+  echo "行號 : " , $e->getLine() , "<br>";
 }
 ?>

@@ -172,7 +172,7 @@ $('#a-add-next1').click(function(e){
 actCla_no="";
 $('#a-add-next2').click(function(e){
  console.log($(this).index());
- if($("#a-timePicker2").val()==""){
+ if($("#a-timePicker2").val()=="" && $("#a-timePicker4").val()==""){
     alert("請選擇時間");
  }else{
     $.fn.fullpage.moveSectionDown();

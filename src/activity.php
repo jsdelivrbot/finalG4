@@ -255,14 +255,14 @@
 }
 .gm-style-iw {
   cursor: pointer;
-  height: 40px;
-  width: 200px !important;
+  height: 30px;
+  width: 180px !important;
   top: 15px !important;
   left: 20px !important;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
   border: 2px 2px 0px 2px  solid rgba(72, 181, 233, 0.6);
-  border-radius: 10px 10px 10px 10px;
+  /*border-radius: 10px 10px 10px 10px;*/
 }
 #iw-container {
   margin-bottom: 10px;
@@ -270,18 +270,18 @@
 #iw-container .iw-title {
   display: block;
   text-align: center;
-  width:200px !important;
+  width:180px !important;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
   font-weight: 400;
-  padding: 10px;
+  padding: 5px;
   background-color: #48b5e9;
   color: white;
   margin: 0;
   border-radius: 2px 2px 0 0;
 }
 #iw-container .iw-content {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 18px;
   font-weight: 400;
   margin-right: 1px;
@@ -543,7 +543,7 @@
 						$act->execute();
 					    while($actRow = $act->fetch()){
 
-					    	$str = '<div class="col-xs-12 col-sm-6 col-md-6 a-remove">
+					    	$str = '<div class="col-xs-12 col-sm-6 col-md-6 a-remove ">
 									<div class="aa-box a-actLink">
 										<div class="box-img">
 											<img src="'.$actRow["act_img"].'" alt="" >

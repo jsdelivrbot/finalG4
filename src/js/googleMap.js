@@ -116,7 +116,7 @@ google.maps.InfoWindowZ=function(opts){
     var east = document.getElementById("a-east");
     google.maps.event.addDomListener(east, 'click', function() {
         map.setZoom(9);
-        map.setCenter(new google.maps.LatLng(23.80083, 121.63528));
+        map.setCenter(new google.maps.LatLng(23.40083, 121.23528));
     });
        
 lightBox();
