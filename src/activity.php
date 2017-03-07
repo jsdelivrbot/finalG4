@@ -338,14 +338,7 @@
                 <ul class="mainMenu signArea">
                     <ul class="subMenu">
                         <li><a href="member.html"><i class="fa fa-user-circle" aria-hidden="true"></i>會員專區</a></li>
-                        <li><a href="#"><i class="fa fa-wpexplorer" aria-hidden="true"></i>我的活動</a></li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-grav" aria-hidden="true"></i>我的貼文</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>
-                        我的照片</a></li>
-                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>我的收藏</a></li>
+
                         <li><a href="#" id="logOut">登出</a></li>
                     </ul>
                     <li id="navMemPhoto">

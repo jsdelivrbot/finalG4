@@ -233,7 +233,7 @@
                             <td>'.$speRow["spe_no"].'</td>
                             <td>'.$speRow["spe_title"].'</td>
                             <td>'.$speRow["spe_author"].'</td>
-                            <td>'.$speRow["spe_content"].'</td>
+                            <td>'.((mb_strlen($speRow["spe_content"], "UTF8")>10) ? mb_substr($speRow["spe_content"],0,15, "UTF8") : $speRow["spe_content"]).' '.((mb_strlen($speRow["spe_content"], "UTF8")>10) ? nl2br(' ...') : nl2br('')).'</td>
                             <td>'.$speRow["spe_date"].'</td>
                             <td>'.$speRow["spe_view"].'</td>
                             <td>

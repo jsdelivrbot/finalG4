@@ -4,7 +4,9 @@ $(function(){
 var searchAct = JSON.parse(localStorage.getItem('searchAct'));
 //判定會員登入==================================
 if (localStorage.searchAct) {
+
     console.log(searchAct.date.split("~")[0]);
+
     $.ajax({
         url: 'php/activity.php',//php,jsp and etc..
         type: 'POST',
@@ -19,7 +21,50 @@ if (localStorage.searchAct) {
         success: function(data, textStatus, jqXHR) {
             console.log('Success: ' + textStatus);
             console.log(data);
+            act=data;
+            newMarker();
+    $('div').remove('.a-remove');
 
+
+    for(var i=0;i<act.length;i++){
+        $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
+                                    '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'+
+                                        '<div class="aa-box">'+
+                                            '<div class="box-img">'+
+                                                '<img src="'+act[i].act_img+'" alt="'+act[i].act_name+'" >'+
+                                            '</div>'+
+                                            '<div class="box-text">'+
+                                                '<h4>'+act[i].act_name+'</h4>'+
+                                                '<p class="aa-date">'+act[i].act_startDate+'</p>'+
+                                                '<p class="aa-info">'+act[i].act_info+'</p>'+
+                                                '<div class="aa-btn-area">'+
+                                                    '<div class="social-icon">'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>'+
+                                                    '</div>'+
+                                                    '<div class="aa-btn btn-blue btn-lg">'+
+                                                        '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
+                                                        
+                                                    '</div>'+
+                                                    '<div class="clear"></div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="aa-tag">'+
+                                                '<span>'+act[i].actCla_name+'</span>'+
+                                            '</div>'+  
+                                        '</div></div>'+
+                                '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'
+                                        );   
+
+    }
+    var len = 80; // 超過50個字以"..."取代
+    $(".aa-info").each(function(i){
+        if($(this).text().length>len){
+            $(this).attr("title",$(this).text());
+            var text=$(this).text().substring(0,len-1)+"...";
+            $(this).text(text);
+        }
+    });
+    lightBox();  
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
@@ -30,7 +75,10 @@ if (localStorage.searchAct) {
             // STOP LOADING SPINNER
         }
 
-    });     
+    });
+localStorage.clear('searchAct');     
+}else{
+    all();
 }
 /*=====================================
             lightBox Ajax
@@ -158,7 +206,7 @@ $(".a-all").click(function(){
     =======================================*/
 //接著可透過JQuery或是自己弄個XMLHttpRequest的方式Send Form
 //JQuery
-all();
+
 function all(){
     $.ajax({
         url: 'php/activity.php',//php,jsp and etc..
@@ -213,7 +261,7 @@ function all(){
                                         );   
 
     }
-    var len = 60; // 超過50個字以"..."取代
+    var len = 80; // 超過50個字以"..."取代
     $(".aa-info").each(function(i){
         if($(this).text().length>len){
             $(this).attr("title",$(this).text());

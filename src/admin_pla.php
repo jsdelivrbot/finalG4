@@ -187,7 +187,7 @@
                             <td>'.$plaRow["pla_no"].'</td>
                             <td>'.$plaRow["plaCla_name"].'</td>
                             <td>'.$plaRow["pla_title"].'</td>
-                            <td>'.$plaRow["pla_content"].'</td>
+                            <td>'.((mb_strlen($plaRow["pla_content"], "UTF8")>10) ? mb_substr($plaRow["pla_content"],0,15, "UTF8") : $plaRow["pla_content"]).' '.((mb_strlen($plaRow["pla_content"], "UTF8")>10) ? nl2br(' ...') : nl2br('')).'</td>
                             <td>'.$plaRow["mem_name"].'</td>
                            
                             <td>'.$plaRow["pla_date"].'</td>

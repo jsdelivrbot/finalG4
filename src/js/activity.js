@@ -42,9 +42,9 @@ $(window).resize(function(){
 //     _dotIndex=0;
 //   }
 // })//leftBtn
-_liWidth = $('.a-add-dot').width()/6.6;
+_liWidth = $('.a-add-dot').width()/7;
 $(window).resize(function(){
-  _liWidth = $('.a-add-dot').width()/6.6;
+  _liWidth = $('.a-add-dot').width()/7;
   $('.a-add-dot').children( 'a:lt('+_dotIndex+')').children().children().css({'width':_liWidth});
   console.log(_liWidth);
 })

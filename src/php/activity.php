@@ -19,10 +19,10 @@ if(isset($_REQUEST["actSH_startDate"])){
   $str = '%'.$_REQUEST["actSH_place"].'%';
   if(isset($_REQUEST["actSH_endDate"])){
    
-    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' >=act_startDate ) and ('".$_REQUEST["actSH_endDate"]."' <= act_endDate) and act_place like '".$str."' and actCla_name='".$_REQUEST["actSH_class"]."'";    
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' >=act_startDate ) and ('".$_REQUEST["actSH_endDate"]."' <= act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."'";    
   }
   else{
-    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' between act_startDate and act_endDate) and act_place like '".$str."' and actCla_name='".$_REQUEST["actSH_class"]."'";     
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' between act_startDate and act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."'";     
   }
 
   // $sql = "select * from act where actSH_class='".$_REQUEST["actSH_endDate"]."'";
