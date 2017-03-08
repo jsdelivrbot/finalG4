@@ -119,7 +119,7 @@ google.maps.InfoWindowZ=function(opts){
         map.setCenter(new google.maps.LatLng(23.40083, 121.23528));
     });
        
-lightBox();
+// lightBox();
 
 } //initMap end
 
@@ -162,7 +162,7 @@ function newMarker() {
         // console.log("markerArray", markerArray);
     }//for end
     google.maps.event.addListener(infowindow, 'domready', function() {
-         lightBox();
+         // lightBox();
         infowindow.addListener('click', lightBox);
     });
     console.log('infoWindow',infoArray);

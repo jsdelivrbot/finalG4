@@ -1,8 +1,63 @@
 var act;
 $(function(){
     
+/*=====================================
+            判斷是否有會員登入
+    =======================================*/
+col_no="";
+mem = JSON.parse(localStorage.getItem('mem'));
+if(localStorage.mem){
+$("body").on("click",".act_col",function(){
+
+    
+    if($(".act_col").hasClass('fa-star')){
+        alert("您已收藏過");
+    }else{
+        $(this).attr('class','fa fa-star act_col');
+        
+        $.ajax({
+        url: 'php/activity.php',//php,jsp and etc..
+        type: 'POST',
+        data: {
+            act_col:col_no,
+            mem_no:mem.mem_no
+        },
+        dataType: "json",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log('Success: ' + textStatus);
+            console.log(data);
+
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle errors here
+            console.log('Errors: ' + textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+            // STOP LOADING SPINNER
+        }
+
+    }); 
+        alert("收藏成功");
+        console.log(col_no,'aaaaa',$("input[value="+col_no+"]").next().children().children().children().children("span").text());
+        var txt = $("input[value="+col_no+"]").next().children().children().children().children("span").text();
+
+        var num = parseInt(txt)+1;console.log('num',num);
+        $("input[value="+col_no+"]").next().children().children().children().children("span").text(num+'人收藏');
+    }
+    
+  
+  })
+  }else{
+    $(".act_col").click(function(){
+        alert("請先登入會員");
+    })
+  }
+/*=====================================
+            判斷是否從前端傳入活動搜尋
+    =======================================*/
 var searchAct = JSON.parse(localStorage.getItem('searchAct'));
-//判定會員登入==================================
 if (localStorage.searchAct) {
 
     console.log(searchAct.date.split("~")[0]);
@@ -39,7 +94,7 @@ if (localStorage.searchAct) {
                                                 '<p class="aa-info">'+act[i].act_info+'</p>'+
                                                 '<div class="aa-btn-area">'+
                                                     '<div class="social-icon">'+
-                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span class="act_colPut">'+act[i].act_collect+'人收藏</span>'+
                                                     '</div>'+
                                                     '<div class="aa-btn btn-blue btn-lg">'+
                                                         '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
@@ -83,14 +138,16 @@ localStorage.clear('searchAct');
 /*=====================================
             lightBox Ajax
     =======================================*/
-lightBox();
-function lightBox(){
+
+$("body").on("click",".ff_lightbox_link",function(e){
+
+
+
 /*=====================================
             lightbox
     =======================================*/
 
 // lightbox效果--主題被點擊後，lightbox跳出
-$('.ff_lightbox_link').click(function(e){
     e.preventDefault();
 
     $('#ff_lightbox').css({
@@ -99,7 +156,7 @@ $('.ff_lightbox_link').click(function(e){
 
     })
     
-});
+
 
 $('#close-btn').click(function(){
     $('#ff_lightbox').css({
@@ -127,14 +184,25 @@ $('#close-btn').hover(function(){
         src: 'img/close.svg'
     });
 })//lightbox close-btn end
-$(".ff_lightbox_link").click(function(){
+/*=====================================
+            燈箱動態新增
+    =======================================*/
     $('div').remove(".a-removeComm");
+
+       
+mem = JSON.parse(localStorage.getItem('mem'));
+if(!localStorage.mem){
+    mem_no=0;
+}else{
+    mem_no=mem.mem_no
+}
     var act_no = $(this).next("input").val();
     $.ajax({
         url: 'php/activity.php',//php,jsp and etc..
         type: 'POST',
         data: {
-            act_no:act_no
+            act_no:act_no,
+            mem_no:mem_no
         },
         dataType: "json",
         async: false,
@@ -144,7 +212,7 @@ $(".ff_lightbox_link").click(function(){
                 $(".aa_banner").css({
                     'background':'url('+data[0][0].act_img+')'
                 });
-
+                $("#a-lb-mem_name").text(data[0][0].mem_name);
                 $("#a-lb-act_name").text(data[0][0].act_name);
                 $("#a-lb-act_info").text(data[0][0].act_info);
                 $("#a-lb-act_date").text(data[0][0].act_startDate+"~"+data[0][0].act_endDate);
@@ -154,15 +222,15 @@ $(".ff_lightbox_link").click(function(){
 
                 // if(data[0].actMs)
                 if(data[1][0]!=0){
-                    for(var i=0;i<data.length;i++){
+                    for(var i=0;i<data[1].length;i++){
                         $("#a-comm").append(
-                            '<div class="comment ct1 a-removeComm"><div class="user"><div class="user-pic"><img src="'+data[1][i].act_img+'">'+
+                            '<div class="comment ct1 a-removeComm"><div class="user"><div class="user-pic"><img src="'+data[1][i].mem_img+'" style="width:40px" height="40">'+
                             '</div><div class="user-info"><span><a href="">'+data[1][i].mem_name+'</a></span></div></div>'+'<div class="ct-content">'+
                             '<p>參加活動：'+data[1][i].act_name+'<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i>'+
                             '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>'+
                             '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>'+
                             '<p>'+data[1][i].actMsg_content+'</p>'+
-                            '<p>'+data[1][i].actMsg_content+'</p></div>'+
+                            '<p>'+data[1][i].actMsg_date+'</p></div>'+
                             '<div class="clear"></div></div>'
                         )                
                     }                    
@@ -171,8 +239,16 @@ $(".ff_lightbox_link").click(function(){
                         '<div class="ct-content a-removeComm" style="color:#fff;text-align:center;padding-bottom:30px;font-size:20px;">尚無評論</div>'
                     );
                 }
+            if(data[2][0]){
+                 if(data[2][0]==0){
+                    $(".act_col").attr('class','fa fa-star-o act_col');
+                }else{
+                    $(".act_col").attr('class','fa fa-star act_col'); 
+                }               
+            }
 
 
+        col_no=data[0][0].act_no;
 
         },
 
@@ -184,9 +260,10 @@ $(".ff_lightbox_link").click(function(){
             // STOP LOADING SPINNER
         }
 
-    });    
-})    
-}
+    });  
+    
+
+})//lightbox end
 /*=====================================
             特定標籤變色
     =======================================*/
@@ -244,7 +321,7 @@ function all(){
                                                 '<p class="aa-info">'+act[i].act_info+'</p>'+
                                                 '<div class="aa-btn-area">'+
                                                     '<div class="social-icon">'+
-                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span class="act_colPut">'+act[i].act_collect+'人收藏</span>'+
                                                     '</div>'+
                                                     '<div class="aa-btn btn-blue btn-lg">'+
                                                         '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
@@ -261,6 +338,7 @@ function all(){
                                         );   
 
     }
+
     var len = 80; // 超過50個字以"..."取代
     $(".aa-info").each(function(i){
         if($(this).text().length>len){
@@ -269,7 +347,7 @@ function all(){
             $(this).text(text);
         }
     });
-    lightBox();            
+    // lightBox();            
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
@@ -278,7 +356,8 @@ function all(){
             // STOP LOADING SPINNER
         }
 
-    });    
+    });   
+    
 }
 
 
@@ -319,7 +398,7 @@ function changeAct(data){
                                                 '<p class="aa-info">'+act[i].act_info+'</p>'+
                                                 '<div class="aa-btn-area">'+
                                                     '<div class="social-icon">'+
-                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span></span>20人收藏'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true"></i><span class="act_colPut">'+act[i].act_collect+'人收藏</span>'+
                                                     '</div>'+
                                                     '<div class="aa-btn btn-blue btn-lg">'+
                                                         '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
@@ -337,9 +416,12 @@ function changeAct(data){
 
     }
     limitStr();
-    lightBox();
+    // lightBox();
+    
 
 }
+
+
 function limitStr(){
     var len = 60; // 超過50個字以"..."取代
     $(".aa-info").each(function(i){
@@ -467,7 +549,7 @@ $('#a-date-control').focus(function(){
 // $(".pignose-calendar-button-group").click(function(){
 //     getDate();
 // })
-$('body').click(function(evt) {
+$('body').on("click",function(evt) {
             console.log($(evt.target).parents("#multiple").length);
             if($(evt.target).parents("#multiple").length==0 && 
                 evt.target.id != "a-date-control" && evt.target.class != "calendar-dark") {

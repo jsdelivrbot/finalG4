@@ -46,7 +46,7 @@
 	<script src="libs/pg-calendar/src/js/pignose.calendar.js"></script>
 	<script src="js/jquery.mobile.custom.min.js"></script>
 	<script type="text/javascript" src="js/nav2.js"></script>
-	<script src="js/activity-1.js?<%=Timer%>""></script>
+	<script src="js/activity-1.js?<%=Timer%>"></script>
 
 <style>
 	*{
@@ -310,7 +310,15 @@
   background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(66,255,255,1) 100%);
   background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(66,255,255,1) 100%);
   background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(66,255,255,1) 100%);
-}       
+}
+.act_col{
+	font-size: 22px;
+	color:#fff;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}   
 </style>
 
 </head>
@@ -551,7 +559,7 @@
 											</p>
 											<div class="aa-btn-area">
 												<div class="social-icon">
-													<i class="fa fa-star-o" aria-hidden="true"></i><span>20人收藏</span>
+													<i class="fa fa-star-o act_col" aria-hidden="true"></i><span>20人收藏</span>
 												</div>
 												<div class="aa-btn btn-blue btn-lg">
 													<a href="" class="ff_lightbox_link">熱烈報名中</a>
@@ -619,6 +627,7 @@
 	<div class="container">
 	<div class="aa_content">
 		<div class="aa_banner">
+			<i class="fa fa-star-o act_col" aria-hidden="true"></i>
 			<div class="aa_info">
 				<h3 id="a-lb-act_name"></h3>
 				<p id="a-lb-act_info"></p>
@@ -633,7 +642,7 @@
 		<div class="aa_comments">
 			<div class="container">
 				<div class="row" id="a-comm">
-					<h4>主辦人-評價Comment</h4>
+					<h4>活動討論-Discussion</h4>
 
 <!-- 	try {
 		require_once("php/connect.php");

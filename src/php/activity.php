@@ -11,7 +11,21 @@
 
 try{
   require_once("connect.php");
+/*=====================================
+            活動收藏
+    =======================================*/
+if(isset($_REQUEST["act_col"])){
+    $sql="insert into actCol value(null,'".$_REQUEST["mem_no"]."','".$_REQUEST["act_col"]."')";
+    $actCol=$pdo->prepare($sql);
+    $actCol->execute();
+    $sql2="update act set act_collect = act_collect+1 where act_no='".$_REQUEST["act_col"]."'";
+    $act=$pdo->prepare($sql2);
+    $act->execute();
+    $admArray = array("state"=>"OK");
 
+
+    echo json_encode($admArray);
+}
 /*=====================================
             從首頁搜尋            
 =======================================*/
@@ -166,7 +180,7 @@ if(isset($_REQUEST["actSH_startDate"])){
     =======================================*/
   if(isset($_REQUEST["act_no"])){
        
-        $sql = "select * from act join actCla using(actCla_no) where act.act_no=:act_no and act_state=1";
+        $sql = "select * from act join actCla using(actCla_no) join mem using(mem_no) where act.act_no=:act_no and act_state=1";
         $act = $pdo->prepare( $sql );
         $act->bindValue(":act_no",$_REQUEST["act_no"]);
         $act->execute();//執行
@@ -184,7 +198,7 @@ if(isset($_REQUEST["actSH_startDate"])){
           
         }    
 
-        $sql2 = "select * from act join actCla using(actCla_no) join mem using(mem_no) join actMsg using(act_no) where act.act_no=:act_no and act_state=1";
+        $sql2 = "select * from actMsg join mem on actMsg.mem_no=mem.mem_no join act using(act_no) where actMsg.act_no=:act_no and act_state=1";
         $act2 = $pdo->prepare( $sql2 );
         $act2->bindValue(":act_no",$_REQUEST["act_no"]);
         $act2->execute();//執行
@@ -199,9 +213,31 @@ if(isset($_REQUEST["actSH_startDate"])){
             
           }
           //送出json字串
-          
-        } 
-        $actArray=array($actArray1,$actArray2);
+        }
+        if($_REQUEST["mem_no"]!=0){
+          $sql3 = "select * from actCol where mem_no=:mem_no and act_no=:act_no";
+          $act3 = $pdo->prepare( $sql3 );
+          $act3->bindValue(":act_no",$_REQUEST["act_no"]);
+          $act3->bindValue(":mem_no",$_REQUEST["mem_no"]);
+          $act3->execute();//執行
+          $actArray3 =array();
+          if( $act3->rowCount() == 0 ){ //找不到
+            //傳回空的JSON字串
+            $actArray3[]="0";
+          }else{ //找得到
+            
+            while($actRow3 = $act3->fetch(PDO::FETCH_ASSOC)){
+              $actArray3[] = $actRow3; 
+              
+            }
+            //送出json字串
+          } 
+          $actArray=array($actArray1,$actArray2,$actArray3);                     
+        }else{
+           $actArray=array($actArray1,$actArray2);  
+        }
+        
+
         echo json_encode($actArray);
       
   }//

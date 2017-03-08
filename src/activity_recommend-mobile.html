@@ -8,7 +8,7 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
-  <script type="text/javascript" src="js/nav.js"></script>
+  <script type="text/javascript" src="js/nav2.js"></script>
   
   <!-- <script type="text/javascript" src="js/activity.js"></script> -->
   <style type="text/css">
@@ -29,7 +29,7 @@
     	height: 100vh;
     	transform: translate(0%,0%);
     	position: fixed;
-      transition: 1s;
+      transition: 2s;
     }
     /*100% 0%*/
    section{
@@ -195,7 +195,7 @@
     }
     </style>
 </head>
-<body class="a-r-weapper">
+<body class="a-r-weapper" id="a1-body">
    <nav id="nav">
         <div class="relative">
             <div class="row">
@@ -215,14 +215,7 @@
                 <ul class="mainMenu signArea">
                     <ul class="subMenu">
                         <li><a href="member.html"><i class="fa fa-user-circle" aria-hidden="true"></i>會員專區</a></li>
-                        <li><a href="#"><i class="fa fa-wpexplorer" aria-hidden="true"></i>我的活動</a></li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-grav" aria-hidden="true"></i>我的貼文</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>
-                        我的照片</a></li>
-                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>我的收藏</a></li>
+
                         <li><a href="#" id="logOut">登出</a></li>
                     </ul>
                     <li id="navMemPhoto">
@@ -252,6 +245,7 @@
 						 <h3 class="a-r-title">Q1：你對天文的了解程度是？</h3>
 						 <ul class="a-r-content">
                 <li>
+                <input type="hidden" value="入門">
                  <div class="a-ast-cover">
                     <img src="img/a-ast-int.png" alt="" id="a-ast-ini1">
                     <!-- <img src="img/a-ast-ini2.png" alt="" id="a-ast-ini2"> -->
@@ -259,6 +253,7 @@
                   <div class="a-btn-recommend a-r-p1">初入門者</div>
                 </li>
                 <li>
+                <input type="hidden" value="專業">
                 <div class="a-ast-cover">
                    <img src="img/a-ast-pro.png" alt="" id="a-ast-pro1">
                    <!-- <img src="img/a-ast-pro2.png" alt="" id="a-ast-pro2"> -->
@@ -276,7 +271,8 @@
 				<div class="q-area">
 					 <h3 class="a-r-title">Q2：以下哪種情景最能打動你的心？</h3>
 					 <ul class="a-r-content">
-	                    <li id=>
+	                    <li>
+                      <input type="hidden" value="流星">
 	                     <div class="a-ast-cover">
 	                        <?xml version="1.0" encoding="utf-8"?>
                             <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -319,6 +315,7 @@
                       <div class="a-btn-recommend a-r-p2">看流星劃過天際</div>
 	                    </li>
 	                    <li>
+                      <input type="hidden" value="星座">
 	                    <div class="a-ast-cover">
 	                       <?xml version="1.0" encoding="utf-8"?>
                             <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -367,6 +364,7 @@
                         <div class="a-btn-recommend a-r-p2">找到天空中的各星座</div>
 	                    </li>
                       <li>
+                      <input type="hidden" value="蝕">
                         <div class="a-ast-cover">
                         <!-- a-ast-moon -->
                           <?xml version="1.0" encoding="utf-8"?>
@@ -468,6 +466,7 @@
 					 <h3 class="a-r-title">Q3：參加觀星活動，你最想帶什麼</h3>
 					 <ul class="a-r-content">
 	           <li>
+             <input type="hidden" value="親子觀星">
               <div class="a-ast-cover">
                 <!-- family -->
                 <?xml version="1.0" encoding="utf-8"?>
@@ -663,6 +662,7 @@
                 <div class="a-btn-recommend a-r-p3">帶家裡的小朋友</div>
               </li>
             <li>
+            <input type="hidden" value="休閒聯誼">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="utf-8"?>
                   <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -717,6 +717,7 @@
               <div class="a-btn-recommend a-r-p3">只帶自己來</div>
             </li>
             <li>
+            <input type="hidden" value="天文觀測">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="iso-8859-1"?>
                       <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -759,6 +760,7 @@
               <div class="a-btn-recommend a-r-p3">帶觀星望遠鏡</div>
             </li>
             <li>
+            <input type="hidden" value="天文攝影">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="iso-8859-1"?>
                   <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -802,28 +804,7 @@
 			</div>
 		</section>
 		<section id="question4" class="question">
-			<div class="container">
-				<div class="row">
-				<div class="q-area">
-					 <h3 class="a-r-title">推薦以下觀星活動給您！</h3>
-            <a href="#a-popup-act" data-effect="mfp-3d-unfold">
-              <div class="col-xs-12 content">
-                <div class="a-item item1">
-                  <div class="image">
-                      <img src="img/a_007.jpg" alt="" class="rwd-img">
-                  </div>
-                  <div class="text">
-                    <p class="a-text">墾丁南十字觀星露營</p>
-                    <p class="a-text-content">2017-05-02至2017-05-06</p>
-                    <p class="a-text-who">時序漸入夏，落山風遠離了恆春半島，也正式認識春夏星空及屬於南半球南十字星的好時間...</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-			
-	      </div>   
-				</div>
-			</div>
+
 		</section>
 	</div>
 <div class="loginPopup">
@@ -845,20 +826,159 @@
             </div>
         </div>
     </div>
-	
-</body>
 </html>
 
 <script type="text/javascript">
   $(document).ready(function(){
     var y = 100;
-    $('.a-btn-recommend').click(function(){
+    $('#all-section li').click(function(){
       $('#all-section').css({
         'transform':'translate(0%,'+y+'%)',
       })
       y = y+100;
     })
+  var msg1,msg2,msg3;
+  $("#question1").click(function(){
+    msg1=$(this).children().children().children().children().children().children("input[type=hidden]").val();  
+    console.log(msg1);
   })
+  $("#question2").click(function(){
+    msg2=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+    console.log(msg2);
+  })
+  $("#question3").click(function(){
+    msg3=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+      console.log(msg3);
+
+    $.ajax({
+
+      url: 'php/activity_recommend_back.php',//php,jsp and etc..
+      type: 'POST',
+      data: {
+          act_Mstr1:msg1,
+          act_Mstr2:msg2,
+          act_Mstr3:msg3
+          
+      },
+      dataType: "json",
+      async: false,
+      success: function(data, textStatus, jqXHR) {
+          console.log('Success: ' + textStatus);
+          console.log(data);
+          // $('div').remove("#a-popups");
+
+          for(var i=0;i<data.length;i++){
+            $("#question4").append(
+                    '<div class="container">'+
+                      '<div class="row">'+
+                      '<div class="q-area">'+
+                         '<h3 class="a-r-title">推薦以下觀星活動給您！</h3>'+
+                          '<a id="lightBox">'+
+                            '<div class="col-xs-12 content">'+
+                              '<div class="a-item item1">'+
+                                '<div class="image">'+
+
+                                    '<img src="'+data[i].act_img+'" alt="" class="rwd-img">'+
+                                '</div>'+
+                                '<div class="text">'+
+                                  '<p class="a-text">'+data[i].act_name+'</p>'+
+                                  '<p class="a-text-content">'+data[i].act_startDate.substring(0,10)+'至'+data[i].act_endDate.substring(0,10)+'</p>'+
+                                  '<p class="a-text-who" style="text-align:left">'+data[i].act_info+'</p>'+
+                                '</div>'+
+                              '</div>'+
+                            '</div>'+
+                          '</a>'+
+                    
+                      '</div>'+
+                      '</div>'+
+                    '</div>');  
+                         
+          }
+          lightBox(); 
+           var len = 25; // 超過50個字以"..."取代
+            $(".a-text-who").each(function(i){
+                if($(this).text().length>len){
+                    $(this).attr("title",$(this).text());
+                    var text=$(this).text().substring(0,len-1)+"...";
+                    $(this).text(text);
+                }
+            });   
+
+      },
+
+      error: function(jqXHR, textStatus, errorThrown) {
+          // Handle errors here
+          console.log('Errors: ' + textStatus);
+          console.log(jqXHR);
+          console.log(errorThrown);
+          // STOP LOADING SPINNER
+      }
+
+  });
+  });
+  function lightBox(){
+     $("#lightBox").click(function(){
+      // lightBox_recommend();
+      document.location.href="activity.php";
+     })
+  };
+ 
+  function lightBox_recommend(){
+      var recM = $(".a-text").text();
+        $.ajax({
+        url: 'php/activity_recommend_back.php',//php,jsp and etc..
+        type: 'POST',
+        data: {
+            recM:recM
+        },
+        dataType: "json",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log('Success: ' + textStatus);
+            console.log(data);
+            act=data;
+            $('.loginPopup').after('<div class="a-scrollArea" id="aa-activities">'+
+              '<div class="col-xs-12 col-sm-12 col-md-12 a-pReset" id="a-add">'+
+              '<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
+                                    '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'+
+                                        '<div class="aa-box">'+
+                                            '<div class="box-img">'+
+                                                '<img src="'+act[0].act_img+'" alt="'+act[0].act_name+'" >'+
+                                            '</div>'+
+                                            '<div class="box-text">'+
+                                                '<h4>'+act[0].act_name+'</h4>'+
+                                                '<p class="aa-date">'+act[0].act_startDate+'</p>'+
+                                                '<p class="aa-info">'+act[0].act_info+'</p>'+
+                                                '<div class="aa-btn-area">'+
+                                                    '<div class="social-icon">'+
+                                                        '<i class="fa fa-star-o" aria-hidden="true">'+
+                                                        '</i><span>20人收藏</span>'+
+                                                    '</div>'+
+                                                    '<div class="aa-btn btn-blue btn-lg">'+
+                                                        '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
+                                                        
+                                                    '</div>'+
+                                                    '<div class="clear"></div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="aa-tag">'+
+                                                '<span>'+act[0].actCla_name+'</span>'+
+                                            '</div>'+  
+                                        '</div></div></div></div>'+
+                                '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'
+                                        );
+  },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle errors here
+            console.log('Errors: ' + textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+            // STOP LOADING SPINNER
+        } 
+  });
+};
+});
 </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.js"></script>

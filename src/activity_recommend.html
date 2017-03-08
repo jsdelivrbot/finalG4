@@ -40,6 +40,9 @@ body{
 svg{
   transform-origin: 50% 50%;
 }
+.a-text-who{
+  /*text-align: left;*/
+}
     #a-slide-1{
         background:none;
     }
@@ -174,9 +177,23 @@ svg{
       0%{ transform:rotate(-30deg) translate(0, 0);  }
         100%{ transform:rotate(0deg) translate(-0px, 0);}
     } 
+    #a-popups a{
+      position: relative;
+      right:-100px;
+      opacity: 0;
+    }
+    #a-slide1-li1 img{
+      transition: 1s
+    }    
+    #a-slide1-li2 img{
+      transition: 1s
+    }
 </style>
 <script type="text/javascript">
     $(function(){
+        if($(window).width()<767){
+          document.location.href="activity_recommend-mobile.html";
+        }
         $('#a-slide-1 ul li').click(function(){
              var myHtml = $('html,body');
                 _windowHeight = $(window).height();
@@ -199,6 +216,38 @@ svg{
                         scrollTop: 350 * _windowHeight / 100 + 1
                     }, 2000);
         })
+        $("#a-slide-1 li:first-child").hover(function(){
+          $("#a-ast-ini1").css({
+            'opacity':"0"
+          });
+          $("#a-ast-ini2").css({
+            'opacity':"1"
+          })
+        },function(){
+            $("#a-ast-ini1").css({
+              'opacity':"1"
+            }); 
+            $("#a-ast-ini2").css({
+              'opacity':"0"
+            }); 
+          }
+        );
+        $("#a-slide1-li2").hover(function(){
+          $("#a-ast-pro1").css({
+            'opacity':"0"
+          });
+          $("#a-ast-pro2").css({
+            'opacity':"1"
+          })
+        },function(){
+            $("#a-ast-pro1").css({
+              'opacity':"1"
+            }); 
+            $("#a-ast-pro2").css({
+              'opacity':"0"
+            }); 
+          }
+        );        
         var msg1,msg2,msg3;
         $("#a-slide-1 li").click(function(){
           msg1=$(this).children("input[type=hidden]").val();  
@@ -210,8 +259,10 @@ svg{
         })
         $("#a-slide-3 li").click(function(){
           msg3=$(this).children("input[type=hidden]").val();
-          console.log(msg3);
+            console.log(msg3);
+
           $.ajax({
+
             url: 'php/activity_recommend_back.php',//php,jsp and etc..
             type: 'POST',
             data: {
@@ -225,6 +276,38 @@ svg{
             success: function(data, textStatus, jqXHR) {
                 console.log('Success: ' + textStatus);
                 console.log(data);
+                // $('div').remove("#a-popups");
+                for(var i=0;i<data.length;i++){
+                  $("#a-popups").append(
+                    '<a href="#a-popup-act" data-effect="mfp-3d-unfold"><div class="col-xs-12col-sm-3 col-md-3">'+
+                          '<div class="a-item item1">'+
+                            '<div class="image">'+
+                                '<img src="'+data[i].act_img+'" alt="" class="rwd-img">'+
+                            '</div>'+
+                            '<div class="text">'+
+                              '<p class="a-text">'+data[i].act_name+'</p>'+
+                              '<p class="a-text-content">日期:'+data[i].act_startDate.substring(0,10)+'~'+data[i].act_endDate.substring(0,10)+'</p>'+
+                              
+                              '<p class="a-text-who">'+data[i].act_info+'</p>'+
+                            '</div>'+
+                          '</div>'+
+                      '</div></a>');                  
+                }
+                for(var j=1;j<5;j++){
+                  $("#a-popups a:nth-child("+j+")").delay(j*500).animate({
+                    'right':'0',
+                    'opacity':'1'
+                  },2000);
+                }
+
+                var len = 40; // 超過50個字以"..."取代
+                $(".a-text-who").each(function(i){
+                    if($(this).text().length>len){
+                        $(this).attr("title",$(this).text());
+                        var text=$(this).text().substring(0,len-1)+"...";
+                        $(this).text(text);
+                    }
+                });
 
             },
 
@@ -311,7 +394,7 @@ svg{
                                 <p class="content">
                                 <ul>
                                     <li id="a-slide1-li1">
-                                      <input type="hidden" value="入門,休閒,新手,教學,教育,解說">
+                                      <input type="hidden" value="入門">
                                      <div class="a-ast-cover">
                                         <!-- init -->
                                         <img src="img/a-ast-int.png" alt="" id="a-ast-ini1">
@@ -320,7 +403,7 @@ svg{
                                       <div class="a-btn-recommend a-r-p1">初入門者</div>
                                     </li>
                                     <li id="a-slide1-li2">
-                                      <input type="hidden" value="資深,觀測,專業">
+                                      <input type="hidden" value="專業">
                                      <div class="a-ast-cover">
                                         <!-- pro -->
                                        <img src="img/a-ast-pro.png" alt="" id="a-ast-pro1">
@@ -889,7 +972,7 @@ svg{
                     <p class="content">
                         <div class="container">
             <div class="row" id="a-popups">
-                <a href="#a-popup-act" data-effect="mfp-3d-unfold"><div class="col-xs-12 col-sm-3 col-md-3">
+<!--                 <a href="#a-popup-act" data-effect="mfp-3d-unfold"><div class="col-xs-12 col-sm-3 col-md-3">
                         <div class="a-item item1">
                           <div class="image">
                               <img src="img/a_007.jpg" alt="" class="rwd-img">
@@ -941,7 +1024,7 @@ svg{
                           </div>
                         </div>
 
-                    </div></a>
+                    </div></a> -->
             </div>
         </div>
                     </p>
