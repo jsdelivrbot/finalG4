@@ -199,7 +199,46 @@ svg{
                         scrollTop: 350 * _windowHeight / 100 + 1
                     }, 2000);
         })
-       
+        var msg1,msg2,msg3;
+        $("#a-slide-1 li").click(function(){
+          msg1=$(this).children("input[type=hidden]").val();  
+          console.log(msg1);
+        })
+        $("#a-slide-2 li").click(function(){
+          msg2=$(this).children("input[type=hidden]").val();
+          console.log(msg2);
+        })
+        $("#a-slide-3 li").click(function(){
+          msg3=$(this).children("input[type=hidden]").val();
+          console.log(msg3);
+          $.ajax({
+            url: 'php/activity_recommend_back.php',//php,jsp and etc..
+            type: 'POST',
+            data: {
+                act_str1:msg1,
+                act_str2:msg2,
+                act_str3:msg3
+                
+            },
+            dataType: "json",
+            async: false,
+            success: function(data, textStatus, jqXHR) {
+                console.log('Success: ' + textStatus);
+                console.log(data);
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Handle errors here
+                console.log('Errors: ' + textStatus);
+                console.log(jqXHR);
+                console.log(errorThrown);
+                // STOP LOADING SPINNER
+            }
+
+        });
+        })        
+
     })
 </script>
 
@@ -272,6 +311,7 @@ svg{
                                 <p class="content">
                                 <ul>
                                     <li id="a-slide1-li1">
+                                      <input type="hidden" value="入門,休閒,新手,教學,教育,解說">
                                      <div class="a-ast-cover">
                                         <!-- init -->
                                         <img src="img/a-ast-int.png" alt="" id="a-ast-ini1">
@@ -279,7 +319,8 @@ svg{
                                      </div>
                                       <div class="a-btn-recommend a-r-p1">初入門者</div>
                                     </li>
-                                    <li>
+                                    <li id="a-slide1-li2">
+                                      <input type="hidden" value="資深,觀測,專業">
                                      <div class="a-ast-cover">
                                         <!-- pro -->
                                        <img src="img/a-ast-pro.png" alt="" id="a-ast-pro1">
@@ -309,6 +350,7 @@ svg{
                                     <p class="content">
                                         <ul>
                                             <li>
+                                            <input type="hidden" value="流星">
                                               <div class="a-ast-cover">
                                               <!-- a-ast-star -->
                                                 <?xml version="1.0" encoding="utf-8"?>
@@ -354,6 +396,7 @@ svg{
                                               <div class="a-btn-recommend a-r-p2">看流星劃過天際</div>
                                             </li>
                                             <li>
+                                            <input type="hidden" value="星座">
                                               <div class="a-ast-cover">
                                               <!-- a-ast-line -->
                                                 <?xml version="1.0" encoding="utf-8"?>
@@ -404,6 +447,7 @@ svg{
                                               <div class="a-btn-recommend a-r-p2">找到天空中的各星座</div>
                                             </li>
                                             <li>
+                                            <input type="hidden" value="蝕">
                                               <div class="a-ast-cover">
                                               <!-- a-ast-moon -->
                                                 <?xml version="1.0" encoding="utf-8"?>
@@ -505,6 +549,7 @@ svg{
                     <p class="content">
                         <ul>
                             <li>
+                            <input type="hidden" value="親子觀星">
                               <div class="a-ast-cover">
                                 <!-- family -->
                                 <?xml version="1.0" encoding="utf-8"?>
@@ -700,6 +745,7 @@ svg{
                                 <div class="a-btn-recommend a-r-p3">帶家裡的小朋友</div>
                               </li>
                             <li>
+                            <input type="hidden" value="休閒聯誼">
                               <div class="a-ast-cover">
                                 <?xml version="1.0" encoding="utf-8"?>
                                   <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -754,6 +800,7 @@ svg{
                               <div class="a-btn-recommend a-r-p3">只帶自己來</div>
                             </li>
                             <li>
+                            <input type="hidden" value="天文觀測">
                               <div class="a-ast-cover">
                                 <?xml version="1.0" encoding="iso-8859-1"?>
                                       <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -796,6 +843,7 @@ svg{
                               <div class="a-btn-recommend a-r-p3">帶觀星望遠鏡</div>
                             </li>
                             <li>
+                            <input type="hidden" value="天文攝影">
                               <div class="a-ast-cover">
                                 <?xml version="1.0" encoding="iso-8859-1"?>
                                   <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
