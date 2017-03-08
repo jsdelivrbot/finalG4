@@ -80,8 +80,21 @@ if (localStorage.searchAct) {
             newMarker();
     $('div').remove('.a-remove');
 
-
+    /*================================
+            有傳值的話撈全部資料
+    ===================================*/
+    var typeColor="skyblue";
     for(var i=0;i<act.length;i++){
+        
+        if(act[i].actCla_name=="天文攝影"){
+            typeColor="#3D894A";
+        }else if(act[i].actCla_name=="天文觀測"){
+            typeColor="#E05142";
+        }else if(act[i].actCla_name=="親子觀星"){
+            typeColor="#EB9924";
+        }else{
+            typeColor="#3E98BC";
+        }
         $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
                                     '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'+
                                         '<div class="aa-box">'+
@@ -103,7 +116,7 @@ if (localStorage.searchAct) {
                                                     '<div class="clear"></div>'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="aa-tag">'+
+                                            '<div class="aa-tag  style="background-color:'+typeColor+'">'+
                                                 '<span>'+act[i].actCla_name+'</span>'+
                                             '</div>'+  
                                         '</div></div>'+
@@ -111,6 +124,16 @@ if (localStorage.searchAct) {
                                         );   
 
     }
+    var str =$(".aa-tag").children("span").text();
+            if(str.match("天文攝影")!=null){
+            $(".aa-tag").css({'background-color':"#3D894A"});
+        }else if(str.match("天文觀測")!=null){
+            $(".aa-tag").css({'background-color':"#E05142"});
+        }else if(str.match("親子觀星")!=null){
+            $(".aa-tag").css({'background-color':"#EB9924"});
+        }else{
+            $(".aa-tag").css({'background-color':"#3E98BC"});
+        }
     var len = 80; // 超過50個字以"..."取代
     $(".aa-info").each(function(i){
         if($(this).text().length>len){
@@ -119,7 +142,7 @@ if (localStorage.searchAct) {
             $(this).text(text);
         }
     });
-    lightBox();  
+    // lightBox();  
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
@@ -307,8 +330,18 @@ function all(){
             newMarker();
     $('div').remove('.a-remove');
 
-
+    var typeColor="skyblue";
     for(var i=0;i<act.length;i++){
+        
+        if(act[i].actCla_name=="天文攝影"){
+            typeColor="#3D894A";
+        }else if(act[i].actCla_name=="天文觀測"){
+            typeColor="#E05142";
+        }else if(act[i].actCla_name=="親子觀星"){
+            typeColor="#EB9924";
+        }else{
+            typeColor="#3E98BC";
+        }
         $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
                                     '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'+
                                         '<div class="aa-box">'+
@@ -330,7 +363,7 @@ function all(){
                                                     '<div class="clear"></div>'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="aa-tag">'+
+                                            '<div class="aa-tag" style="background-color:'+typeColor+'">'+
                                                 '<span>'+act[i].actCla_name+'</span>'+
                                             '</div>'+  
                                         '</div></div>'+
@@ -385,8 +418,20 @@ function showLatLng(jsonStr){
 function changeAct(data){
     $('div').remove('.a-remove');
     var act = JSON.parse(data);
-    console.log(act);
+    console.log(act );
+    var typeColor="skyblue";
     for(var i=0;i<act.length;i++){
+        // console.log(act[i].actCla_name);
+        //   if(act[i].actCla_name=="天文攝影"){
+        //     typeColor="#3D894A";
+        // }else if(act[i].actCla_name=="天文觀測"){
+        //     typeColor="#E05142";
+        // }else if(act[i].actCla_name=="親子觀星"){
+        //     typeColor="#EB9924";
+        // }else{
+        //     typeColor="#3E98BC";
+        // }      
+
         $('#a-add').after('<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
                                         '<div class="aa-box">'+
                                             '<div class="box-img">'+
@@ -407,17 +452,38 @@ function changeAct(data){
                                                     '<div class="clear"></div>'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="aa-tag">'+
+                                            '<div class="aa-tag style="background:'+typeColor+'">'+
                                                 '<span>'+act[i].actCla_name+'</span>'+
                                             '</div>'+  
                                         '</div></div>'+
                                  '<input type="hidden" name="" value="'+act[i].act_no+'" class="a-act_no">'
-                                        );   
+                                    ); 
+
 
     }
     limitStr();
     // lightBox();
-    
+    var str =$(".aa-tag").children("span").text();
+
+        // console.log('span',$(".aa-tag").children("span").text());
+        // console.log('rrrrr',str.match("天文觀測"));
+
+        var num=document.getElementsByClassName("aa-tag");
+        var content= document.getElementsByClassName("aa-tag")[0].childNodes[0].textContent;
+        var father =document.getElementsByClassName("aa-tag")[i];
+        console.log(num);
+        console.log('content',content);
+        for(var i=0;i<num.length;i++){
+            if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="天文攝影"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#3D894A";
+            }else if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="天文觀測"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#E05142";
+            }else if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="親子觀星"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#EB9924";
+            }else{
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#3E98BC";
+            }
+        }
 
 }
 
