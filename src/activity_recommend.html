@@ -279,7 +279,7 @@ svg{
                 // $('div').remove("#a-popups");
                 for(var i=0;i<data.length;i++){
                   $("#a-popups").append(
-                    '<a href="#a-popup-act" data-effect="mfp-3d-unfold"><div class="col-xs-12col-sm-3 col-md-3">'+
+                    '<a href="activity.php#secondPage" data-effect="mfp-3d-unfold"><div class="col-xs-12col-sm-3 col-md-3">'+
                           '<div class="a-item item1">'+
                             '<div class="image">'+
                                 '<img src="'+data[i].act_img+'" alt="" class="rwd-img">'+
@@ -297,9 +297,13 @@ svg{
                   $("#a-popups a:nth-child("+j+")").delay(j*500).animate({
                     'right':'0',
                     'opacity':'1'
-                  },2000);
-                }
+                  },2000);                
 
+                }
+                  // var str=JSON.stringify(data[0]);
+                  // // JSON.parse(localStorage.getItem('searchAct')
+                  // var final="{date:"+data[0].act_startDate+",loc:"+data[0].act_place+",type:"+data[0].actCla_name+"}";
+                  // localStorage['searchAct']=final;
                 var len = 40; // 超過50個字以"..."取代
                 $(".a-text-who").each(function(i){
                     if($(this).text().length>len){
@@ -1031,7 +1035,7 @@ svg{
                 <div class="a-shuttleCover">
                   <!-- <img src="img/a-space-shuttle.svg" id="a-shuttle" alt="" width="400" data-0="transform:translate(350%,600%);" data-150p="transform:translate(-350%,600%)"  data-250p="transform:translate(-100%,250%)" data-350p="transform:translate(0%,0%)"> -->
                   <!-- <img id="a-ast-fire" src="img/a-ast-fire.svg" alt="" data-0="transform:translate(350%,800%);" data-150p="transform:translate(-350%,600%)"  data-250p="transform:translate(-1500%,2000%)" data-350p="transform:translate(0%,0%)"> -->
-                  <img id="a-ast-rocket" src="img/a-ast-rocket.svg" alt="" style="width:250px" data-0="transform:translate(400%,700%) rotate(-90deg);" data-150p="transform:translate(-400%,600%) rotate(-90deg)"  data-250p="transform:translate(-180%,190%) rotate(-90deg)" data-350p="transform:translate(0%,0%) rotate(-90deg)">
+                  <img id="a-ast-rocket" src="img/a-ast-rocket.svg" alt="" style="width:250px" data-0="transform:translate(500%,830%) rotate(-90deg);" data-150p="transform:translate(-500%,800%) rotate(-90deg)"  data-250p="transform:translate(-180%,320%) rotate(-90deg)" data-350p="transform:translate(0%,0%) rotate(-90deg)">
                 </div>
 
                 </div>

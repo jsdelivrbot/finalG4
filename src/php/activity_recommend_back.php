@@ -39,7 +39,7 @@ function choose2(){
 	try{
 		require_once("connect.php");
 		$sql = "select * from act join actCla using(actCla_no) 
-		where act_info like '".$str1."' or act_info like '".$str2."' or act_name like '".$str1."' or act_name like '".$str2."' or actCla_name='".$_REQUEST["act_Mstr3"]."' order by act_collect desc limit 1";
+		where actCla_name='".$_REQUEST["act_Mstr3"]."' or act_info like '".$str2."' or act_name like '".$str1."' or act_name like '".$str2."' or act_info like '".$str1."' limit 1";
 		$rec = $pdo->prepare($sql);
 		$rec->execute();
 	  if( $rec->rowCount() == 0 ){

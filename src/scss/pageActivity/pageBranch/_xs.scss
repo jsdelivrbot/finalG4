@@ -23,6 +23,7 @@
 	width: 100%;
 }
 #a-add-section1{
+	top:0;
 	width: 90%;
 }
 .a-page{
@@ -41,6 +42,7 @@
 	display: none;
 }
 #a-add-section2{
+	top:9%;
 	width: 100%;
 }
 .pignose-calendar-body{
@@ -202,7 +204,10 @@
 	}
 }
 // ----------步驟三---------------
-
+#a-add-section3{
+	top:10%;
+	left:-4%;
+}
 #a-add-top{
 	width: 100%;
 	height: 70%;
@@ -282,9 +287,15 @@
 }
 // ----------步驟四---------------
 #a-add-section4{
+	top: 9%;
 	.a-add-intro{
 		top: 0;
 	}
+}
+.section3-box .a-add-left .a-add-box .a-add-formI{
+	left: 84px;
+	top: 8px;
+	font-size: 12px;
 }
 .section3-box{
 	width:100%;
@@ -376,6 +387,7 @@
 }
 //------------------步驟五--------------
 #a-add-section5{
+	top: 8%;
 	width: 100%;
 	#a_1activity_wrapper{
 		margin: auto;

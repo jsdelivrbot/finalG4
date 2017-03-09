@@ -62,6 +62,9 @@
                         員工管理</a>
                     </li>
                 </ul>
+                <div class="admName">
+                 <a href="back-login.html"><div class="adm_out">登出</div></a>
+                </div>                
             </nav>
           <div class="view-wrapper">
                 <div class="admin-title">
@@ -258,11 +261,11 @@
                   $totalRecords = $prodCountRow["totalRecords"];
 
                   //每頁印幾筆
-                  $pageRecords = 7;
+                  $pageRecords = 8;
                 //$pageRecords
 
                   //共幾頁，ceil是無條件進位
-                  $pages = ceil($totalRecords/$pageRecords);  
+                  $pages = ceil($totalRecords/$pageRecords)-1;  
 
                   //顯示目前這一筆
                   $pageNo = isset($_REQUEST["pageNo"]) == false ? 1 : $_REQUEST["pageNo"];
@@ -274,7 +277,7 @@
                             <td>'.$phoRow["pho_no"].'</td>
                             <td>'.$phoRow["pho_name"].'</td>
                             <td>'.$phoRow["mem_name"].'</td>
-                            <td>'.$phoRow["pho_info"].'</td>
+                            <td>'.((mb_strlen($phoRow["pho_info"], "UTF8")>10) ? mb_substr($phoRow["pho_info"],0,15, "UTF8") : $phoRow["pho_info"]).' '.((mb_strlen($phoRow["pho_info"], "UTF8")>10) ? nl2br(' ...') : nl2br('')).'</td>
                             <td>'.$phoRow["pho_date"].'</td>
                            
                             <td>'.$phoRow["pho_path"].'</td>

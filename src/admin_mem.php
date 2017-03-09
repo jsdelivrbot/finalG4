@@ -62,6 +62,9 @@
                         員工管理</a>
                     </li>
                 </ul>
+                <div class="admName">
+                 <a href="back-login.html"><div class="adm_out">登出</div></a>
+                </div>                
             </nav>
           <div class="view-wrapper">
                 <div class="admin-title">
@@ -317,7 +320,7 @@
                   $totalRecords = $prodCountRow["totalRecords"];
 
                   //每頁印幾筆
-                  $pageRecords = 7;
+                  $pageRecords = 8;
                 //$pageRecords
 
                   //共幾頁，ceil是無條件進位
@@ -329,6 +332,13 @@
                   $sql = "select * from mem limit $start, $pageRecords";
                   $mem = $pdo->query( $sql);
                   while($memRow = $mem->fetch()){
+                     if($memRow["mem_close"]==0){
+                        $position = "<span style='color:green'>正常</span>";
+                        
+                      }else{
+                        $position = "<span style='color:red'>停權</span>";
+                        
+                      }
                       echo '<tr>
                             <td>'.$memRow["mem_no"].'</td>
                             <td>'.$memRow["mem_class"].'</td>
@@ -338,8 +348,8 @@
                            
                             <td>'.$memRow["mem_date"].'</td>
 
-                            <td>'.$memRow["mem_close"].'</td>
-                            <td><input type="button" value="變更權限" class="ad-changePower"></td> 
+                            <td>'.$position.'</td>
+                            <td><i class="fa fa-pencil-square-o ad-changePower"aria-hidden="true"></i></td> 
                             </tr>';
                   } //while
                   //顯示頁數超連結  

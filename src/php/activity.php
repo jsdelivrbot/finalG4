@@ -12,6 +12,18 @@
 try{
   require_once("connect.php");
 /*=====================================
+            報名活動
+    =======================================*/
+if(isset($_REQUEST["act_joinNo"])){
+    $sql="insert into actJoin value('".$_REQUEST["mem_no"]."','".$_REQUEST["act_joinNo"]."')";
+    $actJoin=$pdo->prepare($sql);
+    $actJoin->execute();
+    $admArray = array("state"=>"OK");
+
+
+    echo json_encode($admArray);
+}
+/*=====================================
             活動收藏
     =======================================*/
 if(isset($_REQUEST["act_col"])){
@@ -33,10 +45,10 @@ if(isset($_REQUEST["actSH_startDate"])){
   $str = '%'.$_REQUEST["actSH_place"].'%';
   if(isset($_REQUEST["actSH_endDate"])){
    
-    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' >=act_startDate ) and ('".$_REQUEST["actSH_endDate"]."' <= act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."'";    
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' >=act_startDate ) and ('".$_REQUEST["actSH_endDate"]."' <= act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."' order by act_collect";    
   }
   else{
-    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' between act_startDate and act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."'";     
+    $sql="select * from act join actCla using(actCla_no) where ('".$_REQUEST["actSH_startDate"]."' between act_startDate and act_endDate) or act_place like '".$str."' or actCla_name='".$_REQUEST["actSH_class"]."' order by act_collect";     
   }
 
   // $sql = "select * from act where actSH_class='".$_REQUEST["actSH_endDate"]."'";
@@ -58,7 +70,7 @@ if(isset($_REQUEST["actSH_startDate"])){
             選類型
     =======================================*/
   if(isset($_REQUEST["actCla_no"])){
-      $sql = "select * from act join actCla using(actCla_no) join mem using(mem_no) where actCla_no=:actCla_no and act_state=1";
+      $sql = "select * from act join actCla using(actCla_no) join mem using(mem_no) where actCla_no=:actCla_no and act_state=1 order by act_collect";
       $act = $pdo->prepare( $sql );
       $act->bindValue(":actCla_no", $_REQUEST["actCla_no"]);
       $act->execute();//執行
@@ -81,7 +93,7 @@ if(isset($_REQUEST["actSH_startDate"])){
 
   if(isset($_REQUEST["act_startDate"]) || isset($_REQUEST["act_endDate"])){
 
-    $sql = "select * from act join actCla using(actCla_no) where act_state=1 and (act_endDate between '".$_REQUEST["act_startDate"]."' and '".$_REQUEST["act_endDate"]."')";
+    $sql = "select * from act join actCla using(actCla_no) where act_state=1 and (act_endDate between '".$_REQUEST["act_startDate"]."' and '".$_REQUEST["act_endDate"]."') order by act_collect";
     $act = $pdo->prepare( $sql );
     $act->execute();//執行
     if( $act->rowCount() == 0 ){ //找不到
@@ -104,14 +116,14 @@ if(isset($_REQUEST["actSH_startDate"])){
       $lat = $_REQUEST["act_lat"];
       $point = '23.876571';
       if( $lat==25.0000000){
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat>=$lat";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat>=24.427977 order by act_collect";
       }else if($lat==22.0000000){
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat between 23.0000000 and $point";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat between 23.488782 and 24.427977 order by act_collect";
       }else if($lat==24.0000000){
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lng>=121.091443 and (act_lat between 22.0000000 and 24.0000000)";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lng>=121.091443 and (act_lat between 22.0000000 and 24.0000000) order by act_collect";
       }
       else{
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat<=$point";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 and act_lat<=23.488782 and act_lng<=121.091443 order by act_collect";
       }
         $act = $pdo->prepare( $sql );
         $act->bindValue($lat,$_REQUEST["act_lat"]);
@@ -159,7 +171,7 @@ if(isset($_REQUEST["actSH_startDate"])){
       =======================================*/  
   if(isset($_REQUEST["all"])){
      
-        $sql = "select * from act join actCla using(actCla_no) where act_state=1";
+        $sql = "select * from act join actCla using(actCla_no) where act_state=1 order by act_collect";
         $act = $pdo->prepare( $sql );
          $act->execute();//執行
         if( $act->rowCount() == 0 ){ //找不到

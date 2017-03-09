@@ -101,7 +101,7 @@ google.maps.InfoWindowZ=function(opts){
     var north = document.getElementById("a-north");
     google.maps.event.addDomListener(north, 'click', function() {
         map.setZoom(9);
-        map.setCenter(new google.maps.LatLng(25.105497, 121.397366));
+        map.setCenter(new google.maps.LatLng(24.505497, 121.397366));
     });
     var a_center = document.getElementById("a-center");
     google.maps.event.addDomListener(a_center, 'click', function() {

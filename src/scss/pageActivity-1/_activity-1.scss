@@ -105,7 +105,7 @@
 
 
 					span{
-						font-weight: 800;
+						font-weight: 500;
 						color: #DCAE26;
 
 					}
@@ -125,7 +125,7 @@
 				border: 1px solid silver;
 				font-size: 14px;
 				letter-spacing:0.05em;
-				font-weight: 800;
+				font-weight: 500;
 				// color: #86d4f5;
 				color:#000;
 			}
@@ -282,7 +282,7 @@
 		#a-phone-input_1{
 			// padding-left: 35px;
 			font-size: 14px;
-			font-weight: 800;
+			font-weight: 500;
 			width: 100%;
 			
 		}
@@ -294,13 +294,13 @@
 		}
 
 		.a-phone-icon-2{
-			top: 35px;
-			left: -35px;
+			top: 33px;
+			left: -138px;
 			color: #767676;
 		}
 		.a-phone-icon{
 			top: 15px;
-			left: 75px;
+			left: 65px;
 		}
 
 		.fa-chevron-up{
@@ -425,7 +425,7 @@
 						a{
 							font-size: 16px;
 							// color: #4183c4;
-							font-weight: 900;
+							font-weight: 500;
 						}
 
 						&:hover{
@@ -439,6 +439,7 @@
 					}
 				}
 			}
+
 			.aa-tag{
 				position: absolute;
 				// background-color: rgba(228,124,159,.6);
@@ -469,6 +470,7 @@
 			letter-spacing: .05em;
 		}
 	}
+
 .a-activity-lightbox{
 		padding-top: 23px;	
 		position: fixed;
@@ -486,7 +488,7 @@
 			h4{
 				font-size: 22px;
 				text-align: center;
-				font-weight: 900;
+				font-weight: 500;
 			}
 		}
 
@@ -588,6 +590,7 @@
 						height: 200px;
 					}
 					.box-text{
+
 						.aa-btn-area{
 							.aa-btn{
 								display: none;
@@ -689,6 +692,7 @@
 
 		.a-scrollArea{
 			.aa-box{
+				height: 480px;
 				width: 100%;
 
 				.box-img{
@@ -713,6 +717,7 @@
 
 		.a-scrollArea{
 			.aa-box{
+				height: 460px;
 				width: 95%;
 
 				.box-img{

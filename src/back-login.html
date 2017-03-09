@@ -113,6 +113,7 @@
 $("#admin_login").click(function(){
 var adm_acc=$("#admin_acc").val();
 var adm_psw=$("#admin_psw").val();
+sessionStorage.clear('adm');
   $.ajax({
     url: 'php/admin.php',//php,jsp and etc..
     type: 'POST',
@@ -125,8 +126,11 @@ var adm_psw=$("#admin_psw").val();
     success: function(data, textStatus, jqXHR) {
         console.log('Success: ' + textStatus);
         console.log(data);
-        if(data==1){
-        	document.location.href="admin_act.php"; 
+        if(data!=0){
+        	document.location.href="admin_act.php";
+
+			sessionStorage['adm']=JSON.stringify(data);
+
         }else{
         	alert("帳密錯誤，請重新輸入");
         }
@@ -144,4 +148,5 @@ var adm_psw=$("#admin_psw").val();
 	
 
 })
+
 </script>

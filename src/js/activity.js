@@ -2,7 +2,59 @@ $(function(){
 
 
 
+/*=====================================
+            判斷是否有會員登入
+    =======================================*/
 
+mem = JSON.parse(localStorage.getItem('mem'));
+if(localStorage.mem){
+$("body").on("click",".act_col",function(){
+
+    
+    if($(".act_col").hasClass('fa-star')){
+        alert("您已收藏過");
+    }else{
+        $(this).attr('class','fa fa-star act_col');
+        
+        $.ajax({
+        url: 'php/activity.php',//php,jsp and etc..
+        type: 'POST',
+        data: {
+            act_col:col_no,
+            mem_no:mem.mem_no
+        },
+        dataType: "json",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log('Success: ' + textStatus);
+            console.log(data);
+
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle errors here
+            console.log('Errors: ' + textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+            // STOP LOADING SPINNER
+        }
+
+    }); 
+        alert("收藏成功");
+        console.log(col_no,'aaaaa',$("input[value="+col_no+"]").next().children().children().children().children("span").text());
+        var txt = $("input[value="+col_no+"]").next().children().children().children().children("span").text();
+
+        var num = parseInt(txt)+1;console.log('num',num);
+        $("input[value="+col_no+"]").next().children().children().children().children("span").text(num+'人收藏');
+    }
+    
+  
+  })
+  }else{
+    $(".act_col").click(function(){
+        alert("請先登入會員");
+    })
+  }
 
 
 
@@ -215,7 +267,7 @@ $('#a-add-next5').click(function(e){
       'bottom':0,
       'width':'320px',
       'height':'320px',
-      'z-index':20
+      'z-index':1000000
     });
   });
   $('input.calendar').pignoseCalendar({
@@ -302,30 +354,6 @@ $('#a-slide-1 ul li:nth-child(2)').click(function(){
 	})
 
 
-/*=====================================
-            手機板的input縮放
-    =======================================*/
-$('#a-phone-input_1').focus(function(){
-	$('#a-phone-input_1').hide();
-	$('.fa-chevron-up').slideDown(500).css({
-		'display':'block'
-	});
-
-	$('.a-phone-input').slideDown();
-	$('.fa-search').hide();
-
-})
-$('.fa-chevron-up').click(function(){
-	$('.a-phone-input').hide();
-	$('.fa-chevron-up').hide();
-	$('#a-phone-input_1').slideDown();
-	$('.fa-search').slideDown();
-})
-$('#turnOff').click(function(){
-	console.log("click");
-	$.fn.fullpage.setAllowScrolling(false);
-		
-})
 
 /*=====================================
             日期和時間
@@ -354,9 +382,9 @@ function onClickHandler(date, obj) {
           '</div><input type="text" id="a-timePicker3" name="" value="" placeholder="" class="a-add-timePicker element2">'+
           '<div class="a-add-content">'
           );
-        $('#a-timePicker3').timepicker({ 'timeFormat': 'h:i A' });
+        $('#a-timePicker3').timepicker({ 'timeFormat': 'h:i s' });
         // $('#a-timePicker').timepicker('option', { useSelect: true });
-        $('#a-timePicker3').val('09:00PM');
+        $('#a-timePicker3').val('21:00:00');
         $('#a-timePicker3').on('changeTime', function() {
             $('#a-time').text($(this).val());
         
@@ -380,14 +408,14 @@ function onClickHandler(date, obj) {
           '<div class="a-add-content">到</div><div class="a-add-content" id="a-dateTime4"> </div>'+
           '<input type="text" id="a-timePicker4" name="" value="" placeholder="" class="a-add-timePicker element2"> '
           );
-        $('#a-timePicker3').timepicker({ 'timeFormat': 'h:i A' });
+        $('#a-timePicker3').timepicker({ 'timeFormat': 'h:i s' });
         // $('#a-timePicker').timepicker('option', { useSelect: true });
-        $('#a-timePicker3').val('09:00PM');
+        $('#a-timePicker3').val('21:00:00');
         $('#a-timePicker3').on('changeTime', function() {
             $('#a-time').text($(this).val());
         
         });
-        $('#a-timePicker4').timepicker({ 'timeFormat': 'h:i A' });
+        $('#a-timePicker4').timepicker({ 'timeFormat': 'h:i s' });
         // $('#a-timePicker').timepicker('option', { useSelect: true });
         
         $('#a-timePicker4').on('changeTime', function() {
@@ -410,7 +438,7 @@ function onClickHandler(date, obj) {
       }
       if(date[1] !== null) {
         text2 = date[1].format('YYYY-MM-DD'); 
-        $('#a-timePicker4').val('09:00:00');
+        $('#a-timePicker4').val('21:00:00');
       }
 
       $box.text(text);

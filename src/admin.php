@@ -62,6 +62,9 @@
                         員工管理</a>
                     </li>
                 </ul>
+                <div class="admName">
+                 <a href="back-login.html"><div class="adm_out">登出</div></a>
+                </div>                
             </nav>
           <div class="view-wrapper">
                 <div class="admin-title">
@@ -371,7 +374,7 @@
                   //顯示目前這一筆
                   $pageNo = isset($_REQUEST["pageNo"]) == false ? 1 : $_REQUEST["pageNo"];
                   $start = ($pageNo - 1) * $pageRecords;
-                  $sql = "select * from adm limit $start, $pageRecords";
+                  $sql = "select * from adm order by adm_no limit $start, $pageRecords";
                   $adm = $pdo->query( $sql);
                   while($admRow = $adm->fetch()){
                       echo '<tr>

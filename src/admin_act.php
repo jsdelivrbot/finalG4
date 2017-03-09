@@ -1,3 +1,7 @@
+<?php 
+ob_start();
+session_start(); 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +15,8 @@
     <script src="js/admin.js"></script>
     <title>ZeroGravity後台管理</title>
 </head>
+
+
 
 <body id="admin">
     <div id="admin-wrapper">
@@ -62,6 +68,9 @@
                         員工管理</a>
                     </li>
                 </ul>
+                <div class="admName">
+                 <a href="back-login.html"><div class="adm_out">登出</div></a>
+                </div>
             </nav>
           <div class="view-wrapper">
                 <div class="admin-title">
@@ -117,7 +126,7 @@
                   }
 
                   //每頁印幾筆
-                  $pageRecords = 10;
+                  $pageRecords = 8;
                 //$pageRecords
 
                   //共幾頁，ceil是無條件進位
@@ -134,7 +143,7 @@
 
 
                   }else{
-                    $sql = "select * from act join mem on act.mem_no=mem.mem_no join actCla on act.actCla_no=actCla.actCla_no group by act_no limit $start, $pageRecords";
+                    $sql = "select * from act join mem on act.mem_no=mem.mem_no join actCla on act.actCla_no=actCla.actCla_no group by act_no order by act_state limit $start, $pageRecords";
                   }
                   
                   $act = $pdo->query( $sql);

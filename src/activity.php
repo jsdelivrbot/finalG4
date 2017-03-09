@@ -296,7 +296,7 @@
 }
 .iw-subTitle {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   padding: 5px 0;
 }
 .iw-bottom-gradient {
@@ -318,7 +318,14 @@
 	right: 10px;
 	top: 10px;
 	cursor: pointer;
-}   
+}  
+			#a-join{
+				cursor: pointer;
+			}
+			#a_1activity_wrapper .aa_banner .aa_info #a-join:hover{
+				background-color: #F3C58C;
+				color:#fff;
+			} 
 </style>
 
 </head>
@@ -394,7 +401,7 @@
 	                    dur="40s"
 	                    repeatCount="indefinite"/>
 				  </polygon>
-				  <text id=tit x="200" y="230" fill="#fff"  style="font:40px 微軟正黑體;font-weight: 800; text-shadow: 1px 10px 10px #000">觀星活動
+				  <text id=tit x="200" y="230" fill="#fff"  style="font:40px 微軟正黑體;font-weight: 600; text-shadow: 1px 10px 10px #000">觀星活動
 					  
 				  </text>
 				  <!-- <text x="200" y="200" fill="none" stroke="red" style="font:70px 標楷體;writing-mode:tb;">你好!?</text> -->
@@ -524,7 +531,7 @@
 							<input id="a-phone-input_1" type="text" name="" value="" placeholder="搜尋日期、類型、地點">
 								<i class="fa fa-chevron-up" aria-hidden="true"></i>
 								<i  class="a-phone-input fa fa-clock-o a-phone-icon-2" aria-hidden="true"></i>
-								<input type="text" class="a-phone-input" placeholder="依日期">
+								<input type="date" class="a-phone-input" placeholder="依日期">
 								<i  class="a-phone-input fa fa-star-o a-phone-icon-2" aria-hidden="true"></i>
 								<input type="text" class="a-phone-input" placeholder="依類型">
 								<i  class="a-phone-input fa fa-globe a-phone-icon-2" aria-hidden="true"></i>
@@ -534,7 +541,7 @@
 					<!-- 下方活動區塊 -->
 						<div class="a-scrollArea" id="aa-activities">
 							<div class="col-xs-12 col-sm-12 col-md-12 a-pReset" id="a-add">
-				<!-- 活動產出區 -->
+				<!-- 手機活動產出區 -->
 				<?php 
 					try {
 						require_once("php/connect.php");
@@ -636,13 +643,13 @@
 				<span class="type"><i class="fa fa-tags" aria-hidden="true"></i>類型：<div id="a-lb-actCla_name" class="a-lb-content"></div></span>
 				<span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>地點：<div id="a-lb-act_place" class="a-lb-content"></div></span>
 				<span class="cost"><i class="fa fa-money" aria-hidden="true"></i>費用：<div id="a-lb-act_price" class="a-lb-content"></div>元</span>
-				<div class="btn-lg btn-blue"><a href="">我要報名</a></div>
+				<div class="btn-lg btn-blue" id="a-join">我要報名</div>
 			</div>
 		</div>
 		<div class="aa_comments">
 			<div class="container">
 				<div class="row" id="a-comm">
-					<h4>活動討論-Discussion</h4>
+					<!-- <h4>主辦人-評價Comments</h4> -->
 
 <!-- 	try {
 		require_once("php/connect.php");

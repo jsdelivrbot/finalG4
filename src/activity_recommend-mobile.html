@@ -244,7 +244,7 @@
 					<div class="q-area">
 						 <h3 class="a-r-title">Q1：你對天文的了解程度是？</h3>
 						 <ul class="a-r-content">
-                <li>
+                <li class="s1">
                 <input type="hidden" value="入門">
                  <div class="a-ast-cover">
                     <img src="img/a-ast-int.png" alt="" id="a-ast-ini1">
@@ -252,7 +252,8 @@
                  </div>
                   <div class="a-btn-recommend a-r-p1">初入門者</div>
                 </li>
-                <li>
+                <li class="s1">
+
                 <input type="hidden" value="專業">
                 <div class="a-ast-cover">
                    <img src="img/a-ast-pro.png" alt="" id="a-ast-pro1">
@@ -271,7 +272,7 @@
 				<div class="q-area">
 					 <h3 class="a-r-title">Q2：以下哪種情景最能打動你的心？</h3>
 					 <ul class="a-r-content">
-	                    <li>
+	                    <li class="s2">
                       <input type="hidden" value="流星">
 	                     <div class="a-ast-cover">
 	                        <?xml version="1.0" encoding="utf-8"?>
@@ -314,7 +315,7 @@
                       </div>
                       <div class="a-btn-recommend a-r-p2">看流星劃過天際</div>
 	                    </li>
-	                    <li>
+	                    <li class="s2">
                       <input type="hidden" value="星座">
 	                    <div class="a-ast-cover">
 	                       <?xml version="1.0" encoding="utf-8"?>
@@ -363,7 +364,7 @@
                         </div>
                         <div class="a-btn-recommend a-r-p2">找到天空中的各星座</div>
 	                    </li>
-                      <li>
+                      <li class="s2">
                       <input type="hidden" value="蝕">
                         <div class="a-ast-cover">
                         <!-- a-ast-moon -->
@@ -465,7 +466,7 @@
 				<div class="q-area">
 					 <h3 class="a-r-title">Q3：參加觀星活動，你最想帶什麼</h3>
 					 <ul class="a-r-content">
-	           <li>
+	           <li class="s3">
              <input type="hidden" value="親子觀星">
               <div class="a-ast-cover">
                 <!-- family -->
@@ -661,7 +662,7 @@
               </div>
                 <div class="a-btn-recommend a-r-p3">帶家裡的小朋友</div>
               </li>
-            <li>
+            <li class="s3">
             <input type="hidden" value="休閒聯誼">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="utf-8"?>
@@ -716,7 +717,7 @@
               </div>
               <div class="a-btn-recommend a-r-p3">只帶自己來</div>
             </li>
-            <li>
+            <li class="s3">
             <input type="hidden" value="天文觀測">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="iso-8859-1"?>
@@ -759,7 +760,7 @@
               </div>
               <div class="a-btn-recommend a-r-p3">帶觀星望遠鏡</div>
             </li>
-            <li>
+            <li class="s3">
             <input type="hidden" value="天文攝影">
               <div class="a-ast-cover">
                 <?xml version="1.0" encoding="iso-8859-1"?>
@@ -830,6 +831,13 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+  $(window).resize(function(){
+    if($(window).width()>767){
+          document.location.href="activity_recommend-mobile.html";
+        }
+
+  })
+    
     var y = 100;
     $('#all-section li').click(function(){
       $('#all-section').css({
@@ -838,16 +846,19 @@
       y = y+100;
     })
   var msg1,msg2,msg3;
-  $("#question1").click(function(){
-    msg1=$(this).children().children().children().children().children().children("input[type=hidden]").val();  
+  $(".s1").click(function(){
+    // msg1=$(this).children().children().children().children().children().children("input[type=hidden]").val(); 
+    msg1=$(this).children("input[type=hidden]").val(); 
     console.log(msg1);
   })
-  $("#question2").click(function(){
-    msg2=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+  $(".s2").click(function(){
+    // msg2=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+    msg2=$(this).children("input[type=hidden]").val(); 
     console.log(msg2);
   })
-  $("#question3").click(function(){
-    msg3=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+  $(".s3").click(function(){
+    // msg3=$(this).children().children().children().children().children().children("input[type=hidden]").val();
+    msg3=$(this).children("input[type=hidden]").val(); 
       console.log(msg3);
 
     $.ajax({
@@ -867,23 +878,23 @@
           console.log(data);
           // $('div').remove("#a-popups");
 
-          for(var i=0;i<data.length;i++){
+  
             $("#question4").append(
                     '<div class="container">'+
                       '<div class="row">'+
                       '<div class="q-area">'+
                          '<h3 class="a-r-title">推薦以下觀星活動給您！</h3>'+
-                          '<a id="lightBox">'+
+                          '<a href="activity.php#secondPage" id="lightBox">'+
                             '<div class="col-xs-12 content">'+
                               '<div class="a-item item1">'+
                                 '<div class="image">'+
 
-                                    '<img src="'+data[i].act_img+'" alt="" class="rwd-img">'+
+                                    '<img src="'+data[0].act_img+'" alt="" class="rwd-img">'+
                                 '</div>'+
                                 '<div class="text">'+
-                                  '<p class="a-text">'+data[i].act_name+'</p>'+
-                                  '<p class="a-text-content">'+data[i].act_startDate.substring(0,10)+'至'+data[i].act_endDate.substring(0,10)+'</p>'+
-                                  '<p class="a-text-who" style="text-align:left">'+data[i].act_info+'</p>'+
+                                  '<p class="a-text">'+data[0].act_name+'</p>'+
+                                  '<p class="a-text-content">'+data[0].act_startDate.substring(0,10)+'至'+data[0].act_endDate.substring(0,10)+'</p>'+
+                                  '<p class="a-text-who" style="text-align:left">'+data[0].act_info+'</p>'+
                                 '</div>'+
                               '</div>'+
                             '</div>'+
@@ -892,9 +903,8 @@
                       '</div>'+
                       '</div>'+
                     '</div>');  
-                         
-          }
-          lightBox(); 
+  
+          // lightBox(); 
            var len = 25; // 超過50個字以"..."取代
             $(".a-text-who").each(function(i){
                 if($(this).text().length>len){
@@ -915,69 +925,69 @@
       }
 
   });
-  });
-  function lightBox(){
-     $("#lightBox").click(function(){
-      // lightBox_recommend();
-      document.location.href="activity.php";
-     })
-  };
+ });
+  // function lightBox(){
+  //    $("#lightBox").click(function(){
+  //     // lightBox_recommend();
+  //     document.location.href="activity.php";
+  //    })
+  // };
  
-  function lightBox_recommend(){
-      var recM = $(".a-text").text();
-        $.ajax({
-        url: 'php/activity_recommend_back.php',//php,jsp and etc..
-        type: 'POST',
-        data: {
-            recM:recM
-        },
-        dataType: "json",
-        async: false,
-        success: function(data, textStatus, jqXHR) {
-            console.log('Success: ' + textStatus);
-            console.log(data);
-            act=data;
-            $('.loginPopup').after('<div class="a-scrollArea" id="aa-activities">'+
-              '<div class="col-xs-12 col-sm-12 col-md-12 a-pReset" id="a-add">'+
-              '<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
-                                    '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'+
-                                        '<div class="aa-box">'+
-                                            '<div class="box-img">'+
-                                                '<img src="'+act[0].act_img+'" alt="'+act[0].act_name+'" >'+
-                                            '</div>'+
-                                            '<div class="box-text">'+
-                                                '<h4>'+act[0].act_name+'</h4>'+
-                                                '<p class="aa-date">'+act[0].act_startDate+'</p>'+
-                                                '<p class="aa-info">'+act[0].act_info+'</p>'+
-                                                '<div class="aa-btn-area">'+
-                                                    '<div class="social-icon">'+
-                                                        '<i class="fa fa-star-o" aria-hidden="true">'+
-                                                        '</i><span>20人收藏</span>'+
-                                                    '</div>'+
-                                                    '<div class="aa-btn btn-blue btn-lg">'+
-                                                        '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
+//   function lightBox_recommend(){
+//       var recM = $(".a-text").text();
+//         $.ajax({
+//         url: 'php/activity_recommend_back.php',//php,jsp and etc..
+//         type: 'POST',
+//         data: {
+//             recM:recM
+//         },
+//         dataType: "json",
+//         async: false,
+//         success: function(data, textStatus, jqXHR) {
+//             console.log('Success: ' + textStatus);
+//             console.log(data);
+//             act=data;
+//             $('.loginPopup').after('<div class="a-scrollArea" id="aa-activities">'+
+//               '<div class="col-xs-12 col-sm-12 col-md-12 a-pReset" id="a-add">'+
+//               '<div class="col-xs-12 col-sm-6 col-md-6 a-remove ff_lightbox_link">'+
+//                                     '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'+
+//                                         '<div class="aa-box">'+
+//                                             '<div class="box-img">'+
+//                                                 '<img src="'+act[0].act_img+'" alt="'+act[0].act_name+'" >'+
+//                                             '</div>'+
+//                                             '<div class="box-text">'+
+//                                                 '<h4>'+act[0].act_name+'</h4>'+
+//                                                 '<p class="aa-date">'+act[0].act_startDate+'</p>'+
+//                                                 '<p class="aa-info">'+act[0].act_info+'</p>'+
+//                                                 '<div class="aa-btn-area">'+
+//                                                     '<div class="social-icon">'+
+//                                                         '<i class="fa fa-star-o" aria-hidden="true">'+
+//                                                         '</i><span>20人收藏</span>'+
+//                                                     '</div>'+
+//                                                     '<div class="aa-btn btn-blue btn-lg">'+
+//                                                         '<a href="" class="ff_lightbox_link">熱烈報名中</a>'+
                                                         
-                                                    '</div>'+
-                                                    '<div class="clear"></div>'+
-                                                '</div>'+
-                                            '</div>'+
-                                            '<div class="aa-tag">'+
-                                                '<span>'+act[0].actCla_name+'</span>'+
-                                            '</div>'+  
-                                        '</div></div></div></div>'+
-                                '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'
-                                        );
-  },
+//                                                     '</div>'+
+//                                                     '<div class="clear"></div>'+
+//                                                 '</div>'+
+//                                             '</div>'+
+//                                             '<div class="aa-tag">'+
+//                                                 '<span>'+act[0].actCla_name+'</span>'+
+//                                             '</div>'+  
+//                                         '</div></div></div></div>'+
+//                                 '<input type="hidden" name="" value="'+act[0].act_no+'" class="a-act_no">'
+//                                         );
+//   },
 
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Handle errors here
-            console.log('Errors: ' + textStatus);
-            console.log(jqXHR);
-            console.log(errorThrown);
-            // STOP LOADING SPINNER
-        } 
-  });
-};
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             // Handle errors here
+//             console.log('Errors: ' + textStatus);
+//             console.log(jqXHR);
+//             console.log(errorThrown);
+//             // STOP LOADING SPINNER
+//         } 
+//   });
+// };
 });
 </script>
 

@@ -62,6 +62,9 @@
                         員工管理</a>
                     </li>
                 </ul>
+                <div class="admName">
+                 <a href="back-login.html"><div class="adm_out">登出</div></a>
+                </div>                
             </nav>
           <div class="view-wrapper">
                 <div class="admin-title">
@@ -171,7 +174,7 @@
                   $totalRecords = $prodCountRow["totalRecords"];
 
                   //每頁印幾筆
-                  $pageRecords = 7;
+                  $pageRecords = 8;
                 //$pageRecords
 
                   //共幾頁，ceil是無條件進位

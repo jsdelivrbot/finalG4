@@ -1,4 +1,11 @@
 $(function(){
+
+adm=JSON.parse(sessionStorage.getItem('adm'))
+
+$(".admName").prepend(adm.adm_name+"  您好");
+   // adm=localStorage['adm'];
+   // $(".admName").text(adm);   
+
 /*=====================================
             後端搜尋
     =======================================*/
@@ -209,6 +216,10 @@ $(".ad-pho_change").click(function(){
                     '<th>照片</th>'+
                     '<td><img src="'+data[0].pho_path+'" alt="" width="200" /></td>'+
                   '</tr>'+
+                  '<tr>'+
+                    '<th>照片簡介</th>'+
+                    '<td>'+data[0].pho_info+'</td>'+
+                  '</tr>'+                  
                   '<tr>'+
                     '<th>拍攝地點</th>'+
                     '<td>'+data[0].pho_place+'</td>'+
@@ -947,7 +958,7 @@ $(".ad-pla_change").click(function(){
             type: 'POST',
             data: {
                adm_name:adm_name,
-               adm_acc:adm_acc,
+               adm_account:adm_acc,
                adm_psw:adm_psw
             },
             dataType: "json",
@@ -988,21 +999,32 @@ $(".ad-pla_change").click(function(){
     $(".ad-changePower").click(function(){
         var mem_c = $(this).parent().prev("td");
         var mem_close=$(this).parent().prev("td").text();
-        // console.log(mem_close);
-
+        var mem_no = $(this).parent().parent().children("td:first-child").text();
+        console.log(mem_no);
+        if(mem_close=="停權"){
+          mem_close=1;
+        }else{
+          mem_close=0;
+        }
         $.ajax({
             url: 'php/admin.php',//php,jsp and etc..
             type: 'POST',
             data: {
-               mem_close:mem_close
+               mem_close:mem_close,
+               mem_no:mem_no
             },
             dataType: "json",
             async: false,
             success: function(data, textStatus, jqXHR) {
                 console.log('lightBox Success: ' + textStatus);
                 console.log(data);
-
-                mem_c.text(data[0].mem_close);
+                var color;
+                if(data[0].mem_close==0){
+                  color="<span style='color:green'>正常</span>";
+                }else{
+                  color="<span style='color:red'>停權</span>"
+                }
+                mem_c.html(color);
                 console.log(data[0].mem_close);
             },
 

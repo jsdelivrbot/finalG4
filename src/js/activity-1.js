@@ -1,10 +1,38 @@
 var act;
 $(function(){
-    
+col_no="";  
+$("#a-join").click(function(e){
+    e.preventDefault();
+        $.ajax({
+        url: 'php/activity.php',//php,jsp and etc..
+        type: 'POST',
+        data: {
+            act_joinNo:col_no,
+            mem_no:mem.mem_no
+        },
+        dataType: "json",
+        async: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log('Success: ' + textStatus);
+            console.log(data);
+            alert("報名成功!");
+
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle errors here
+            console.log('Errors: ' + textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+            // STOP LOADING SPINNER
+        }
+
+    });     
+})  
 /*=====================================
             判斷是否有會員登入
     =======================================*/
-col_no="";
+
 mem = JSON.parse(localStorage.getItem('mem'));
 if(localStorage.mem){
 $("body").on("click",".act_col",function(){
@@ -124,15 +152,21 @@ if (localStorage.searchAct) {
                                         );   
 
     }
-    var str =$(".aa-tag").children("span").text();
-            if(str.match("天文攝影")!=null){
-            $(".aa-tag").css({'background-color':"#3D894A"});
-        }else if(str.match("天文觀測")!=null){
-            $(".aa-tag").css({'background-color':"#E05142"});
-        }else if(str.match("親子觀星")!=null){
-            $(".aa-tag").css({'background-color':"#EB9924"});
-        }else{
-            $(".aa-tag").css({'background-color':"#3E98BC"});
+        var num=document.getElementsByClassName("aa-tag");
+        var content= document.getElementsByClassName("aa-tag")[0].childNodes[0].textContent;
+        var father =document.getElementsByClassName("aa-tag")[i];
+        console.log(num);
+        console.log('content',content);
+        for(var i=0;i<num.length;i++){
+            if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="天文攝影"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#3D894A";
+            }else if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="天文觀測"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#E05142";
+            }else if(document.getElementsByClassName("aa-tag")[i].childNodes[0].textContent=="親子觀星"){
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#EB9924";
+            }else{
+                document.getElementsByClassName("aa-tag")[i].style.backgroundColor="#3E98BC";
+            }
         }
     var len = 80; // 超過50個字以"..."取代
     $(".aa-info").each(function(i){
@@ -244,24 +278,24 @@ if(!localStorage.mem){
                 $("#a-lb-act_price").text(data[0][0].act_price);
 
                 // if(data[0].actMs)
-                if(data[1][0]!=0){
-                    for(var i=0;i<data[1].length;i++){
-                        $("#a-comm").append(
-                            '<div class="comment ct1 a-removeComm"><div class="user"><div class="user-pic"><img src="'+data[1][i].mem_img+'" style="width:40px" height="40">'+
-                            '</div><div class="user-info"><span><a href="">'+data[1][i].mem_name+'</a></span></div></div>'+'<div class="ct-content">'+
-                            '<p>參加活動：'+data[1][i].act_name+'<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i>'+
-                            '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>'+
-                            '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>'+
-                            '<p>'+data[1][i].actMsg_content+'</p>'+
-                            '<p>'+data[1][i].actMsg_date+'</p></div>'+
-                            '<div class="clear"></div></div>'
-                        )                
-                    }                    
-                }else{
-                    $("#a-comm").append(
-                        '<div class="ct-content a-removeComm" style="color:#fff;text-align:center;padding-bottom:30px;font-size:20px;">尚無評論</div>'
-                    );
-                }
+                // if(data[1][0]!=0){
+                //     for(var i=0;i<data[1].length;i++){
+                //         $("#a-comm").append(
+                //             '<div class="comment ct1 a-removeComm"><div class="user"><div class="user-pic"><img src="'+data[1][i].mem_img+'" style="width:40px" height="40">'+
+                //             '</div><div class="user-info"><span><a href="">'+data[1][i].mem_name+'</a></span></div></div>'+'<div class="ct-content">'+
+                //             '<p>參加活動：'+data[1][i].act_name+'<span class="ct-stars"><i class="fa fa-star" aria-hidden="true"></i>'+
+                //             '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>'+
+                //             '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span></p>'+
+                //             '<p>'+data[1][i].actMsg_content+'</p>'+
+                //             '<p>'+data[1][i].actMsg_date+'</p></div>'+
+                //             '<div class="clear"></div></div>'
+                //         )                
+                //     }                    
+                // }else{
+                //     $("#a-comm").append(
+                //         '<div class="ct-content a-removeComm" style="color:#fff;text-align:center;padding-bottom:30px;font-size:20px;">尚無評論</div>'
+                //     );
+                // }
             if(data[2][0]){
                  if(data[2][0]==0){
                     $(".act_col").attr('class','fa fa-star-o act_col');
@@ -605,11 +639,11 @@ $('#multiple').hide();
 $('#a-date-control').focus(function(){
     $('#multiple').show().css({
         'position':'absolute',
-        'top':'30px',
-        'left':0,
+        'top':'49px',
+        'left':'-20px',
         'width':'320px',
         'height':'320px',
-        'z-index':20
+        'z-index':100000
     });
 });
 // $(".pignose-calendar-button-group").click(function(){
@@ -657,7 +691,7 @@ function onClickHandler(date, obj) {
     //操作區
     $box.text(text);
     console.log(text,"~",text2);
-    $('#a-date-control').val(text+text2);
+    $('#a-date-control').val(text+'~'+text2);
     getDate();
 }//wrapperend
 
@@ -688,7 +722,7 @@ $('.calendar-dark').pignoseCalendar({
     lang: 'ch',
     multiple: true,
     // modal: true,
-    buttons: true,
+    // buttons: true,
     select: function(dates, obj) {
     console.log('toggle active dates', obj.storage.activeDates);
     },
@@ -883,5 +917,29 @@ $('#fullpage').fullpage({
     onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
 });//fullpageEnd
 
+/*=====================================
+            手機板的input縮放
+    =======================================*/
+$('#a-phone-input_1').focus(function(){
+    $('#a-phone-input_1').hide();
+    $('.fa-chevron-up').slideDown(500).css({
+        'display':'block'
+    });
+
+    $('.a-phone-input').slideDown();
+    $('.fa-search').hide();
+
+})
+$('.fa-chevron-up').click(function(){
+    $('.a-phone-input').hide();
+    $('.fa-chevron-up').hide();
+    $('#a-phone-input_1').slideDown();
+    $('.fa-search').slideDown();
+})
+$('#turnOff').click(function(){
+    console.log("click");
+    $.fn.fullpage.setAllowScrolling(false);
+        
+})
 
 })//$(function) end

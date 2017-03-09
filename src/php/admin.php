@@ -1,5 +1,7 @@
 
-<?php 
+<?php
+ob_start();
+session_start(); 
 try {
   require_once("connect.php");
 
@@ -12,10 +14,11 @@ if(isset($_REQUEST["adm_acc"])){
   $admin = $pdo->prepare($sql);
   $admin->execute();
   if($admin->rowcount()>=1){
-    // $adminRow = $admin->fetch(PDO::FETCH_ASSOC);
-    // $adminArray[]=$adminRow;
-    // echo json_encode($adminArray);     
-    echo 1;
+    $adminRow = $admin->fetch(PDO::FETCH_ASSOC);
+    // $_SESSION["adm_name"] = $adminRow["adm_name"];
+    // $adminArray=array('adm_name',$adminRow["adm_name"]);
+    echo json_encode($adminRow);     
+    // echo 1;
   }else{
     echo 0;
   }
@@ -392,16 +395,16 @@ if(isset($_REQUEST["add_name"])){
   if(isset($_REQUEST["mem_close"])){
 
     if($_REQUEST["mem_close"]==1){
-      $sql = "update mem set mem_close=0 where mem_no = 1";
+      $sql = "update mem set mem_close=0 where mem_no = '".$_REQUEST["mem_no"]."'";
     }else{
-      $sql = "update mem set mem_close=1 where mem_no = 1";
+      $sql = "update mem set mem_close=1 where mem_no = '".$_REQUEST["mem_no"]."'";
     }
     $mem = $pdo ->prepare( $sql );
     $mem -> execute();
 
 
 
-    $sql2 = "select * from mem";
+    $sql2 = "select * from mem where mem_no = '".$_REQUEST["mem_no"]."'";
     $mem2 = $pdo->prepare( $sql2 ); 
     $mem2->execute();
 
@@ -416,7 +419,7 @@ if(isset($_REQUEST["add_name"])){
              新增管理員
 ===================================*/
   if(isset($_REQUEST["adm_name"])){
-    $sql="insert into adm value(null,'".$_REQUEST["adm_name"]."','".$_REQUEST["adm_acc"]."','".$_REQUEST["adm_psw"]."')";
+    $sql="insert into adm value(null,'".$_REQUEST["adm_name"]."','".$_REQUEST["adm_account"]."','".$_REQUEST["adm_psw"]."')";
     $adm = $pdo->prepare($sql);
     $adm ->execute();
 
